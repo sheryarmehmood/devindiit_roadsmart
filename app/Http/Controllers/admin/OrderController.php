@@ -172,7 +172,8 @@ class OrderController extends Controller
     }
     
     
-    public function ordersview($id='')
+    public function 
+    ordersview($id='')
     {
         $data=[];
         $orderDetails= $data['orderDetails']=DB::table('orders')

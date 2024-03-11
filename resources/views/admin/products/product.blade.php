@@ -248,7 +248,7 @@ button.dt-button.buttons-columnVisibility.active {
             								</a>
             						    </td>
                                     </tr>
-                                    <tr>
+                                  6  <tr>
                                         <td>2</td>
                                         <td>Insurance</td>
                                         <td>Wheel Rim</td>

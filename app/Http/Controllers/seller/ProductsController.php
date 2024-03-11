@@ -26,7 +26,7 @@ class ProductsController extends Controller
     public function save_product(Request $request){
         
         $seller_id = $request->seller_id; 
-        dd($request);
+        
         //laravel validations to check the valid fields
         $validator = Validator::make($request->all(),
         [
