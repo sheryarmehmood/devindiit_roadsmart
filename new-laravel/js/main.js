@@ -167,6 +167,12 @@ $('.datepicker').datepicker({
             'order': [[
                 sortOrder, 'asc'
             ]],
+            language: {
+                'paginate': {
+                        'previous': '<i class="fas fa-angle-left"></i>',
+                        'next': '<i class="fas fa-angle-right"></i>'
+                    }
+        },
             'pageLength': 25,
             columnDefs: [{
                 orderable: false,

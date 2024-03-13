@@ -279,6 +279,12 @@
             scrollX: true,
             scrollCollapse: true,
 			autoWidth: false,
+         language: {
+                'paginate': {
+                        'previous': '<i class="fas fa-angle-left"></i>',
+                        'next': '<i class="fas fa-angle-right"></i>'
+                    }
+        },
             oLanguage: {
                 sEmptyTable: 'No records found!!',
             },
@@ -423,6 +429,12 @@
             scrollX: true,
             scrollCollapse: true,
 			autoWidth: false,
+         language: {
+                'paginate': {
+                        'previous': '<i class="fas fa-angle-left"></i>',
+                        'next': '<i class="fas fa-angle-right"></i>'
+                    }
+        },
             oLanguage: {
                 sEmptyTable: 'No records found!!',
             },

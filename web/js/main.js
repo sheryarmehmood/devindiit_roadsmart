@@ -172,6 +172,7 @@ $('.datepicker').datepicker({
                 orderable: false,
                 targets: 'no-sort'
             }],
+            
             responsive: true
         });
         // rateYo

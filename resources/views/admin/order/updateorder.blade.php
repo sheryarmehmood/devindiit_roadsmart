@@ -211,6 +211,12 @@ $(document).ready(function() {
                 return '<input type="checkbox">';
             }
         }],
+        language: {
+                'paginate': {
+                        'previous': '<i class="fas fa-angle-left"></i>',
+                        'next': '<i class="fas fa-angle-right"></i>'
+                    }
+        },
         'order': [
             [1, 'asc']
         ],
