@@ -766,5 +766,16 @@ $carts = DB::table('carts')->where(['product_id'=>$condition['product_id'],'user
      return User::where($condition)->first();
     }
     
+
+    //relatioships
+    public function orders()
+    {
+        return $this->hasMany(Orders::class);
+    }
+
+    public function appointments()
+    {
+        return $this->hasMany(Appointment::class);
+    }
 }
 
