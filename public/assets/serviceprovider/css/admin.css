@@ -8908,3 +8908,21 @@ div#create-report-popup .ui.multiple.dropdown>.label {
 .select-filter:focus , .select-filter:focus-visible {
 	outline: none;
 }
+
+.back-arrow {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	position: absolute;
+	left: 10px;
+	top: 50%;
+	transform: translateY(-50%);
+}
+.back-arrow i {
+	color: #c9343a;
+	transition: all 0.2s ease-in-out;
+}
+
+.back-arrow a:hover i  {
+	color: #333333;
+}
