@@ -41,7 +41,7 @@
                 </div>
             </div>
             <div class="row mt-3">
-                <div class="col pl-5">
+                <div class="col">
                     <a href="{{ route('seller.view-customer') }}" class="btn btn-primary ">Orders</a>
                     <a href="{{ route('seller.view-customer-request') }}" class="btn btn-primary active">Requests</a>
                     <a href="{{ route('seller.view-customer-vehicles') }}" class="btn btn-primary">Vehicles</a>
