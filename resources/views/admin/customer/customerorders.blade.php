@@ -5,7 +5,7 @@
     <div class="page-header">
         <div class="row">
             <div class="col">
-                <h3 class="page-title">View Customer Detail</h3>
+                <h3 class="page-title">View Customer Detail</h3>{{$id}}
             </div>
             <div class="col text-right">
                 <a href="{{ route('admin.customers') }}" class="btn btn-primary">Back</a>
@@ -93,7 +93,7 @@ $(document).ready(function() {
                 url: '{{Route("admin.get_orderListing")}}', 
                 data : function (d) {
                     d.name = $('input[name=name]').val();
-                    d.status = $('select[name=status]').val();
+                    d.status = $('selec0t[name=status]').val();
                     d.search = $('input[name=searchname]').val();
                 }
             },

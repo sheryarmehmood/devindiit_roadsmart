@@ -9,6 +9,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
 use App\Models\User;
+use App\Models\Orders;
 use App\Models\UserAddresses;
 use DB;
 
@@ -291,8 +292,12 @@ class CustomerController extends Controller
            return redirect()->back()->with('message','Customer update Successfully');
     }
 
-    public function customerorders()
+    public function customerorders($id='')
     {
-      return view('admin.customer.customerorders');
+      // $id = 1;  
+      // $orders = Orders::where('user_id', $id)->get();
+      // dd($orders);
+      // return view('admin.customer.customerorders');
+      return view('admin.customer.customerorders', ['id' => $id]);
     }
 }
