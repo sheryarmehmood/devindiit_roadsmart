@@ -24,6 +24,22 @@ class CustomerController extends Controller
         
         return view('serviceprovider.customer.view-customer');
     }
+    public function view_customer_request($id=""){
+        
+        return view('serviceprovider.customer.view-customer-request');
+    }
+    public function view_customer_vehicles($id=""){
+        
+        return view('serviceprovider.customer.view-customer-vehicles');
+    }
+    public function view_customer_chats($id=""){
+        
+        return view('serviceprovider.customer.view-customer-chats');
+    }
+    public function view_customer_profile($id=""){
+        
+        return view('serviceprovider.customer.view-customer-profile');
+    }
     
     function get_customerListing(Request $request)
     {

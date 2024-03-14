@@ -13,7 +13,7 @@
         <div class="page-header">
             <div class="row">
                 <div class="col d-flex position-relative pl-5">
-                    <span class="back-arrow"><a href=""><i style="font-size: 26px;" class="far fa-arrow-alt-circle-left"></i></a></span>
+                    <span class="back-arrow"><a href="{{route('seller.customers')}}"><i style="font-size: 26px;" class="far fa-arrow-alt-circle-left"></i></a></span>
                     <div>
                         <h3 class="page-title d-flex align-items-center">Mary Chirwa </h3>
                         <p>Zambia <span class="dot-circle"></span> Customer for 10 days</p>
@@ -41,11 +41,11 @@
             </div>
             <div class="row mt-3">
                <div class="col pl-5">
-                   <a href="" class="btn btn-primary active">Orders</a>
-                   <a href="" class="btn btn-primary">Requests</a>
-                   <a href="" class="btn btn-primary">Vehicles</a>
-                   <a href="" class="btn btn-primary">Chats</a>
-                   <a href="" class="btn btn-primary">Account Info</a>
+                   <a href="{{route('seller.view-customer')}}" class="btn btn-primary active">Orders</a>
+                   <a href="{{route('seller.view-customer-request')}}" class="btn btn-primary">Requests</a>
+                   <a href="{{ route('seller.view-customer-vehicles') }}" class="btn btn-primary">Vehicles</a>
+                   <a href="{{ route('seller.view-customer-chats') }}" class="btn btn-primary">Chats</a>
+                   <a href="{{ route('seller.view-customer-profile') }}" class="btn btn-primary">Account Info</a>
                </div>
            </div>
         </div>
