@@ -286,7 +286,7 @@ Auth::routes();
         //customer route starts
       Route::get('/customers', 'CustomerController@customers')->name('customers')->middleware('auth:seller');
       Route::get('/add-customer', 'CustomerController@add_customer')->name('add_customer')->middleware('auth:seller');
-      Route::get('/view-customer/{id?}', 'CustomerController@view_customer')->name('view_customer')->middleware('auth:seller');
+      Route::get('/view-customer/{id?}', 'CustomerController@view_customer')->name('view-customer')->middleware('auth:seller');
       Route::get('get_customerListing', 'CustomerController@get_customerListing')->name('get_customerListing');
       //customer route ends
 
