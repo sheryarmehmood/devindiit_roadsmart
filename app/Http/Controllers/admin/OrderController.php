@@ -35,6 +35,7 @@ class OrderController extends Controller
     
     function get_orderListing(Request $request)
     {
+      dd($request);
         $columns = array(  
                             0 =>'id',
                             1=> 'updated_at',
@@ -149,7 +150,7 @@ class OrderController extends Controller
                     "data"            => $data   
                     );
             
-        return json_encode($json_data);
+        // return json_encode($json_data);
     }
     
       public function delete_order(Request $request)
@@ -172,7 +173,8 @@ class OrderController extends Controller
     }
     
     
-    public function ordersview($id='')
+    public function 
+    ordersview($id='')
     {
         $data=[];
         $orderDetails= $data['orderDetails']=DB::table('orders')

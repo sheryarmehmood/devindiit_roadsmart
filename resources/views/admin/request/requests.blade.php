@@ -221,7 +221,7 @@ button.dt-button.buttons-columnVisibility.active {
 											<td>#1001</td>
 											<td>26 Jul at 6:24 pm</td>
 											<td>Brian Smith</td>
-											<td><label class="badge badge-danger">Pending</label></td>
+											<td><label class="badge badge-danger">pending</label></td>
 											<td>k9,396.00</td>
 											<td>
 											  <a href="{{route('admin.viewrequest')}}" class="btn bg-primary-light"><i class="fas fa-eye"></i> View</a>

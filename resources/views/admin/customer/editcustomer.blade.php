@@ -128,10 +128,24 @@
         				    </div>
         				    <div class="col-xl-12">
                                 <div class="form-group text-left d-flex">
-                                    <label class="ml-1 mr-3">Status</label>
+                                    <label class="ml-1 mr-3 mt-2">Status</label>
                                       <span class="switch switch-sm">
                                         <label>
-                                            <input type="checkbox" {{ $customerDetails->status == 1 ? 'checked' : '' }} name="status">
+
+                                            <!-- <input type="checkbox" {{ $customerDetails->status == 1 ? 'checked' : '' }} name="status"> -->
+                                            <!-- <input type="checkbox" {{ $customerDetails->status == 1 ? 'checked' : '' }} name="status" value="1"> -->
+                                            <!-- <input type="checkbox" id="status" class="form-control" name="status" value="{{$customerDetails->status   }}"> -->
+                                            <!-- <input type="checkbox" id="status" class="form-control" name="status" value="{{ $customerDetails->status == 1 ? 'checked' : '' }}"> -->
+                                       <!-- <input type="checkbox" id="status" class="form-control" value="{{$customerDetails->status}}" name="status" {{ $customerDetails->status == 1 ? 'checked' : '' }} > -->
+                                            <!-- <input type="checkbox" id="status" class="form-control" name="status" {{ $customerDetails->status == 1 ? 'checked="checked"' : '' }} value="1"> -->
+                                            <!-- <input type="checkbox" id="status" class="form-control" name="status" {{ $customerDetails->status == 1 ? 'checked' : '' }} value="1"> -->
+                                            <!-- <input type="checkbox" id="status" class="form-control" name="status" {{ $customerDetails->status == 1 ? 'checked' : '' }}>
+<input type="hidden" name="status" value="0"> -->
+<input type="hidden" name="status" value="0">
+<input type="checkbox" id="status" class="form-control" value="1" name="status" {{ $customerDetails->status == 1 ? 'checked' : '' }}>
+
+
+
                                             <span></span>
                                         </label>
                                     </span>

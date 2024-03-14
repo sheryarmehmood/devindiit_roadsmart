@@ -12,4 +12,9 @@ class Appointment extends Model
     protected $fillable = [
         'serviceEstimationId', 'seller_id'	,'user_id	','serviceProvidesId	','appointment_Date'	,'appointment_Time',	'requestid'	,'status'
     ];
+
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
 }
