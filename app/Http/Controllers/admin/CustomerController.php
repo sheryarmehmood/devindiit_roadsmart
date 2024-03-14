@@ -347,6 +347,25 @@ class CustomerController extends Controller
 
 $data = Orders::select('id', 'updated_at', 'user_id', 'vehicle_id', 'amount', 'delivery_address_id', 'status')
     ->where('user_id', $id);
+
+
+
+// $data = Orders::select(
+//   'orders.id', 
+//   'orders.updated_at', 
+//   'users.name as user_id', 
+//   'users.email', 
+//   'user_addresses.address as delivery_address_id', 
+//   'vehicles.name as vehicle_id', 
+//   'orders.amount', 
+//   'orders.delivery_address_id', 
+//   'orders.status'
+// )
+// ->join('users', 'orders.user_id', '=', 'users.id')
+// ->join('vehicles', 'orders.vehicle_id', '=', 'vehicles.id')
+// ->join('user_addresses', 'orders.delivery_address_id', '=', 'user_addresses.id')
+// ->where('orders.user_id', $id);
+
 // dd($data);
 // $data = Orders::select('orders.*', DB::raw('users.name as user_id'), 'users.email', 'user_addresses.address as delivery_address_id', 'vehicles.name as vehicle_id')
 //         ->join('users', 'orders.user_id', '=', 'users.id')
