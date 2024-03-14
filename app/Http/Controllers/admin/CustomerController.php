@@ -225,12 +225,15 @@ class CustomerController extends Controller
         
     public function editcustomer($id='')
     {
+      // dd($id);
          $data=[];
         $customerDetails= $data['customerDetails']=DB::table('users')
         ->leftJoin('user_addresses','user_addresses.user_id','=','users.id')
         ->select('users.*','user_addresses.address as userAddress','user_addresses.state as userState','user_addresses.city as userCity','user_addresses.zip_code as userZipCode')
         ->where('users.id',$id)
         ->first();
+
+        // dd($data);
       
         return view('admin.customer.editcustomer')->with($data);
         // return view('admin.customer.editcustomer');
@@ -238,6 +241,7 @@ class CustomerController extends Controller
     
       function post_editCustomer(Request $request)
     {
+      // dd($request);
          $id = $request->id;
         $customer =User::find($request->id);
 //  dd($customer);
