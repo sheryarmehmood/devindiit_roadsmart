@@ -149,7 +149,7 @@ class OrderController extends Controller
                     "data"            => $data   
                     );
             
-        return json_encode($json_data);
+        // return json_encode($json_data);
     }
     
       public function delete_order(Request $request)

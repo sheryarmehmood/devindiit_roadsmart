@@ -25,7 +25,7 @@
         <div class="col-md-12">
                 <div class="card card-table flex-fill">
 					   <div class="card-header">
-                            <h4 class="card-title">All Orders</h4>
+                            <h4 class="card-title">All Order</h4>
                         </div>
                         <div class="card-body">
                            <div class="table-responsive px-3">
@@ -90,7 +90,7 @@ $(document).ready(function() {
         },
             serverSide: true,
             ajax: { 
-                url: '{{Route("admin.get_orderListing")}}', 
+                url: '{{Route("admin.get_customerorderListing")}}', 
                 data : function (d) {
                     d.name = $('input[name=name]').val();
                     d.status = $('selec0t[name=status]').val();
