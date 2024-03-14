@@ -145,6 +145,10 @@ $(document).ready(function() {
             bDestroy: true,
             processing: true,
              language: {
+                'paginate': {
+                        'previous': '<i class="fas fa-angle-left"></i>',
+                        'next': '<i class="fas fa-angle-right"></i>'
+                    },
              processing: '<i class="fa fa-spinner fa-spin fa-3x fa-fw"  style="margin-top:-100px"></i><span class="sr-only">Loading...</span> '
         },
             serverSide: true,

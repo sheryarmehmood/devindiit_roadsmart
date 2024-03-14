@@ -214,7 +214,7 @@
                             							<img class="avatar-img rounded-circle" alt="Sharon Lessman" src="{{ asset('assets/serviceprovider/img/customer/user-01.jpg') }}" width="40" height="40">
                             							</div>
                             							<div class="flex-grow-1 pl-3">
-                            								<strong> Brian</strong>
+                            								<strong> Brian <span class="fas fa-circle chat-online"></span></strong>
                             								<div class="text-muted small"><em>Typing...</em></div>
                             							</div>
                             							<!--<div>-->
@@ -305,7 +305,7 @@
                             					<div class="flex-grow-0 py-3 px-4 border-top">
                             						<div class="input-group">
                             							<input type="text" class="form-control" placeholder="Type your message">
-                            							<button class="btn btn-primary">Send</button>
+                            							<button class="btn ml-1 btn-primary">Send</button>
                             						</div>
                             					</div>
                             

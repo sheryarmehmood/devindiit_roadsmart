@@ -183,6 +183,12 @@ $(document).ready(function() {
         fixedHeader: true,
         dom: 'Bfrtip',
 		"searching": false,
+		language: {
+                'paginate': {
+                        'previous': '<i class="fas fa-angle-left"></i>',
+                        'next': '<i class="fas fa-angle-right"></i>'
+                    },
+                },
     });
     $.fn.dataTable.ext.errMode = 'none';
 });
@@ -219,6 +225,12 @@ $(document).ready(function() {
     {
         fixedHeader: true,
         dom: 'Bfrtip',
+		language: {
+                'paginate': {
+                        'previous': '<i class="fas fa-angle-left"></i>',
+                        'next': '<i class="fas fa-angle-right"></i>'
+                    },
+                },
         buttons: [{
             extend: 'colvis',
             text: "Columns",
