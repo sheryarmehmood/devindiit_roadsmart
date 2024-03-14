@@ -128,7 +128,7 @@
         				    </div>
         				    <div class="col-xl-12">
                                 <div class="form-group text-left d-flex">
-                                    <label class="ml-1 mr-3">Status</label>{{$customerDetails->status}}
+                                    <label class="ml-1 mr-3 mt-2">Status</label>
                                       <span class="switch switch-sm">
                                         <label>
 

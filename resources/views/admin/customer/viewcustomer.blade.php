@@ -13,11 +13,11 @@
             </div>
             <div class="row">
                 <div class="col">
-                    <a href="" class="btn btn-primary">Orders</a>
+                    <a href="{{ route('admin.customerorders') }}" class="btn btn-primary">Orders</a>
                     <a href="" class="btn btn-primary">Requests</a>
                     <a href="" class="btn btn-primary">Vehicles</a>
                     <a href="" class="btn btn-primary">Chats</a>
-                    <a href="" class="btn btn-primary">Account Info</a>
+                    <a href="" class="btn btn-primary active">Account Info</a>
                 </div>
             </div>
         </div>

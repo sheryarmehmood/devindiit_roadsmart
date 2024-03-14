@@ -290,4 +290,9 @@ class CustomerController extends Controller
     //   Session::flash('message', 'Employee Profile Updated Successfully!!');
            return redirect()->back()->with('message','Customer update Successfully');
     }
+
+    public function customerorders()
+    {
+      return view('admin.customer.customerorders');
+    }
 }

@@ -733,9 +733,9 @@ button.bg-danger:hover {
 .btn-primary.active,
 .btn-primary:active,
 .open>.dropdown-toggle.btn-primary {
-	background-color: #fff;
-	border: 1px solid #c9343a;
-	color: #c9343a;
+	background-color: #fff !important;
+	border: 1px solid #c9343a !important;
+	color: #c9343a !important;
 }
 
 .btn-primary.active.focus,
