@@ -304,8 +304,10 @@ class CustomerController extends Controller
 
     
 
-    public function get_customerorderListing(Request $request)
+    public function get_customerorderListing(Request $request, $id = '')
     {
+      // dd($request);
+      // dd($id);
       //  $id = 1;  
       // $orders = Orders::where('user_id', $id)->get();
       // dd($orders);
@@ -339,10 +341,13 @@ class CustomerController extends Controller
 // });
 
 
-$data = Orders::select('id', 'updated_at', 'user_id', 'vehicle_id', 'amount', 'delivery_address_id', 'status')
-    ->where('user_id', 1)
-    ->get();
+// $data = Orders::select('id', 'updated_at', 'user_id', 'vehicle_id', 'amount', 'delivery_address_id', 'status')
+//     ->where('user_id', $id)
+//     ->get();
 
+$data = Orders::select('id', 'updated_at', 'user_id', 'vehicle_id', 'amount', 'delivery_address_id', 'status')
+    ->where('user_id', $id);
+// dd($data);
 // $data = Orders::select('orders.*', DB::raw('users.name as user_id'), 'users.email', 'user_addresses.address as delivery_address_id', 'vehicles.name as vehicle_id')
 //         ->join('users', 'orders.user_id', '=', 'users.id')
 //         ->join('vehicles', 'orders.vehicle_id', '=', 'vehicles.id')
@@ -379,17 +384,24 @@ $start = $request->input('start');
 $order = $columns[$request->input('order.0.column')];
 $dir = $request->input('order.0.dir');
 
-// $posts = $data->offset($start)
-//      ->limit($limit)
-//      ->orderBy($order,$dir)
-//      ->get();
+$posts = $data->offset($start)
+     ->limit($limit)
+     ->orderBy($order,$dir)
+     ->get();
+
+// $posts = $data->sortBy($order, $dir)
+//     ->skip($start)
+//     ->take($limit)
+//     ->get();
+
+
 // $posts = $data->skip($start)
 //      ->limit($limit)
 //      ->orderBy($order,$dir)
 //      ->get();
 
 
-$posts = $data;
+// $posts = $data;
 $data = array();
 $status = '';
 if(!empty($posts))

@@ -90,7 +90,8 @@ $(document).ready(function() {
         },
             serverSide: true,
             ajax: { 
-                url: '{{Route("admin.get_customerorderListing")}}', 
+                // url: '{{Route("admin.get_customerorderListing")}}',
+                url: '{{ route("admin.get_customerorderListing", ["id" => $id]) }}',  
                 data : function (d) {
                     d.name = $('input[name=name]').val();
                     d.status = $('selec0t[name=status]').val();

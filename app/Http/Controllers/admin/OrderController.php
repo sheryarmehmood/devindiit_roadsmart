@@ -35,6 +35,7 @@ class OrderController extends Controller
     
     function get_orderListing(Request $request)
     {
+      dd($request);
         $columns = array(  
                             0 =>'id',
                             1=> 'updated_at',
