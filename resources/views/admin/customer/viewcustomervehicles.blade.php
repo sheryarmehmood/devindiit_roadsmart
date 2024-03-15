@@ -5,13 +5,13 @@
         <div class="page-header">
             <div class="row">
                 <div class="col">
-                    <h3 class="page-title">View Customer Detail</h3>
+                    <h3 class="page-title">View Vehcile Details</h3>
                 </div>
                 <div class="col text-right">
                     <a href="{{ route('admin.customers') }}" class="btn btn-primary">Back</a>
-                </div>
+                </div>  
             </div>
-            <div class="row">
+            <!-- <div class="row">
                 <div class="col">
                     
                     <a href="{{ route('admin.customerorders') }}" class="btn btn-primary">Orders</a>
@@ -21,7 +21,7 @@
                     <a href="" class="btn btn-primary">Chats</a>
                     <a href="" class="btn btn-primary">Account Info</a>
                 </div>
-            </div>
+            </div> -->
         </div>
 		<div class="card card-table flex-fill ordertabstableitems">
             <div class="card-header">
@@ -238,7 +238,8 @@
 			},
 			serverSide: true,
 			ajax: {
-				url: '{{ Route('admin.get_vehicleListing') }}',
+                url: '{{ route("admin.get_customervehicleListing", ["id" => $id]) }}',
+				// url: '{{ Route('admin.get_customervehicleListing') }}',
 				data: function(d) {
 					d.name = $('input[name=name]').val();
 					d.status = $('select[name=status]').val();

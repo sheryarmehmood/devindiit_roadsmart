@@ -5,7 +5,7 @@
         <div class="page-header">
             <div class="row">
                 <div class="col">
-                    <h3 class="page-title">View Customer Detail</h3>
+                    <h3 class="page-title">{{$customerDetails->name}} Details</h3>
                 </div>
                 <div class="col text-right">
                     <a href="{{ route('admin.customers') }}" class="btn btn-primary">Back</a>
@@ -46,7 +46,11 @@
                                         <tr>
 
                                             <td colspan="5" class="text-right pr-0"><a
-                                                    href="{{ route('seller.orders') }}" class="mr-4">View all orders</a>
+                                                    href="{{ route('admin.customerorders', ['id' => $customerDetails->id]) }}" class="mr-4">View all orders</a> 
+                                                    <!-- <td colspan="5" class="text-right pr-0">
+                                            <a href="{{ route('admin.customerorders', ['customerId' => $customerDetails->id]) }}" class="mr-4">View all orders</a>
+                                        </td> -->
+
                                                 <a href="{{ route('admin.viewcustomeraddorder') }}"
                                                     class="btn btn-success text-white">Create Order</a> </td>
                                         </tr>
@@ -149,9 +153,9 @@
 
                                         </tr>
                                         <tr>
-
+                                        
                                             <td colspan="5" class="text-right pr-0"><a
-                                                    href="{{ route('seller.orders') }}" class="mr-4">View all Vehicles</a>
+                                                    href="{{ route('admin.viewcustomervehicles', ['id' => $customerDetails->id]) }}" class="mr-4">View all Vehicles</a>
                                                 <a href="{{ route('seller.add_order') }}"
                                                     class="btn btn-success text-white">Register Vehicle</a> </td>
                                         </tr>
