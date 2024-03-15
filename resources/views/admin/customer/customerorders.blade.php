@@ -8,7 +8,9 @@
                 <h3 class="page-title">View Customer Detail</h3>
             </div>
             <div class="col text-right">
-                <a href="{{ route('admin.customers') }}" class="btn btn-primary">Back</a>
+                <!-- <a href="{{ route('admin.customers') }}" class="btn btn-primary">Back</a> -->
+                <a href="{{ route('admin.viewcustomer', ['id' => $id]) }}" class="btn btn-primary">Back</a>
+
             </div>
         </div>
         <div class="row">
@@ -53,6 +55,22 @@
         </div>
     </div>
 </div>
+<div class="modal fade" id="delete-popup" role="dialog" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        		<input type="hidden" name="storeid" id ="storeid"/>
+            <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content">
+                    <div class="modal-body">
+                        <div class="delete-cont">
+                            <p>Are you sure you want to delete this item ?</p>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+                        <button type="button" class="btn btn-danger" id="confirm">Delete</button>
+                    </div>
+                </div>
+            </div>
+        </div>
 @endsection
 
 

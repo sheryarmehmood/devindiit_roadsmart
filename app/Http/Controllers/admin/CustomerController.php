@@ -472,9 +472,11 @@ else{
 }
 
 $button = '<a href="'.route('admin.ordersdetails').'/'.$post->id.'" class="btn btn-sm bg-info-light"><i class="far fa-eye mr-1"></i> View</a>
-<a href="'.route('admin.invoiceorders').'/'.$post->id.'" class="btn btn-sm bg-success-light"><i class="fas fa-edit"></i> Invoice</a>
+
 <a href="#" class="btn btn-sm bg-danger-light delete_order" data-toggle="modal"  data-orderid="'.$post->id.'" data-target="#delete-popup"><i class="fas fa-trash-alt"></i> Delete
 </a>';
+
+// <a href="'.route('admin.invoiceorders').'/'.$post->id.'" class="btn btn-sm bg-success-light"><i class="fas fa-edit"></i> Invoice</a>
 
 $nestedData['id'] = !empty(@$post->id) ? $post->id : "N/A";
 $nestedData['updated_at'] =  !empty(@$post->updated_at) ? date('d M,Y', strtotime(@$post->updated_at)) : "N/A";

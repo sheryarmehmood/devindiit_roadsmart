@@ -173,8 +173,7 @@ class OrderController extends Controller
     }
     
     
-    public function 
-    ordersview($id='')
+    public function ordersview($id='')
     {
         $data=[];
         $orderDetails= $data['orderDetails']=DB::table('orders')
@@ -182,6 +181,7 @@ class OrderController extends Controller
         ->select('orders.*','users.name as userName','users.email as userEmail','users.phone_num as userPhone')
         ->where('orders.id',$id)
         ->first();
+        // dd($orderDetails);
         return view('admin.order.ordersview')->with($data);
     }
     public function invoiceorders()
