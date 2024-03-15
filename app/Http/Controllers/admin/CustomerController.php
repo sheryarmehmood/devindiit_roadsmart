@@ -301,6 +301,14 @@ class CustomerController extends Controller
       // return view('admin.customer.customerorders');
       return view('admin.customer.customerorders', ['id' => $id]);
     }
+    public function viewcustomerrequest($id='')
+    {
+      return view('admin.customer.viewcustomerrequest');
+    }
+    public function viewcustomervehicles($id='')
+    {
+      return view('admin.customer.viewcustomervehicles');
+    }
 
     
 

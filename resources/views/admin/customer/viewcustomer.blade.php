@@ -16,8 +16,8 @@
                     
                     <a href="{{ route('admin.customerorders', ['id' => $customerDetails->id]) }}" class="btn btn-primary">Orders</a>
 
-                    <a href="" class="btn btn-primary">Requests</a>
-                    <a href="" class="btn btn-primary">Vehicles</a>
+                    <a href="{{ route('admin.viewcustomerrequest')}}" class="btn btn-primary">Requests</a>
+                    <a href="{{ route('admin.viewcustomervehicles')}}" class="btn btn-primary">Vehicles</a>
                     <a href="" class="btn btn-primary">Chats</a>
                     <a href="" class="btn btn-primary active">Account Info</a>
                 </div>
