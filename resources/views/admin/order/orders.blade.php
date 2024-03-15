@@ -217,8 +217,8 @@ $(document).ready(function() {
             var productid = $(this).attr('data-orderid');
             $('#storeid').val(productid);
             // $('#delete-popup').modal('show');
+            console.log('del pres');
         });
-
          $(document).on('click', '#confirm', function(e){  
         var deleted_id = $('#storeid').val();
         $.ajax({

@@ -8,7 +8,9 @@
                 <h3 class="page-title">View Customer Detail</h3>
             </div>
             <div class="col text-right">
-                <a href="{{ route('admin.customers') }}" class="btn btn-primary">Back</a>
+                <!-- <a href="{{ route('admin.customers') }}" class="btn btn-primary">Back</a> -->
+                <a href="{{ route('admin.viewcustomer', ['id' => $id]) }}" class="btn btn-primary">Back</a>
+
             </div>
         </div>
         <div class="row">
@@ -38,7 +40,9 @@
 									   <th  style='padding-bottom:13px'>Email </th>
 									   <th  style='padding-bottom:13px'>Vehicle Name</th>
                                        <th  style='padding-bottom:13px'>Price</th>
-                                       <th  style='padding-bottom:13px'>Delivry Address</th>
+                                       <th  style='padding-bottom:13px'>Status</th>
+                                       <th  style='padding-bottom:13px'>Action</th>
+                                     
                                     </tr>
                                  </thead>
                                  <tbody id="orderTableList">
@@ -51,6 +55,22 @@
         </div>
     </div>
 </div>
+<div class="modal fade" id="delete-popup" role="dialog" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        		<input type="hidden" name="storeid" id ="storeid"/>
+            <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content">
+                    <div class="modal-body">
+                        <div class="delete-cont">
+                            <p>Are you sure you want to delete this item ?</p>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+                        <button type="button" class="btn btn-danger" id="confirm">Delete</button>
+                    </div>
+                </div>
+            </div>
+        </div>
 @endsection
 
 
@@ -134,9 +154,15 @@ $(document).ready(function() {
                             name: 'Price'
                         },
                         {
-                            data: 'delivery_address_id',
-                            name: 'Delivery Address'
+                            data: 'status',
+                            name: 'Status'
                         },
+                        {
+                            data: 'action',
+                            name: 'Action',
+                            orderable: false
+                        },
+                      
                     ]
         
     }
@@ -146,6 +172,7 @@ $(document).ready(function() {
             var productid = $(this).attr('data-orderid');
             $('#storeid').val(productid);
             // $('#delete-popup').modal('show');
+            console.log('del pres');
         });
 
          $(document).on('click', '#confirm', function(e){  
