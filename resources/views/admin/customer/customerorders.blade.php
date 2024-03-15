@@ -16,8 +16,8 @@
         <div class="row">
             <div class="col">
                 <a href="" class="btn btn-primary active">Orders</a>
-                <a href="" class="btn btn-primary">Requests</a>
-                <a href="" class="btn btn-primary">Vehicles</a>
+                <a href="{{ route('admin.viewcustomerrequest')}}" class="btn btn-primary">Requests</a>
+                <a href="{{ route('admin.viewcustomervehicles')}}" class="btn btn-primary">Vehicles</a>
                 <a href="" class="btn btn-primary">Chats</a>
                 <a href="" class="btn btn-primary">Account Info</a>
             </div>
