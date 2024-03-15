@@ -327,7 +327,7 @@ class CustomerController extends Controller
     );
 
   
-
+//previous
 //   $data = Product::select('*')->where('status','=','1');
 // $data = Orders::select('orders.*',DB::raw('users.name as user_id,users.email as email'),DB::raw('user_addresses.address as delivery_address_id'),Db::raw('vehicles.name as vehicle_id'))
 // ->Join('users', function($join) {
@@ -339,14 +339,54 @@ class CustomerController extends Controller
 // ->Join('user_addresses', function($join) {
 // $join->on('orders.delivery_address_id', '=', 'user_addresses.id');
 // });
+//correct
+// $data = Orders::select('id', 'updated_at', 'user_id', 'vehicle_id', 'amount', 'delivery_address_id', 'status')
+//     ->where('user_id', $id);
+
+$data = Orders::select('orders.*',DB::raw('users.name as user_id,users.email as email'),Db::raw('vehicles.name as vehicle_id'))
+->Join('users', function($join) {
+$join->on('orders.user_id', '=', 'users.id');
+})
+->Join('vehicles', function($join) {
+$join->on('orders.vehicle_id', '=', 'vehicles.id');
+})->where('orders.user_id', $id);
+
+
+
 
 
 // $data = Orders::select('id', 'updated_at', 'user_id', 'vehicle_id', 'amount', 'delivery_address_id', 'status')
 //     ->where('user_id', $id)
 //     ->get();
 
-$data = Orders::select('id', 'updated_at', 'user_id', 'vehicle_id', 'amount', 'delivery_address_id', 'status')
-    ->where('user_id', $id);
+
+
+// $data = Orders::select('orders.id', 'orders.updated_at', 'orders.user_id', 'orders.vehicle_id', 'orders.amount', 'orders.delivery_address_id', 'orders.status', 'users.name as user_name', 'users.email as user_email')
+//     ->join('users', function($join) {
+//         $join->on('orders.user_id', '=', 'users.id');
+//     })
+//     ->where('orders.user_id', $id);
+
+
+
+
+
+// $data = Orders::select(
+//   'orders.id', 
+//   'orders.updated_at', 
+//   'users.name as user_id', 
+//   'users.email', 
+//   'user_addresses.address as delivery_address_id', 
+//   'vehicles.name as vehicle_id', 
+//   'orders.amount', 
+//   'orders.delivery_address_id', 
+//   'orders.status'
+// )
+// ->join('users', 'orders.user_id', '=', 'users.id')
+// ->join('vehicles', 'orders.vehicle_id', '=', 'vehicles.id')
+// ->join('user_addresses', 'orders.delivery_address_id', '=', 'user_addresses.id')
+// ->where('orders.user_id', $id);
+
 // dd($data);
 // $data = Orders::select('orders.*', DB::raw('users.name as user_id'), 'users.email', 'user_addresses.address as delivery_address_id', 'vehicles.name as vehicle_id')
 //         ->join('users', 'orders.user_id', '=', 'users.id')
@@ -431,10 +471,12 @@ else{
  $Status = '<label class="badge badge-success">'.$current_status.'</label>';
 }
 
-$button = '<a href="'.route('admin.ordersdetails').'/'.$post->id.'" class="btn btn-sm bg-info-light"><i class="far fa-eye mr-1"></i> Vie</a>
-<a href="'.route('admin.invoiceorders').'/'.$post->id.'" class="btn btn-sm bg-success-light"><i class="fas fa-edit"></i> Invoice</a>
+$button = '<a href="'.route('admin.ordersdetails').'/'.$post->id.'" class="btn btn-sm bg-info-light"><i class="far fa-eye mr-1"></i> View</a>
+
 <a href="#" class="btn btn-sm bg-danger-light delete_order" data-toggle="modal"  data-orderid="'.$post->id.'" data-target="#delete-popup"><i class="fas fa-trash-alt"></i> Delete
 </a>';
+
+// <a href="'.route('admin.invoiceorders').'/'.$post->id.'" class="btn btn-sm bg-success-light"><i class="fas fa-edit"></i> Invoice</a>
 
 $nestedData['id'] = !empty(@$post->id) ? $post->id : "N/A";
 $nestedData['updated_at'] =  !empty(@$post->updated_at) ? date('d M,Y', strtotime(@$post->updated_at)) : "N/A";
