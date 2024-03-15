@@ -38,7 +38,9 @@
 									   <th  style='padding-bottom:13px'>Email </th>
 									   <th  style='padding-bottom:13px'>Vehicle Name</th>
                                        <th  style='padding-bottom:13px'>Price</th>
-                                       <th  style='padding-bottom:13px'>Delivry Address</th>
+                                       <th  style='padding-bottom:13px'>Status</th>
+                                       <th  style='padding-bottom:13px'>Action</th>
+                                     
                                     </tr>
                                  </thead>
                                  <tbody id="orderTableList">
@@ -134,9 +136,15 @@ $(document).ready(function() {
                             name: 'Price'
                         },
                         {
-                            data: 'delivery_address_id',
-                            name: 'Delivery Address'
+                            data: 'status',
+                            name: 'Status'
                         },
+                        {
+                            data: 'action',
+                            name: 'Action',
+                            orderable: false
+                        },
+                      
                     ]
         
     }
@@ -146,6 +154,7 @@ $(document).ready(function() {
             var productid = $(this).attr('data-orderid');
             $('#storeid').val(productid);
             // $('#delete-popup').modal('show');
+            console.log('del pres');
         });
 
          $(document).on('click', '#confirm', function(e){  

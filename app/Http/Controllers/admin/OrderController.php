@@ -191,18 +191,26 @@ class OrderController extends Controller
       public function ordersdetails($id='')
     {
         $data=[];
-        $orderDetails= $data['orderDetails']=Orders::select('orders.*',DB::raw('users.name as user_id,users.email as email'),DB::raw('user_addresses.address as delivery_address_id'),Db::raw('vehicles.name as vehicle_id'))
- ->Join('users', function($join) {
-              $join->on('orders.user_id', '=', 'users.id');
-            })
-            ->Join('vehicles', function($join) {
-              $join->on('orders.vehicle_id', '=', 'vehicles.id');
-            })
-            ->Join('user_addresses', function($join) {
-              $join->on('orders.delivery_address_id', '=', 'user_addresses.id');
-            })
-        ->where('orders.id',$id)
-        ->first();
+        // previous
+//         $orderDetails= $data['orderDetails']=Orders::select('orders.*',DB::raw('users.name as user_id,users.email as email'),DB::raw('user_addresses.address as delivery_address_id'),Db::raw('vehicles.name as vehicle_id'))
+//  ->Join('users', function($join) {
+//               $join->on('orders.user_id', '=', 'users.id');
+//             })
+//             ->Join('vehicles', function($join) {
+//               $join->on('orders.vehicle_id', '=', 'vehicles.id');
+//             })
+//             ->Join('user_addresses', function($join) {
+//               $join->on('orders.delivery_address_id', '=', 'user_addresses.id');
+//             })
+//         ->where('orders.id',$id)
+//         ->first();
+$orderDetails = $data['orderDetails'] = Orders::select('orders.*',DB::raw('users.name as user_id,users.email as email'),Db::raw('vehicles.name as vehicle_id'))
+->Join('users', function($join) {
+$join->on('orders.user_id', '=', 'users.id');
+})
+->Join('vehicles', function($join) {
+$join->on('orders.vehicle_id', '=', 'vehicles.id');
+})->where('orders.id', $id)->first();
         // dd($orderDetails);
         return view('admin.order.ordersdetails')->with($data);
     }
