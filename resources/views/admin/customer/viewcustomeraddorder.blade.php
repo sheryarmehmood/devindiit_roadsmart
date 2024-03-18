@@ -1,5 +1,5 @@
 @extends('admin.layouts.app1')
-@section('title', 'View Customer')
+@section('title', 'Add order')
 <style>
     .filter-btn 
     {

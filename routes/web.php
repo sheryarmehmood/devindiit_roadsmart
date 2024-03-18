@@ -378,6 +378,8 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
         Route::get('viewcustomerrequest/{id?}', 'CustomerController@viewcustomerrequest')->name('viewcustomerrequest');
         Route::get('viewcustomervehicles/{id?}', 'CustomerController@viewcustomervehicles')->name('viewcustomervehicles');
         Route::get('viewcustomeraddorder/{id?}', 'CustomerController@viewcustomeraddorder')->name('viewcustomeraddorder');
+        Route::get('viewcustomeraddrequest/{id?}', 'CustomerController@viewcustomeraddrequest')->name('viewcustomeraddrequest');
+        Route::get('addvehicle/{id?}', 'CustomerController@addvehicle')->name('addvehicle');
          Route::get('get_customerListing', 'CustomerController@get_customerListing')->name('get_customerListing');
          Route::post('/delete_customer', 'CustomerController@delete_customer')->name('delete_customer');
          Route::post('post_editCustomer', 'CustomerController@post_editCustomer')->name('post_editCustomer');

@@ -57,25 +57,6 @@
                                     </tbody>
                                 </table>
                             </div>
-                            <!--- div class="viewBox table-responsive pt-3">
-                            <table class="table">
-                               <tbody>
-                                  <tr>
-                                     <td class="text-left pl-0">
-                                        <div class="fileboxdiv">
-                                           <i class="far fa-file-archive"></i>
-                                           <span>1</span>
-                                        </div>
-                                     </td>
-                                     <td class="text-left pl-0">
-                                        Brakes Shoes For Jeep Cherokee <br />
-                                        1 × ₹10.00
-                                     </td>
-                                     <td class="text-right pr-0"> K 10.00 </td>
-                                  </tr>
-                               </tbody>
-                            </table>
-                         </div---->
                         </div>
                     </div>
                 </div>
@@ -112,8 +93,8 @@
                                         <tr>
 
                                             <td colspan="5" class="text-right pr-0"><a
-                                                    href="{{ route('seller.orders') }}" class="mr-4">View all Requests</a>
-                                                <a href="{{ route('seller.add_order') }}"
+                                                    href="{{ route('admin.viewcustomerrequest') }}" class="mr-4">View all Requests</a>
+                                                <a href="{{ route('admin.viewcustomeraddrequest') }}"
                                                     class="btn btn-success text-white">Create Request</a> </td>
                                         </tr>
                                     </tbody>
@@ -156,7 +137,7 @@
                                         
                                             <td colspan="5" class="text-right pr-0"><a
                                                     href="{{ route('admin.viewcustomervehicles', ['id' => $customerDetails->id]) }}" class="mr-4">View all Vehicles</a>
-                                                <a href="{{ route('seller.add_order') }}"
+                                                <a href="{{ route('admin.addvehicle') }}"
                                                     class="btn btn-success text-white">Register Vehicle</a> </td>
                                         </tr>
                                     </tbody>
