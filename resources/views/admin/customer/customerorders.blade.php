@@ -5,7 +5,7 @@
     <div class="page-header">
         <div class="row">
             <div class="col">
-                <h3 class="page-title">View Customer Detail</h3>
+                <h3 class="page-title">View Order Details</h3>
             </div>
             <div class="col text-right">
                 <!-- <a href="{{ route('admin.customers') }}" class="btn btn-primary">Back</a> -->
@@ -15,11 +15,11 @@
         </div>
         <div class="row">
             <div class="col">
-                <a href="" class="btn btn-primary active">Orders</a>
+                <!-- <a href="" class="btn btn-primary active">Orders</a>
                 <a href="{{ route('admin.viewcustomerrequest')}}" class="btn btn-primary">Requests</a>
                 <a href="{{ route('admin.viewcustomervehicles')}}" class="btn btn-primary">Vehicles</a>
                 <a href="" class="btn btn-primary">Chats</a>
-                <a href="" class="btn btn-primary">Account Info</a>
+                <a href="" class="btn btn-primary">Account Info</a> -->
             </div>
         </div>
     </div>

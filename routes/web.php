@@ -384,6 +384,9 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
          Route::post('add_newcustomer', 'CustomerController@add_newcustomer')->name('add_newcustomer');
          Route::get('customerorders/{id?}', 'CustomerController@customerorders')->name('customerorders');
          Route::get('get_customerorderListing/{id?}', 'CustomerController@get_customerorderListing')->name('get_customerorderListing');
+         Route::get('get_customervehicleListing/{id?}', 'CustomerController@get_customervehicleListing')->name('get_customervehicleListing');
+    
+         
         //Admin Customers  routes end here
         
         
