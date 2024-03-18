@@ -25,7 +25,7 @@
                 <div class="card-header">
                     <h4 class="card-title"> Edit Vehicle Detail</h4>
                 </div>
-                    <div class="card-body">
+                    <!-- <div class="card-body">
                         <div class="row">
         					<div class="col-xl-6">
                                 <div class="form-group">
@@ -189,7 +189,7 @@
                                 </div>
                             </div>
                         </div>
-                    </div>
+                    </div> -->
             </div>
         </div>
     <div class="row">
@@ -197,7 +197,7 @@
             <div class="card-header">
                 <h4 class="card-title">Edit Personal Detail</h4>
             </div>
-                <div class="card-body">
+                <!-- <div class="card-body">
                     <div class="row">
     					<div class="col-xl-6">
                             <div class="form-group">
@@ -265,7 +265,7 @@
                            </div>
                         </div>
                     </div>
-                </div>
+                </div> -->
             </div>
         </div>
    </form>
