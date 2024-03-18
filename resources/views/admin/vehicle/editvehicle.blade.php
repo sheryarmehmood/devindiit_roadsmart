@@ -25,7 +25,7 @@
                 <div class="card-header">
                     <h4 class="card-title"> Edit Vehicle Detail</h4>
                 </div>
-                    <!-- <div class="card-body">
+                    <div class="card-body">
                         <div class="row">
         					<div class="col-xl-6">
                                 <div class="form-group">
@@ -189,7 +189,7 @@
                                 </div>
                             </div>
                         </div>
-                    </div> -->
+                    </div>
             </div>
         </div>
     <div class="row">
@@ -197,7 +197,7 @@
             <div class="card-header">
                 <h4 class="card-title">Edit Personal Detail</h4>
             </div>
-                <!-- <div class="card-body">
+                <div class="card-body">
                     <div class="row">
     					<div class="col-xl-6">
                             <div class="form-group">
@@ -265,7 +265,7 @@
                            </div>
                         </div>
                     </div>
-                </div> -->
+                </div>
             </div>
         </div>
    </form>
@@ -273,4 +273,60 @@
 @endsection
 @section('scripts')
 <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+
+<script>
+	$(function() {
+  	$("form[name='edit_customer']").validate({
+  	ignore: [],
+    rules: {
+        name: "required",
+		email: {
+	        required: true,
+	        email: true
+	      },
+		phone_num: {
+	        required: true,
+	        maxlength: 15,
+			minlength: 10
+	      },
+	       city: "required",
+	       state: "required",
+	       country: "required",
+	       zipcode: "required",
+	  
+    },
+    errorPlacement: function(error, element) {
+    	if (element.attr("name") == "email") {
+          error.insertAfter("#email_err");
+        }
+        else if (element.attr("name") == "phone_num") {
+          error.insertAfter("#phone_number_err");
+        }else if (element.attr("name") == "country") {
+          error.insertAfter("#country_err");
+        }else{
+          error.insertAfter(element);
+        }
+      },
+    // Specify validation error messages
+    messages: 
+    {
+		name: "Please enter name",
+		email: "Please enter valid email id",
+		phone_num: {
+	        required: "Please enter valid phone number",
+	        maxlength: "Your phone number should not be more than 15 character",
+			minlength: "Your phone number must have at least 10 characters"
+	      },
+	      city: "Please enter city",
+	       state: "Please enter state",
+	       country: "Please select country",
+	      zipcode: "Please enter postcode",
+    },
+    submitHandler: function(form) {
+      form.submit();
+    }
+  });
+});
+</script>
+
 @endsection<h1>hello world</h1>
