@@ -243,10 +243,10 @@
                         <div class="customerLists-item border-0 mt-0">
 
                             <p class="d-flex justify-space-between mb-2"><a
-                                    href="javascript:void();">marychirwa@gmail.com</a> <span
+                                    href="javascript:void();">{{$customerDetails->email}}</a> <span
                                     class="ml-auto text-secondary"><i class="fa fa-copy" aria-hidden="true"></i></span>
                             </p>
-                            <p>+123 456 789</p>
+                            <p>{{$customerDetails->phone_num}}</p>
                             <p class="text-muted">Will receive notifications in English</p>
                         </div>
 
@@ -255,10 +255,11 @@
                             <div class="customerLists-item">
                                 <h4 class="d-flex">Default address <a data-toggle="modal" class="edit-text-btn"
                                         data-target="#editaddress-popup" href="javascript: void(0);">Manage</a></h4>
-                                <p>1688 St Matthews Ave,</br> Winnipeg, MB R3H 0A2, Canada</p>
+                                        {{$customerDetails->userAddress}}
+                                <!-- <p>1688 St Matthews Ave,</br> Winnipeg, MB R3H 0A2, Canada</p> -->
                             </div>
-                            <a class="mt-3 d-inline-block" data-toggle="modal" data-target="#addaddress-popup"
-                                href="javascript: void(0);">Add New Address</a>
+                            <!-- <a class="mt-3 d-inline-block" data-toggle="modal" data-target="#addaddress-popup" -->
+                                <!-- href="javascript: void(0);">Add New Address</a> -->
                         </div>
 
                         <div class="customerLists">

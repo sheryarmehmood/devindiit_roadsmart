@@ -590,6 +590,7 @@ return json_encode($json_data);
         if(!empty($posts))
         {
             foreach ($posts as $key => $post)
+            
             {
                 
                  //condition code for status starts
@@ -602,10 +603,12 @@ return json_encode($json_data);
                      $Status = '<label class="badge badge-danger">'.$current_status.'</label>';
                  }
                  
+                //  <a href="'.route('admin.editvehicle').'/'.$post->id.'" class="btn btn-sm bg-success-light"><i class="fas fa-edit"></i> Edit</a>
                  $button = '<a href="'.route('admin.viewvehicle').'/'.$post->id.'" class="btn btn-sm bg-info-light"><i class="far fa-eye mr-1"></i> View</a>
-                  <a href="'.route('admin.editvehicle').'/'.$post->id.'" class="btn btn-sm bg-success-light"><i class="fas fa-edit"></i> Edit</a>
+                  
                   <a href="#" class="btn btn-sm bg-danger-light delete_vehicle" data-toggle="modal"  data-vehicleid="'.$post->id.'" data-target="#delete-popup"><i class="fas fa-trash-alt"></i> Delete
                   </a>';
+
 
                 $nestedData['id'] = !empty(@$post->id) ? $post->id : "N/A";
                 $nestedData['name'] =  !empty(@$post->name) ? $post->name : "N/A";

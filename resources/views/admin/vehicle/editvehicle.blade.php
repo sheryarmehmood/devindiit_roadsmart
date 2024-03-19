@@ -42,13 +42,13 @@
                             <div class="col-xl-6">
                                 <div class="form-group">
                                   <label class="col-form-label">Registration Number</label>
-                                  <input type="text" id="" class="form-control" name="" value="MH-09 2786567" >
+                                  <input type="text" id="" class="form-control" name="" value="{{$vehicleDetails->reg_no}}" >
                                </div>
                             </div>
                             <div class="col-xl-6">
                                 <div class="form-group">
                                   <label class="col-form-label">License Plate  </label>
-                                  <input type="text" id="" class="form-control" name="" value="123456789" >
+                                  <input type="text" id="" class="form-control" name="" value="{{$vehicleDetails->license_plate}}" >
                                </div>
                             </div>
                             <div class="col-xl-6">
@@ -121,13 +121,13 @@
         					<div class="col-xl-6">
                                 <div class="form-group">
                                   <label class="col-form-label">Weight</label>
-                                  <input type="text" id="" class="form-control" name="" value="Cross Weight 1.4 tons" >
+                                  <input type="text" id="" class="form-control" name="" value="{{$vehicleDetails->weight}}" >
                                </div>
                             </div>
                              <div class="col-xl-6">
                                 <div class="form-group">
                                   <label class="col-form-label">Wheels Tires </label>
-                                  <input type="text" id="" class="form-control" name="" value="195/165 R15" >
+                                  <input type="text" id="" class="form-control" name="" value="{{$vehicleDetails->wheels_tires}}" >
                                </div>
                             </div>
                             <div class="col-xl-6">
