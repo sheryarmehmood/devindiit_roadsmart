@@ -231,9 +231,10 @@ class CustomerController extends Controller
          $data=[];
         $customerDetails= $data['customerDetails']=DB::table('users')
         ->leftJoin('user_addresses','user_addresses.user_id','=','users.id')
-        ->select('users.*','user_addresses.address as userAddress','user_addresses.state as userState','user_addresses.city as userCity','user_addresses.zip_code as userZipCode')
+        ->select('users.*','user_addresses.address as userAddress','user_addresses.state as userState','user_addresses.city as userCity','user_addresses.zip_code as userZipCode','user_addresses.country as userCountry')
         ->where('users.id',$id)
         ->first();
+        // dd($customerDetails);
 
         // dd($data);
       
@@ -272,6 +273,7 @@ class CustomerController extends Controller
                 $userAddress->city = $request->input('city');
                  $userAddress->state = $request->input('state');
                   $userAddress->zip_code = $request->input('zipcode');
+                  $userAddress->country = $request->input('country');
                   $userAddress->update();
            }else{
                    $useNew_address = new UserAddresses;
@@ -590,6 +592,7 @@ return json_encode($json_data);
         if(!empty($posts))
         {
             foreach ($posts as $key => $post)
+            
             {
                 
                  //condition code for status starts
@@ -602,10 +605,12 @@ return json_encode($json_data);
                      $Status = '<label class="badge badge-danger">'.$current_status.'</label>';
                  }
                  
+                //  <a href="'.route('admin.editvehicle').'/'.$post->id.'" class="btn btn-sm bg-success-light"><i class="fas fa-edit"></i> Edit</a>
                  $button = '<a href="'.route('admin.viewvehicle').'/'.$post->id.'" class="btn btn-sm bg-info-light"><i class="far fa-eye mr-1"></i> View</a>
-                  <a href="'.route('admin.editvehicle').'/'.$post->id.'" class="btn btn-sm bg-success-light"><i class="fas fa-edit"></i> Edit</a>
+                  
                   <a href="#" class="btn btn-sm bg-danger-light delete_vehicle" data-toggle="modal"  data-vehicleid="'.$post->id.'" data-target="#delete-popup"><i class="fas fa-trash-alt"></i> Delete
                   </a>';
+
 
                 $nestedData['id'] = !empty(@$post->id) ? $post->id : "N/A";
                 $nestedData['name'] =  !empty(@$post->name) ? $post->name : "N/A";

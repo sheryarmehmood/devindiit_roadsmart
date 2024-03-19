@@ -30,25 +30,25 @@
         					<div class="col-xl-6">
                                 <div class="form-group">
                                   <label class="col-form-label">Vehicle Name</label>
-                                   <input type="text" id="" class="form-control" name="" value="Honda">
+                                   <input type="text" id="" class="form-control" name="" value="{{$vehicleDetails->title}}">
                                </div>
                             </div>
         					<div class="col-xl-6">
                                 <div class="form-group">
                                   <label class="col-form-label">Vehicle Model Year</label>
-                                  <input type="text" id="" class="form-control" name="" value="2016" >
+                                  <input type="text" id="" class="form-control" name="" value="{{$vehicleDetails->model_year}}" >
                                </div>
                             </div>
                             <div class="col-xl-6">
                                 <div class="form-group">
                                   <label class="col-form-label">Registration Number</label>
-                                  <input type="text" id="" class="form-control" name="" value="MH-09 2786567" >
+                                  <input type="text" id="" class="form-control" name="" value="{{$vehicleDetails->reg_no}}" >
                                </div>
                             </div>
                             <div class="col-xl-6">
                                 <div class="form-group">
                                   <label class="col-form-label">License Plate  </label>
-                                  <input type="text" id="" class="form-control" name="" value="123456789" >
+                                  <input type="text" id="" class="form-control" name="" value="{{$vehicleDetails->license_plate}}" >
                                </div>
                             </div>
                             <div class="col-xl-6">
@@ -121,13 +121,13 @@
         					<div class="col-xl-6">
                                 <div class="form-group">
                                   <label class="col-form-label">Weight</label>
-                                  <input type="text" id="" class="form-control" name="" value="Cross Weight 1.4 tons" >
+                                  <input type="text" id="" class="form-control" name="" value="{{$vehicleDetails->weight}}" >
                                </div>
                             </div>
                              <div class="col-xl-6">
                                 <div class="form-group">
                                   <label class="col-form-label">Wheels Tires </label>
-                                  <input type="text" id="" class="form-control" name="" value="195/165 R15" >
+                                  <input type="text" id="" class="form-control" name="" value="{{$vehicleDetails->wheels_tires}}" >
                                </div>
                             </div>
                             <div class="col-xl-6">
@@ -273,4 +273,60 @@
 @endsection
 @section('scripts')
 <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+
+<script>
+	$(function() {
+  	$("form[name='edit_customer']").validate({
+  	ignore: [],
+    rules: {
+        name: "required",
+		email: {
+	        required: true,
+	        email: true
+	      },
+		phone_num: {
+	        required: true,
+	        maxlength: 15,
+			minlength: 10
+	      },
+	       city: "required",
+	       state: "required",
+	       country: "required",
+	       zipcode: "required",
+	  
+    },
+    errorPlacement: function(error, element) {
+    	if (element.attr("name") == "email") {
+          error.insertAfter("#email_err");
+        }
+        else if (element.attr("name") == "phone_num") {
+          error.insertAfter("#phone_number_err");
+        }else if (element.attr("name") == "country") {
+          error.insertAfter("#country_err");
+        }else{
+          error.insertAfter(element);
+        }
+      },
+    // Specify validation error messages
+    messages: 
+    {
+		name: "Please enter name",
+		email: "Please enter valid email id",
+		phone_num: {
+	        required: "Please enter valid phone number",
+	        maxlength: "Your phone number should not be more than 15 character",
+			minlength: "Your phone number must have at least 10 characters"
+	      },
+	      city: "Please enter city",
+	       state: "Please enter state",
+	       country: "Please select country",
+	      zipcode: "Please enter postcode",
+    },
+    submitHandler: function(form) {
+      form.submit();
+    }
+  });
+});
+</script>
+
 @endsection<h1>hello world</h1>

@@ -24,7 +24,7 @@
                         <hr />
                         <div class="viewBox table-responsive px-4">
                             <div class="d-flex justify-content-between align-items-center">
-                                <h3 class="mb-0">Order #1234 <span class="badge badge-warning fontpen mx-2">Unfulfilled
+                                <h3 class="mb-0">Order # 1234 <span class="badge badge-success fontpen mx-2">Delivered
                                     </span></h3>
                                 <p class="text-muted">12 Jul at 9:14 pm</p>
                             </div>
@@ -39,8 +39,9 @@
                                                         src="../assets/serviceprovider/img/engine.jpg">
                                                 </div>
                                             </td>
-                                            <td class="text-left pl-0 text-wrap"> <a
-                                                    href="{{ route('seller.products') }}">Front Brakes</a> </td>
+                                            <td class="text-left pl-0 text-wrap"> 
+                                                <!-- <a
+                                                    href="{{ route('seller.products') }}">Front Brakes</a> </td> -->
 
                                         </tr>
                                         <tr>
@@ -61,48 +62,7 @@
                     </div>
                 </div>
 
-                <div class="card card-table mb-3">
-                    <div class="card-body p-0">
-                        <div class="px-4 pt-3">
-                            <div class="d-flex justify-content-between align-items-center">
-                                <h3 class="mb-0">Last Request placed</h3>
-                            </div>
-                        </div>
-                        <hr />
-                        <div class="viewBox table-responsive px-4">
-                            <div class="d-flex justify-content-between align-items-center">
-                                <h3 class="mb-0">Request #1234 <span class="badge badge-warning fontpen mx-2">Unfulfilled
-                                    </span></h3>
-                                <p class="text-muted">12 Jul at 9:14 pm</p>
-                            </div>
-                            <p class="text-muted mt-2 mb-0">K 1000 from Draft Request</p>
-                            <div class="viewBox table-responsive pt-3 unfulfilledTblBx">
-                                <table class="table">
-                                    <tbody>
-                                        <tr>
-                                            <td class="text-left pl-0" style="width:70px">
-                                                <div class="avatar avatar-sm">
-                                                    <img class="avatar-img rounded-circle" alt=""
-                                                        src="../assets/serviceprovider/img/engine.jpg">
-                                                </div>
-                                            </td>
-                                            <td class="text-left pl-0 text-wrap"> <a
-                                                    href="{{ route('seller.products') }}">Front Brakes</a> </td>
-
-                                        </tr>
-                                        <tr>
-
-                                            <td colspan="5" class="text-right pr-0"><a
-                                                    href="{{ route('admin.viewcustomerrequest') }}" class="mr-4">View all Requests</a>
-                                                <a href="{{ route('admin.viewcustomeraddrequest') }}"
-                                                    class="btn btn-success text-white">Create Request</a> </td>
-                                        </tr>
-                                    </tbody>
-                                </table>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                
                  
                 <div class="card card-table mb-3">
                     <div class="card-body p-0">
@@ -114,11 +74,10 @@
                         <hr />
                         <div class="viewBox table-responsive px-4">
                             <div class="d-flex justify-content-between align-items-center">
-                                <h3 class="mb-0">Vehicle Reg# 1234 <span class="badge badge-warning fontpen mx-2">Unfulfilled
-                                    </span></h3>
-                                <p class="text-muted">12 Jul at 9:14 pm</p>
+                                <h3 class="mb-0">Vehicle # 711-2457-9 </h3>
+                                <p class="text-muted">01 Jul at 01:14 pm</p>
                             </div>
-                            <p class="text-muted mt-2 mb-0">K 1000 from Draft Vehicle</p>
+                            <!-- <p class="text-muted mt-2 mb-0">K 1000 from Draft Vehicle</p> -->
                             <div class="viewBox table-responsive pt-3 unfulfilledTblBx">
                                 <table class="table">
                                     <tbody>
@@ -129,8 +88,9 @@
                                                         src="../assets/serviceprovider/img/engine.jpg">
                                                 </div>
                                             </td>
-                                            <td class="text-left pl-0 text-wrap"> <a
-                                                    href="{{ route('seller.products') }}">Front Brakes</a> </td>
+                                            <td class="text-left pl-0 text-wrap"> 
+                                                <!-- <a href="{{ route('seller.products') }}">Front Brakes</a>  -->
+                                            </td>
 
                                         </tr>
                                         <tr>
@@ -146,6 +106,53 @@
                         </div>
                     </div>
                 </div>
+
+
+                <div class="card card-table mb-3">
+                    <div class="card-body p-0">
+                        <div class="px-4 pt-3">
+                            <div class="d-flex justify-content-between align-items-center">
+                                <h3 class="mb-0">Last Request placed</h3>
+                            </div>
+                        </div>
+                        <hr />
+                        <div class="viewBox table-responsive px-4">
+                            <div class="d-flex justify-content-between align-items-center">
+                                <h3 class="mb-0">Request # 2092 <span class="badge badge-warning fontpen mx-2">Unfulfilled
+                                    </span></h3>
+                                <p class="text-muted">26 Jul at 03:19 pm</p>
+                            </div>
+                            <!-- <p class="text-muted mt-2 mb-0">K 1000 from Draft Request</p> -->
+                            <div class="viewBox table-responsive pt-3 unfulfilledTblBx">
+                                <table class="table">
+                                    <tbody>
+                                        <tr>
+                                            <td class="text-left pl-0" style="width:70px">
+                                                <div class="avatar avatar-sm">
+                                                    <img class="avatar-img rounded-circle" alt=""
+                                                        src="../assets/serviceprovider/img/engine.jpg">
+                                                </div>
+                                            </td>
+                                            <td class="text-left pl-0 text-wrap"> 
+                                                <!-- <a
+                                                    href="{{ route('seller.products') }}">Front Brakes</a> -->
+                                                 </td>
+
+                                        </tr>
+                                        <tr>
+
+                                            <td colspan="5" class="text-right pr-0"><a
+                                                    href="{{ route('admin.viewcustomerrequest') }}" class="mr-4">View all Requests</a>
+                                                <a href="{{ route('admin.viewcustomeraddrequest') }}"
+                                                    class="btn btn-success text-white">Create Request</a> </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
 
                 <div class="card card-table mb-3">
                     <div class="card-body p-2 py-3 px-4">
@@ -236,10 +243,10 @@
                         <div class="customerLists-item border-0 mt-0">
 
                             <p class="d-flex justify-space-between mb-2"><a
-                                    href="javascript:void();">marychirwa@gmail.com</a> <span
+                                    href="javascript:void();">{{$customerDetails->email}}</a> <span
                                     class="ml-auto text-secondary"><i class="fa fa-copy" aria-hidden="true"></i></span>
                             </p>
-                            <p>+123 456 789</p>
+                            <p>{{$customerDetails->phone_num}}</p>
                             <p class="text-muted">Will receive notifications in English</p>
                         </div>
 
@@ -248,10 +255,11 @@
                             <div class="customerLists-item">
                                 <h4 class="d-flex">Default address <a data-toggle="modal" class="edit-text-btn"
                                         data-target="#editaddress-popup" href="javascript: void(0);">Manage</a></h4>
-                                <p>1688 St Matthews Ave,</br> Winnipeg, MB R3H 0A2, Canada</p>
+                                        {{$customerDetails->userAddress}}
+                                <!-- <p>1688 St Matthews Ave,</br> Winnipeg, MB R3H 0A2, Canada</p> -->
                             </div>
-                            <a class="mt-3 d-inline-block" data-toggle="modal" data-target="#addaddress-popup"
-                                href="javascript: void(0);">Add New Address</a>
+                            <!-- <a class="mt-3 d-inline-block" data-toggle="modal" data-target="#addaddress-popup" -->
+                                <!-- href="javascript: void(0);">Add New Address</a> -->
                         </div>
 
                         <div class="customerLists">

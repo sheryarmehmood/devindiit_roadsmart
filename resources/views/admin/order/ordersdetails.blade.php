@@ -8,7 +8,8 @@
                     <h3 class="page-title">Order Detail</h3>
                 </div>
                  <div class="col text-right">
-                   <a href="{{route('admin.orders')}}" class="btn btn-primary">Back</a>
+                 <a href="{{ url()->previous() }}" class="btn btn-primary">Back</a>
+                 <!-- <a href="{{route('admin.orders')}}" class="btn btn-primary">Back</a> -->
                 </div>
             </div>
         </div>
