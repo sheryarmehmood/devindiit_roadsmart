@@ -1958,7 +1958,6 @@ html.menu-opened body {
 	transition: all 0.2s ease-in-out 0s;
 	width: 260px;
 	z-index: 2;
-	border-right: 1px solid #d3d3d3;
 }
 
 .sidebar.opened {
@@ -1971,10 +1970,13 @@ html.menu-opened body {
 	height: 100%;
 	min-height: 100%;
 	transition: all 0.2s ease-in-out 0s;
+	background-color: #fff;
+    border: none;
+    box-shadow: 0.2rem 0.2rem 0.2rem rgba(0,0,0,0.2);
 }
 
 .sidebar-menu {
-	padding: 0 15px 0 0;
+	padding: 0 10px;
 	position: relative;
 	top: 70px;
 }
@@ -1993,16 +1995,15 @@ html.menu-opened body {
 	font-size: 15px;
 	height: auto;
 	padding: 0 20px;
-	border-left: 4px solid transparent;
 }
 
 .sidebar-menu li a:hover {
 	color: #c9343a;
 }
 
-.sidebar-menu>ul>li>a:hover {
-	background-color: #e8e8e8;
-	color: #000;
+.sidebar-menu>ul>li>a:hover , .sidebar-menu>ul>li.menu-item-active > a , .sidebar-menu .submenu-dropdown ul li a:hover {
+	background-color: #c9343a;
+    color: #fff;
 }
 
 .sidebar-menu>ul>li.active>a:hover {
@@ -2105,7 +2106,7 @@ h3.page-title span.badge.active-badge {
 }
 
 .sidebar-menu>ul>li {
-	margin-bottom: 0;
+	margin-bottom: 5px;
 	position: relative;
 }
 
@@ -2153,12 +2154,12 @@ h3.page-title span.badge.active-badge {
 
 .sidebar-menu>ul>li>a {
 	align-items: center;
-	border-radius: 0;
+	border-radius: 10px;
 	display: flex;
 	justify-content: flex-start;
 	padding: 6px 20px;
 	position: relative;
-	transition: all 0.2s ease-in-out 0s;
+	transition: all 0.02s ease-in-out;
 }
 
 .sidebar-menu ul li a i {
@@ -2687,8 +2688,9 @@ h3.page-title span.badge.active-badge {
 
 .main-wrapper>.header {
 	background: #fff;
-	box-shadow: 0px 0px 12px 0px rgba(55, 73, 72, 0.02);
+	/* box-shadow: 0px 0px 12px 0px rgba(55, 73, 72, 0.02); */
 	border-radius: 0;
+	box-shadow: 0.2rem 0.2rem 0.2rem rgba(0, 0, 0, 0.02);
 }
 
 .page-wrapper {
