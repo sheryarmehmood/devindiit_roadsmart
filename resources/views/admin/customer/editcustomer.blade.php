@@ -116,13 +116,21 @@
                             </div>
                             <div class="col-lg-12">
         					    <div class="form-group">
-        						  <label class="col-form-label">Country/region  </label>
-        						   <select name="country" id="country" class="my-select form-control">
+        						  <label class="col-form-label">Country/region  </label>{{$customerDetails->userCountry}}
+        						   <!-- <select name="country" id="country" class="my-select form-control">
         								<option value="Country/region">Country/region</option>
         								<option value="USA">USA</option>
         								<option value="UK">UK</option>
         								<option value="India">India</option>
-        							</select>
+        							</select> -->
+                             <select name="country" id="country" class="my-select form-control">
+    <option value="Country/region" {{ $customerDetails->userCountry == "Country/region" ? 'selected' : '' }}>Country/region</option>
+    <option value="USA" {{ $customerDetails->userCountry == "USA" ? 'selected' : '' }}>USA</option>
+    <option value="UK" {{ $customerDetails->userCountry == "UK" ? 'selected' : '' }}>UK</option>
+    <option value="India" {{ $customerDetails->userCountry == "India" ? 'selected' : '' }}>India</option>
+    <option value="UAE" {{ $customerDetails->userCountry == "UAE" ? 'selected' : '' }}>UAE</option>
+</select>
+
         							<span class="text-danger error-text country_err" id="country_err"></span>
         					    </div>
         				    </div>

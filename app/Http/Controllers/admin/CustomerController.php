@@ -231,9 +231,10 @@ class CustomerController extends Controller
          $data=[];
         $customerDetails= $data['customerDetails']=DB::table('users')
         ->leftJoin('user_addresses','user_addresses.user_id','=','users.id')
-        ->select('users.*','user_addresses.address as userAddress','user_addresses.state as userState','user_addresses.city as userCity','user_addresses.zip_code as userZipCode')
+        ->select('users.*','user_addresses.address as userAddress','user_addresses.state as userState','user_addresses.city as userCity','user_addresses.zip_code as userZipCode','user_addresses.country as userCountry')
         ->where('users.id',$id)
         ->first();
+        // dd($customerDetails);
 
         // dd($data);
       
@@ -272,6 +273,7 @@ class CustomerController extends Controller
                 $userAddress->city = $request->input('city');
                  $userAddress->state = $request->input('state');
                   $userAddress->zip_code = $request->input('zipcode');
+                  $userAddress->country = $request->input('country');
                   $userAddress->update();
            }else{
                    $useNew_address = new UserAddresses;
