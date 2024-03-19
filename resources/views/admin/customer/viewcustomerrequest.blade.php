@@ -1,84 +1,28 @@
 @extends('admin.layouts.app1')
-@section('title', 'Requests')
+@section('title', 'View Customer')
 @section('content')
-<style>
-#customerList_wrapper #cat_filter {
-    position: absolute;
-    top: -45px;
-    right: 20px;
-}
-
-#customerList_wrapper #customerList_filter input
-{
-       height: 30px;
-    background: transparent;
-    border-radius: 5px;
-    border: 1px solid #ddd;
-}
-
-
-div.dt-buttons {
-   position: absolute;
-   top: -50px;
-   left: 182px;
-}
-
-.dt-button-collection {
-   padding: 0 !important;
-}
- 
-button.dt-button {
-   background: transparent;
-   border-radius: 5px;
-   border: 1px solid #ddd;
-}
-
-.dt-button-collection .dt-button {
-   border-radius: 0;
-   background: #f8f9fa !important;
-   color: #000;
-   margin: 0 !important;
-   box-shadow: none !important;
-   border: 0;
-   border-bottom: 0.1px solid #eaeaea;
-   text-align: left;
-}
-
-.dt-button-collection .dt-button:hover {
-   box-shadow: none !important;
-   border: transparent !important;
-   border-bottom: 0.1px solid #eaeaea !important;
-   background: #ffffff !important;
-   color: #000;
-   background-color: #ffffff !important;
-}
-
-
-/*.dataTables_wrapper.no-footer #cat_paginate,
-.dataTables_wrapper.no-footer #cat_info
-{
-display: none;
-}*/
-
-#customerList_wrapper .row:nth-child(2) #cat_paginate,
-#customerList_wrapper .row:nth-child(2) #cat_info {
-   display: none;
-}
-
-button.dt-button.buttons-columnVisibility.active {
-   color: #c9343a !important;
-}
-
-</style>
-
-
-    <div class="content container-fluid estimate_table  customer-list-page pb-3">
+    <div class="content container-fluid viewproduct_page">
         <div class="page-header">
-            <div class="row mb-4">
+            <div class="row">
                 <div class="col">
-                  <h3 class="page-title">Requests</h3>
+                    <h3 class="page-title">View Customer Detail</h3>
                 </div>
-            </div>           
+                <div class="col text-right">
+                    <a href="{{ route('admin.customers') }}" class="btn btn-primary">Back</a>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col">
+                    
+                    <a href="{{ route('admin.customerorders') }}" class="btn btn-primary">Orders</a>
+
+                    <a href="{{ route('admin.viewcustomerrequest')}}" class="btn btn-primary active">Requests</a>
+                    <a href="{{ route('admin.viewcustomervehicles')}}" class="btn btn-primary">Vehicles</a>
+                    <a href="" class="btn btn-primary">Chats</a>
+                    <a href="" class="btn btn-primary">Account Info</a>
+                </div>
+            </div>
+        </div>
         <div class="requestmain_tab" id="exTab1">
             <ul  class="nav nav-pills nav-tabs menu-tabs">
                 <li class="nav-item"> 
@@ -389,7 +333,6 @@ button.dt-button.buttons-columnVisibility.active {
 			</div>
         </div>
     </div>
-	   
 @endsection
 @section('scripts')
 

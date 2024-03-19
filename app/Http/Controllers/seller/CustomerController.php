@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Customer;
 use DB;
+use Illuminate\Support\Facades\Auth;
 
 class CustomerController extends Controller
 {
@@ -23,6 +24,22 @@ class CustomerController extends Controller
         
         return view('serviceprovider.customer.view-customer');
     }
+    public function view_customer_request($id=""){
+        
+        return view('serviceprovider.customer.view-customer-request');
+    }
+    public function view_customer_vehicles($id=""){
+        
+        return view('serviceprovider.customer.view-customer-vehicles');
+    }
+    public function view_customer_chats($id=""){
+        
+        return view('serviceprovider.customer.view-customer-chats');
+    }
+    public function view_customer_profile($id=""){
+        
+        return view('serviceprovider.customer.view-customer-profile');
+    }
     
     function get_customerListing(Request $request)
     {
@@ -31,7 +48,8 @@ class CustomerController extends Controller
                             1=> 'status',
                             2=> 'location',
                             3=>'order_id',
-                            4=>'spent'
+                            4=>'spent',
+                            5=>'action'
                         );
   
         
@@ -90,6 +108,10 @@ class CustomerController extends Controller
                      $Status = '<label class="badge badge-danger">'.$current_status.'</label>';
                  }
                  
+                 $button = '<a href="'.route('seller.view-customer').'/'.$post->id.'" class="btn btn-sm bg-info-light"><i class="far fa-eye mr-1"></i> View</a>
+                 <a href="#" class="btn btn-sm bg-success-light"><i class="fas fa-edit"></i> Edit</a>
+                 <a href="#" class="btn btn-sm bg-danger-light delete_customer" data-toggle="modal"  data-customerid="'.$post->id.'" data-target="#delete-popup"><i class="fas fa-trash-alt"></i> Delete
+                 </a>';
 
                 // $nestedData['id'] = $key + 1;
                 $nestedData['name'] = !empty(@$post->name) ? $post->name : "N/A";
@@ -97,7 +119,7 @@ class CustomerController extends Controller
                 $nestedData['location'] = !empty(@$post->address) ? $post->address : "N/A";
                 $nestedData['order_id'] = !empty(@$post->id) ? $post->id : "N/A";
                 $nestedData['spent'] = !empty(@$post->amount) ?'k'.$post->amount : "N/A";
-               
+                $nestedData['action'] = $button;
                 $data[] = $nestedData;
 
             }

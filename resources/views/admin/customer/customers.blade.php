@@ -78,14 +78,36 @@ button.dt-button.buttons-columnVisibility.active {
         <div class="page-header">
             <div class="row">
                 <div class="col">
-                  <h3 class="page-title">
+                  <h3 class="page-title d-flex align-items-center">
 					<div class="d-flex titleSelect align-items-center">
-						Customers
+						Customers Segment:
 					</div>
+                    <select name="" id="" class="select-filter">
+                        <option value="" selected>All Customers</option>
+                        <option value="">Email subscribrs</option>
+                        <option value="">Abandoned checkouts in the last 30 days</option>
+                        <option value="">Customers who have purchased more than once</option>
+                        <option value="">Customers who haven't purchased</option>
+                    </select>
 				</h3>
                 </div>
-				 <div class="col-auto text-right all-product-right">
+				 <div class="col-auto text-right all-product-right d-flex align-items-center gx-1">
 					<div class="actionMore d-flex align-items-center">
+    				    <a class="btn btn-primary addorder" href="{{route('admin.addcustomer')}}">
+                            Export
+                        </a>
+					</div>
+					<div class="actionMore d-flex align-items-center">
+    				    <a class="btn btn-primary addorder" href="{{route('admin.addcustomer')}}">
+                            import
+                        </a>
+					</div>
+					<div class="actionMore d-flex align-items-center">
+    				    <a class="btn btn-primary addorder" href="{{route('admin.addcustomer')}}">
+                            email segment
+                        </a>
+					</div>
+                    <div class="actionMore d-flex align-items-center">
     				    <a class="btn btn-primary addorder" href="{{route('admin.addcustomer')}}">
                             Add customer
                         </a>
@@ -93,6 +115,36 @@ button.dt-button.buttons-columnVisibility.active {
                 </div> 
             </div>
         </div>
+        <div id="accordion">
+            <div class="card page-header-filter  mt-4">
+              <div class="card-header" id="headingOne">
+                <h4><p class="customer-count">2 customers <span class="devide-vertical-line"></span> <span>No filters applied</span></p> 
+                          <div class="customer-filter-actions">
+                              <a href="#"><i class="fa fa-undo" aria-hidden="true"></i></a>
+                              <a href="#"><i class="fa fa-redo" aria-hidden="true"></i></a>
+                              <span class="devide-vertical-line"></span>
+                              <a href="#"><i class="fa fa-filter" aria-hidden="true"></i></a>
+                              <a href="#"><i class="fa fa-table" aria-hidden="true"></i></a>
+                              <a href="#"><i class="fa fa-question-circle" aria-hidden="true"></i></a>
+                          </div>
+                      </h4>
+                      
+                      <a href="#" class="btn btn-link filterdownbtn" data-toggle="collapse" data-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne"><i class="fa fa-chevron-down" aria-hidden="true"></i></a>
+              </div>
+
+              <div id="collapseOne" class="collapse" aria-labelledby="headingOne" data-parent="#accordion">
+                <div class="card-body p-0">
+                  <div class="form-group m-0">
+                      <textarea class="form-control" id="" rows="3"></textarea>
+                    </div>
+                </div>
+                 <div class="card-footer text-right">
+                    <a class="btn btn-primary ml-auto" href="javascript:void(0);">
+                  Apply           </a>
+                 </div> 
+              </div>
+            </div>
+          </div>
         <div id="response">
               @if(Session::has('message'))
               <div class="alert alert-success alert-dismissable">
@@ -205,6 +257,10 @@ $(document).ready(function() {
             bDestroy: true,
             processing: true,
              language: {
+                'paginate': {
+                        'previous': '<i class="fas fa-angle-left"></i>',
+                        'next': '<i class="fas fa-angle-right"></i>'
+                    },
              processing: '<i class="fa fa-spinner fa-spin fa-3x fa-fw"  style="margin-top:-90px"></i><span class="sr-only">Loading...</span> '
         },
             serverSide: true,

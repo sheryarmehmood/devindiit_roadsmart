@@ -30,6 +30,7 @@ class VehicleController extends Controller
      */
     public function vehicles()
     {
+      
         return view('admin.vehicle.vehicles');
     }
     
@@ -168,9 +169,22 @@ class VehicleController extends Controller
     {
         return view('admin.vehicle.addvehicle');
     }
-    public function editvehicle($id)
+    public function editvehicle($id='')
     {
-        return view('admin.vehicle.editvehicle');
+      // dd($id);
+      $data=[];
+        $vehicleDetails= $data['vehicleDetails']= Vehicles::select('vehicles.*',DB::raw('users.name as userid,users.email as email,users.phone_num as phonenum,users.image as image'),DB::raw('variants.name as variant_id'),DB::raw('user_addresses.address as userAddress,user_addresses.state as userState'))
+         ->Join('users', function($join) {
+              $join->on('vehicles.userid', '=', 'users.id');
+            })
+         ->Join('variants', function($join) {
+              $join->on('vehicles.variant_id', '=', 'variants.id');
+            })
+            ->Join('user_addresses', function($join) {
+              $join->on('user_addresses.user_id', '=', 'users.id');
+            })
+            ->where('vehicles.id',$id)->first();
+        return view('admin.vehicle.editvehicle')->with($data);
     }
     
     // view button starts

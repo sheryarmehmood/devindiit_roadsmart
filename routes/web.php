@@ -286,7 +286,11 @@ Auth::routes();
         //customer route starts
       Route::get('/customers', 'CustomerController@customers')->name('customers')->middleware('auth:seller');
       Route::get('/add-customer', 'CustomerController@add_customer')->name('add_customer')->middleware('auth:seller');
-      Route::get('/view-customer/{id?}', 'CustomerController@view_customer')->name('view_customer')->middleware('auth:seller');
+      Route::get('/view-customer/{id?}', 'CustomerController@view_customer')->name('view-customer')->middleware('auth:seller');
+      Route::get('/view-customer-request', 'CustomerController@view_customer_request')->name('view-customer-request')->middleware('auth:seller');
+      Route::get('/view-customer-vehicles', 'CustomerController@view_customer_vehicles')->name('view-customer-vehicles')->middleware('auth:seller');
+      Route::get('/view-customer-chats', 'CustomerController@view_customer_chats')->name('view-customer-chats')->middleware('auth:seller');
+      Route::get('/view-customer-profile', 'CustomerController@view_customer_profile')->name('view-customer-profile')->middleware('auth:seller');
       Route::get('get_customerListing', 'CustomerController@get_customerListing')->name('get_customerListing');
       //customer route ends
 
@@ -371,10 +375,20 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
         Route::get('addcustomer', 'CustomerController@addcustomer')->name('addcustomer');
         Route::get('editcustomer/{id?}', 'CustomerController@editcustomer')->name('editcustomer');
         Route::get('viewcustomer/{id?}', 'CustomerController@viewcustomer')->name('viewcustomer');
+        Route::get('viewcustomerrequest/{id?}', 'CustomerController@viewcustomerrequest')->name('viewcustomerrequest');
+        Route::get('viewcustomervehicles/{id?}', 'CustomerController@viewcustomervehicles')->name('viewcustomervehicles');
+        Route::get('viewcustomeraddorder/{id?}', 'CustomerController@viewcustomeraddorder')->name('viewcustomeraddorder');
+        Route::get('viewcustomeraddrequest/{id?}', 'CustomerController@viewcustomeraddrequest')->name('viewcustomeraddrequest');
+        Route::get('addvehicle/{id?}', 'CustomerController@addvehicle')->name('addvehicle');
          Route::get('get_customerListing', 'CustomerController@get_customerListing')->name('get_customerListing');
          Route::post('/delete_customer', 'CustomerController@delete_customer')->name('delete_customer');
          Route::post('post_editCustomer', 'CustomerController@post_editCustomer')->name('post_editCustomer');
          Route::post('add_newcustomer', 'CustomerController@add_newcustomer')->name('add_newcustomer');
+         Route::get('customerorders/{id?}', 'CustomerController@customerorders')->name('customerorders');
+         Route::get('get_customerorderListing/{id?}', 'CustomerController@get_customerorderListing')->name('get_customerorderListing');
+         Route::get('get_customervehicleListing/{id?}', 'CustomerController@get_customervehicleListing')->name('get_customervehicleListing');
+    
+         
         //Admin Customers  routes end here
         
         

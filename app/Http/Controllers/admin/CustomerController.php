@@ -9,6 +9,8 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
 use App\Models\User;
+use App\Models\Orders;
+use App\Models\Vehicles;
 use App\Models\UserAddresses;
 use DB;
 
@@ -225,12 +227,16 @@ class CustomerController extends Controller
         
     public function editcustomer($id='')
     {
+      // dd($id);
          $data=[];
         $customerDetails= $data['customerDetails']=DB::table('users')
         ->leftJoin('user_addresses','user_addresses.user_id','=','users.id')
-        ->select('users.*','user_addresses.address as userAddress','user_addresses.state as userState','user_addresses.city as userCity','user_addresses.zip_code as userZipCode')
+        ->select('users.*','user_addresses.address as userAddress','user_addresses.state as userState','user_addresses.city as userCity','user_addresses.zip_code as userZipCode','user_addresses.country as userCountry')
         ->where('users.id',$id)
         ->first();
+        // dd($customerDetails);
+
+        // dd($data);
       
         return view('admin.customer.editcustomer')->with($data);
         // return view('admin.customer.editcustomer');
@@ -238,6 +244,7 @@ class CustomerController extends Controller
     
       function post_editCustomer(Request $request)
     {
+      // dd($request);
          $id = $request->id;
         $customer =User::find($request->id);
 //  dd($customer);
@@ -266,6 +273,7 @@ class CustomerController extends Controller
                 $userAddress->city = $request->input('city');
                  $userAddress->state = $request->input('state');
                   $userAddress->zip_code = $request->input('zipcode');
+                  $userAddress->country = $request->input('country');
                   $userAddress->update();
            }else{
                    $useNew_address = new UserAddresses;
@@ -286,4 +294,351 @@ class CustomerController extends Controller
     //   Session::flash('message', 'Employee Profile Updated Successfully!!');
            return redirect()->back()->with('message','Customer update Successfully');
     }
+
+    public function customerorders($id='')
+    {
+      // dd($id);
+      // $id = 1;  
+      // $orders = Orders::where('user_id', $id)->get();
+      // dd($orders);
+      // return view('admin.customer.customerorders');
+      return view('admin.customer.customerorders', ['id' => $id]);
+    }
+    public function viewcustomerrequest($id='')
+    {
+      return view('admin.customer.viewcustomerrequest');
+    }
+    public function viewcustomeraddrequest($id='')
+    {
+      return view('admin.customer.viewcustomeraddrequest');
+    }
+    public function addvehicle($id='')
+    {
+      return view('admin.customer.addvehicle');
+    }
+    public function viewcustomervehicles($id='')
+    {
+      return view('admin.customer.viewcustomervehicles', ['id' => $id]);
+    }
+    public function viewcustomeraddorder($id='')
+    {
+      return view('admin.customer.viewcustomeraddorder');
+    }
+
+    
+
+    public function get_customerorderListing(Request $request, $id = '')
+    {
+      // dd($request);
+      // dd($id);
+      //  $id = 1;  
+      // $orders = Orders::where('user_id', $id)->get();
+      // dd($orders);
+      // dd($orders);
+      // $data = $orders;
+      
+      $columns = array(  
+        0 =>'id',
+        1=> 'updated_at',
+        2=> 'user_id',
+        3=> 'email',
+        4=> 'vehicle_id', 
+        5=> 'amount',
+        6=> 'delivery_address_id',
+       7=> 'status',
+        8=> 'action'
+    );
+
+  
+//previous
+//   $data = Product::select('*')->where('status','=','1');
+// $data = Orders::select('orders.*',DB::raw('users.name as user_id,users.email as email'),DB::raw('user_addresses.address as delivery_address_id'),Db::raw('vehicles.name as vehicle_id'))
+// ->Join('users', function($join) {
+// $join->on('orders.user_id', '=', 'users.id');
+// })
+// ->Join('vehicles', function($join) {
+// $join->on('orders.vehicle_id', '=', 'vehicles.id');
+// })
+// ->Join('user_addresses', function($join) {
+// $join->on('orders.delivery_address_id', '=', 'user_addresses.id');
+// });
+//correct
+// $data = Orders::select('id', 'updated_at', 'user_id', 'vehicle_id', 'amount', 'delivery_address_id', 'status')
+//     ->where('user_id', $id);
+
+$data = Orders::select('orders.*',DB::raw('users.name as user_id,users.email as email'),Db::raw('vehicles.name as vehicle_id'))
+->Join('users', function($join) {
+$join->on('orders.user_id', '=', 'users.id');
+})
+->Join('vehicles', function($join) {
+$join->on('orders.vehicle_id', '=', 'vehicles.id');
+})->where('orders.user_id', $id);
+
+
+
+
+
+// $data = Orders::select('id', 'updated_at', 'user_id', 'vehicle_id', 'amount', 'delivery_address_id', 'status')
+//     ->where('user_id', $id)
+//     ->get();
+
+
+
+// $data = Orders::select('orders.id', 'orders.updated_at', 'orders.user_id', 'orders.vehicle_id', 'orders.amount', 'orders.delivery_address_id', 'orders.status', 'users.name as user_name', 'users.email as user_email')
+//     ->join('users', function($join) {
+//         $join->on('orders.user_id', '=', 'users.id');
+//     })
+//     ->where('orders.user_id', $id);
+
+
+
+
+
+// $data = Orders::select(
+//   'orders.id', 
+//   'orders.updated_at', 
+//   'users.name as user_id', 
+//   'users.email', 
+//   'user_addresses.address as delivery_address_id', 
+//   'vehicles.name as vehicle_id', 
+//   'orders.amount', 
+//   'orders.delivery_address_id', 
+//   'orders.status'
+// )
+// ->join('users', 'orders.user_id', '=', 'users.id')
+// ->join('vehicles', 'orders.vehicle_id', '=', 'vehicles.id')
+// ->join('user_addresses', 'orders.delivery_address_id', '=', 'user_addresses.id')
+// ->where('orders.user_id', $id);
+
+// dd($data);
+// $data = Orders::select('orders.*', DB::raw('users.name as user_id'), 'users.email', 'user_addresses.address as delivery_address_id', 'vehicles.name as vehicle_id')
+//         ->join('users', 'orders.user_id', '=', 'users.id')
+//         ->join('vehicles', 'orders.vehicle_id', '=', 'vehicles.id')
+//         ->join('user_addresses', 'orders.delivery_address_id', '=', 'user_addresses.id')
+//         ->where('orders.user_id', 1);
+
+// dd($data);
+
+// if($request->has('name')){
+//     $data->where(function($query) use($request) {
+//       $query->where('name', 'LIKE', "%{$request->search}%" )
+//             ->orWhere ( 'phone_num', 'LIKE', "%{$request->search}%" )
+//             ->orWhere ( 'email', 'LIKE', "%{$request->search}%" );
+//     });
+// }
+//  if($request->has('search')){
+//     $data->where(function($query) use($request) {
+//         $query->where('users.name', 'LIKE', "%{$request->search}%" )
+//             ->orWhere ( 'users.email', 'LIKE', "%{$request->search}%" )
+//             ->orWhere ( 'users.phone_num', 'LIKE', "%{$request->search}%" );
+//     });
+// }
+
+// if ($request->get('status') != '') {
+//     $data = $data->where('status',$request->get('status'));
+// }
+
+$totalData = $data->count();
+
+$totalFiltered = $totalData; 
+
+$limit = $request->input('length');
+$start = $request->input('start');
+$order = $columns[$request->input('order.0.column')];
+$dir = $request->input('order.0.dir');
+
+$posts = $data->offset($start)
+     ->limit($limit)
+     ->orderBy($order,$dir)
+     ->get();
+
+// $posts = $data->sortBy($order, $dir)
+//     ->skip($start)
+//     ->take($limit)
+//     ->get();
+
+
+// $posts = $data->skip($start)
+//      ->limit($limit)
+//      ->orderBy($order,$dir)
+//      ->get();
+
+
+// $posts = $data;
+$data = array();
+$status = '';
+if(!empty($posts))
+{
+foreach ($posts as $key => $post)
+{
+
+//condition code for status starts
+if($post->status == '0'){
+ $current_status = 'Pending Delivery';
+ $Status = '<label class="badge badge-info">'.$current_status.'</label>';
+}
+elseif ($post->status == '1'){
+ $current_status = 'In-progress';
+ $Status = '<label class="badge badge-primary">'.$current_status.'</label>';
+}
+elseif ($post->status == '2'){
+ $current_status = 'On-Hold';
+ $Status = '<label class="badge badge-danger">'.$current_status.'</label>';
+}
+elseif ($post->status == '3'){
+ $current_status = 'Dispactched';
+ $Status = '<label class="badge badge-warning">'.$current_status.'</label>';
+}
+else{
+ $current_status = 'Delivered';
+ $Status = '<label class="badge badge-success">'.$current_status.'</label>';
+}
+
+$button = '<a href="'.route('admin.ordersdetails').'/'.$post->id.'" class="btn btn-sm bg-info-light"><i class="far fa-eye mr-1"></i> View</a>
+
+<a href="#" class="btn btn-sm bg-danger-light delete_order" data-toggle="modal"  data-orderid="'.$post->id.'" data-target="#delete-popup"><i class="fas fa-trash-alt"></i> Delete
+</a>';
+
+// <a href="'.route('admin.invoiceorders').'/'.$post->id.'" class="btn btn-sm bg-success-light"><i class="fas fa-edit"></i> Invoice</a>
+
+$nestedData['id'] = !empty(@$post->id) ? $post->id : "N/A";
+$nestedData['updated_at'] =  !empty(@$post->updated_at) ? date('d M,Y', strtotime(@$post->updated_at)) : "N/A";
+$nestedData['email'] = !empty(@$post->email) ? $post->email : "N/A";
+$nestedData['user_id'] = !empty(@$post->user_id) ? $post->user_id : "N/A";
+$nestedData['vehicle_id'] =  !empty(@$post->vehicle_id) ? $post->vehicle_id : "N/A";
+$nestedData['delivery_address_id'] = !empty(@$post->delivery_address_id) ? $post->delivery_address_id : "N/A";
+$nestedData['amount'] = !empty(@$post->amount) ? $post->amount : "N/A";
+$nestedData['action'] = $button;
+$nestedData['status'] = !empty(@$Status) ? $Status : "N/A";
+
+$data[] = $nestedData;
+
+}
+}
+
+$json_data = array(
+"draw"            => intval($request->input('draw')),  
+"recordsTotal"    => intval($totalData),  
+"recordsFiltered" => intval($totalFiltered), 
+"data"            => $data   
+);
+
+return json_encode($json_data);
+    }
+
+
+
+
+    function get_customervehicleListing(Request $request, $id='')
+    {
+        $columns = array(  
+                            0 =>'id',
+                            1=> 'name',
+                            2=>'userid',
+                            3=> 'email',
+                            4=> 'reg_no',
+                            5=> 'variant_id',
+                            6=> 'model_year',
+                            7=> 'price',
+                            8=> 'status',
+                            9=> 'action'
+                        );
+  
+         
+    //   $data = Product::select('*')->where('status','=','1');
+ $data = Vehicles::select('vehicles.*',DB::raw('users.name as userid,users.email as email'),DB::raw('variants.name as variant_id'))
+ ->Join('users', function($join) {
+              $join->on('vehicles.userid', '=', 'users.id');
+            })
+            ->Join('variants', function($join) {
+              $join->on('vehicles.variant_id', '=', 'variants.id');
+            })->where('vehicles.userid', $id);
+ 
+        if($request->has('name')){
+            $data->where(function($query) use($request) {
+              $query->where('name', 'LIKE', "%{$request->search}%" )
+                    ->orWhere ( 'id', 'LIKE', "%{$request->search}%" )
+                    ->orWhere ( 'userid', 'LIKE', "%{$request->search}%" );
+            });
+        }
+         if($request->has('search')){
+            $data->where(function($query) use($request) {
+                $query->where('vehicles.name', 'LIKE', "%{$request->search}%" )
+                    ->orWhere ( 'vehicles.id', 'LIKE', "%{$request->search}%" );
+                    // ->orWhere ( 'vehicles.phone_num', 'LIKE', "%{$request->search}%" );
+            });
+        }
+
+        // if ($request->get('status') != '') {
+        //     $data = $data->where('status',$request->get('status'));
+        // }
+
+        $totalData = $data->count();
+            
+        $totalFiltered = $totalData; 
+
+        $limit = $request->input('length');
+        $start = $request->input('start');
+        $order = $columns[$request->input('order.0.column')];
+        $dir = $request->input('order.0.dir');
+            
+        $posts = $data->offset($start)
+                         ->limit($limit)
+                         ->orderBy($order,$dir)
+                         ->get();
+
+        $data = array();
+        $status = '';
+        if(!empty($posts))
+        {
+            foreach ($posts as $key => $post)
+            
+            {
+                
+                 //condition code for status starts
+                 if($post->status == '1'){
+                     $current_status = 'Active';
+                     $Status = '<label class="badge badge-success">'.$current_status.'</label>';
+                 }
+                 else{
+                     $current_status = 'In-active';
+                     $Status = '<label class="badge badge-danger">'.$current_status.'</label>';
+                 }
+                 
+                //  <a href="'.route('admin.editvehicle').'/'.$post->id.'" class="btn btn-sm bg-success-light"><i class="fas fa-edit"></i> Edit</a>
+                 $button = '<a href="'.route('admin.viewvehicle').'/'.$post->id.'" class="btn btn-sm bg-info-light"><i class="far fa-eye mr-1"></i> View</a>
+                  
+                  <a href="#" class="btn btn-sm bg-danger-light delete_vehicle" data-toggle="modal"  data-vehicleid="'.$post->id.'" data-target="#delete-popup"><i class="fas fa-trash-alt"></i> Delete
+                  </a>';
+
+
+                $nestedData['id'] = !empty(@$post->id) ? $post->id : "N/A";
+                $nestedData['name'] =  !empty(@$post->name) ? $post->name : "N/A";
+                $nestedData['userid'] =  !empty(@$post->userid) ? $post->userid : "N/A";
+                $nestedData['email'] = !empty(@$post->email) ? $post->email : "N/A";
+                $nestedData['reg_no'] = !empty(@$post->reg_no) ? $post->reg_no : "N/A";
+                  $nestedData['variant_id'] =  !empty(@$post->variant_id) ? $post->variant_id : "N/A";
+                $nestedData['model_year'] = !empty(@$post->model_year) ? $post->model_year : "N/A";
+                $nestedData['price'] = !empty(@$post->price) ? $post->price : "N/A";
+                  $nestedData['action'] = $button;
+                $nestedData['status'] = !empty(@$Status) ? $Status : "N/A";
+                
+                $data[] = $nestedData;
+
+            }
+        }
+          
+        $json_data = array(
+                    "draw"            => intval($request->input('draw')),  
+                    "recordsTotal"    => intval($totalData),  
+                    "recordsFiltered" => intval($totalFiltered), 
+                    "data"            => $data   
+                    );
+            
+        return json_encode($json_data);
+    }
+
+
+
+
 }

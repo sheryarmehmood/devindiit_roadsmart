@@ -116,22 +116,44 @@
                             </div>
                             <div class="col-lg-12">
         					    <div class="form-group">
-        						  <label class="col-form-label">Country/region  </label>
-        						   <select name="country" id="country" class="my-select form-control">
+        						  <label class="col-form-label">Country/region  </label>{{$customerDetails->userCountry}}
+        						   <!-- <select name="country" id="country" class="my-select form-control">
         								<option value="Country/region">Country/region</option>
         								<option value="USA">USA</option>
         								<option value="UK">UK</option>
         								<option value="India">India</option>
-        							</select>
+        							</select> -->
+                             <select name="country" id="country" class="my-select form-control">
+    <option value="Country/region" {{ $customerDetails->userCountry == "Country/region" ? 'selected' : '' }}>Country/region</option>
+    <option value="USA" {{ $customerDetails->userCountry == "USA" ? 'selected' : '' }}>USA</option>
+    <option value="UK" {{ $customerDetails->userCountry == "UK" ? 'selected' : '' }}>UK</option>
+    <option value="India" {{ $customerDetails->userCountry == "India" ? 'selected' : '' }}>India</option>
+    <option value="UAE" {{ $customerDetails->userCountry == "UAE" ? 'selected' : '' }}>UAE</option>
+</select>
+
         							<span class="text-danger error-text country_err" id="country_err"></span>
         					    </div>
         				    </div>
         				    <div class="col-xl-12">
                                 <div class="form-group text-left d-flex">
-                                    <label class="ml-1 mr-3">Status</label>
+                                    <label class="ml-1 mr-3 mt-2">Status</label>
                                       <span class="switch switch-sm">
                                         <label>
-                                            <input type="checkbox" {{ $customerDetails->status == 1 ? 'checked' : '' }} name="status">
+
+                                            <!-- <input type="checkbox" {{ $customerDetails->status == 1 ? 'checked' : '' }} name="status"> -->
+                                            <!-- <input type="checkbox" {{ $customerDetails->status == 1 ? 'checked' : '' }} name="status" value="1"> -->
+                                            <!-- <input type="checkbox" id="status" class="form-control" name="status" value="{{$customerDetails->status   }}"> -->
+                                            <!-- <input type="checkbox" id="status" class="form-control" name="status" value="{{ $customerDetails->status == 1 ? 'checked' : '' }}"> -->
+                                       <!-- <input type="checkbox" id="status" class="form-control" value="{{$customerDetails->status}}" name="status" {{ $customerDetails->status == 1 ? 'checked' : '' }} > -->
+                                            <!-- <input type="checkbox" id="status" class="form-control" name="status" {{ $customerDetails->status == 1 ? 'checked="checked"' : '' }} value="1"> -->
+                                            <!-- <input type="checkbox" id="status" class="form-control" name="status" {{ $customerDetails->status == 1 ? 'checked' : '' }} value="1"> -->
+                                            <!-- <input type="checkbox" id="status" class="form-control" name="status" {{ $customerDetails->status == 1 ? 'checked' : '' }}>
+<input type="hidden" name="status" value="0"> -->
+<input type="hidden" name="status" value="0">
+<input type="checkbox" id="status" class="form-control" value="1" name="status" {{ $customerDetails->status == 1 ? 'checked' : '' }}>
+
+
+
                                             <span></span>
                                         </label>
                                     </span>

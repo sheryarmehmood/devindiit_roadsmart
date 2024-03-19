@@ -1,5 +1,5 @@
 @extends('admin.layouts.app1')
-@section('title', 'Edit Vehicle')
+@section('title', 'Add Vehicle')
 @section('content')
 
  
@@ -7,7 +7,7 @@
   <div class="page-header">
      <div class="row">
         <div class="col">
-           <h3 class="page-title"> Edit Vehicle</h3>
+           <h3 class="page-title"> Add New Vehicle</h3>
         </div>
         <div class="col-auto text-right">
 		    <a class="btn btn-secondary mr-3" href="{{route('admin.vehicles')}}">
@@ -23,32 +23,32 @@
     <div class="row">
             <div class="card mb-12"> 
                 <div class="card-header">
-                    <h4 class="card-title"> Edit Vehicle Detail</h4>
+                    <h4 class="card-title"> Add Vehicle Detail</h4>
                 </div>
                     <div class="card-body">
                         <div class="row">
         					<div class="col-xl-6">
                                 <div class="form-group">
                                   <label class="col-form-label">Vehicle Name</label>
-                                   <input type="text" id="" class="form-control" name="" value="{{$vehicleDetails->title}}">
+                                   <input type="text" id="" class="form-control" name="" value="">
                                </div>
                             </div>
         					<div class="col-xl-6">
                                 <div class="form-group">
                                   <label class="col-form-label">Vehicle Model Year</label>
-                                  <input type="text" id="" class="form-control" name="" value="{{$vehicleDetails->model_year}}" >
+                                  <input type="text" id="" class="form-control" name="" value="" >
                                </div>
                             </div>
                             <div class="col-xl-6">
                                 <div class="form-group">
                                   <label class="col-form-label">Registration Number</label>
-                                  <input type="text" id="" class="form-control" name="" value="{{$vehicleDetails->reg_no}}" >
+                                  <input type="text" id="" class="form-control" name="" value="" >
                                </div>
                             </div>
                             <div class="col-xl-6">
                                 <div class="form-group">
                                   <label class="col-form-label">License Plate  </label>
-                                  <input type="text" id="" class="form-control" name="" value="{{$vehicleDetails->license_plate}}" >
+                                  <input type="text" id="" class="form-control" name="" value="" >
                                </div>
                             </div>
                             <div class="col-xl-6">
@@ -64,10 +64,10 @@
         					    <div class="form-group">
         						  <label class="col-form-label">Company Make </label>
         						   <select name="status" id="status" class="my-select form-control">
-        								<option value="Country/region">Honda</option>
+        								<option value="Country/region">Mercedes-Benz</option>
         								<option value="blue">Audi</option>
         								<option value="black">Hyundai</option>
-        								<option value="grey">Mercedes-Benz</option>
+        								<option value="grey">Honda</option>
         								<option value="black">Nissan</option>
         								<option value="black">GMC</option>
         								<option value="grey">Toyota</option>
@@ -94,10 +94,10 @@
                                 <div class="form-group">
         						  <label class="col-form-label">Varaint Name</label>
         						   <select name="status" id="status" class="my-select form-control">
-        								<option value="Hatchback">Suv</option> 
+        								<option value="Hatchback">Hatchback</option>
         								<option value="Sedan">Sedan</option>
         								<option value="MPV">MPV</option>
-        								<option value="SUV">Hatchback</option>
+        								<option value="SUV">SUV</option>
         								<option value="Crossover">Crossover</option>
         								<option value="Coupe">Coupe</option>
         								<option value="Convertible">Convertible</option>
@@ -110,10 +110,10 @@
         					    <div class="form-group">
         						  <label class="col-form-label">Color </label>
         						   <select name="status" id="status" class="my-select form-control">
-        								<option value="Country/region">Black</option>
-        								<option value="blue">Blue</option>
-        								<option value="black">Black</option>
-        								<option value="grey">Grey</option>
+        								<option value="Country/region">Color</option>
+        								<option value="blue">blue</option>
+        								<option value="black">black</option>
+        								<option value="grey">grey</option>
         							</select>
         					    </div>
     				         </div>
@@ -121,37 +121,37 @@
         					<div class="col-xl-6">
                                 <div class="form-group">
                                   <label class="col-form-label">Weight</label>
-                                  <input type="text" id="" class="form-control" name="" value="{{$vehicleDetails->weight}}" >
+                                  <input type="text" id="" class="form-control" name="" value="" >
                                </div>
                             </div>
-                             <div class="col-xl-6">
+                            <div class="col-xl-6">
                                 <div class="form-group">
                                   <label class="col-form-label">Wheels Tires </label>
-                                  <input type="text" id="" class="form-control" name="" value="{{$vehicleDetails->wheels_tires}}" >
+                                  <input type="text" id="" class="form-control" name="" value="" >
                                </div>
                             </div>
                             <div class="col-xl-6">
                                 <div class="form-group">
                                   <label class="col-form-label">Provider </label>
-                                  <input type="text" id="" class="form-control" name="" value="Hollards demo" >
+                                  <input type="text" id="" class="form-control" name="" value="" >
                                </div>
                             </div>
                             <div class="col-xl-6">
                                 <div class="form-group">
                                   <label class="col-form-label">Cover </label>
-                                  <input type="text" id="" class="form-control" name="" value="Five and Thefts" >
+                                  <input type="text" id="" class="form-control" name="" value="" >
                                </div>
                             </div>
                             <div class="col-xl-6">
                                 <div class="form-group">
                                   <label class="col-form-label">Owner Current </label>
-                                  <input type="text" id="" class="form-control" name="" value="John Smith" >
+                                  <input type="text" id="" class="form-control" name="" value="" >
                                </div>
                             </div>
                             <div class="col-xl-6">
                                 <div class="form-group">
                                   <label class="col-form-label">Ownership </label>
-                                  <input type="text" id="" class="form-control" name="" value="Rented" >
+                                  <input type="text" id="" class="form-control" name="" value="" >
                                </div>
                             </div>
                             <div class="col-xl-6">
@@ -170,7 +170,7 @@
                                   <input type="file" id="" class="form-control" name="" value="">
                                </div>
                             </div>
-                           <div class="col-xl-12">
+                            <div class="col-xl-12">
                                 <div class="form-group text-left d-flex">
                                     <label class="ml-1 mr-3">Status</label>
                                     <div class="radio-inline ml-3">
@@ -195,56 +195,56 @@
     <div class="row">
         <div class="card mb-12"> 
             <div class="card-header">
-                <h4 class="card-title">Edit Personal Detail</h4>
+                <h4 class="card-title">Add Personal Detail</h4>
             </div>
                 <div class="card-body">
                     <div class="row">
     					<div class="col-xl-6">
                             <div class="form-group">
                               <label class="col-form-label">First name</label>
-                               <input type="text" id="" class="form-control" name="" value="John" >
+                               <input type="text" id="" class="form-control" name="" value="" placeholder="First name">
                            </div>
                         </div>
     					<div class="col-xl-6">
                             <div class="form-group">
                               <label class="col-form-label">Last name   </label>
-                              <input type="text" id="" class="form-control" name="" value="Smith" >
+                              <input type="text" id="" class="form-control" name="" value="" placeholder="Last name">
                            </div>
                         </div>
                         <div class="col-xl-6">
                             <div class="form-group">
                               <label class="col-form-label">Email Address</label>
-                              <input type="text" id="" class="form-control" name="" value="Johnsmith@yopmail.com" >
+                              <input type="text" id="" class="form-control" name="" value=""  placeholder="Email">
                            </div>
                         </div>
                         <div class="col-xl-6">
                             <div class="form-group">
                               <label class="col-form-label">Phone number   </label>
-                              <input type="phone" id="" class="form-control" name="" value="987456123">
+                              <input type="phone" id="" class="form-control" name="" value=""  placeholder="Phone No.">
                            </div>
                         </div>
     					<div class="col-xl-12">
                             <div class="form-group">
                               <label class="col-form-label">Address   </label>
-                              <input type="text" id="" class="form-control" name="" value="3031 Avenew Road" >
+                              <input type="text" id="" class="form-control" name="" value="" placeholder="Address">
                            </div>
                         </div>
     					<div class="col-xl-12">
                             <div class="form-group">
                               <label class="col-form-label">Apartment, suite, etc. </label>
-                              <input type="text" id="" class="form-control" name="" value="Eastern Colony " >
+                              <input type="text" id="" class="form-control" name="" value="" placeholder="Apartment, suite, etc.">
                            </div>
                         </div>
     					<div class="col-xl-6">
                             <div class="form-group">
                               <label class="col-form-label">City</label>
-                               <input type="text" id="" class="form-control" name="" value="Mexico" >
+                               <input type="text" id="" class="form-control" name="" value="" placeholder="City">
                            </div>
                         </div>
     					<div class="col-xl-6">
                             <div class="form-group">
                               <label class="col-form-label">Zip code   </label>
-                              <input type="text" id="" class="form-control" name="" value="236636">
+                              <input type="text" id="" class="form-control" name="" value="" placeholder="Zip code">
                            </div>
                         </div>
                         <div class="col-lg-12">
@@ -273,60 +273,4 @@
 @endsection
 @section('scripts')
 <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
-
-<script>
-	$(function() {
-  	$("form[name='edit_customer']").validate({
-  	ignore: [],
-    rules: {
-        name: "required",
-		email: {
-	        required: true,
-	        email: true
-	      },
-		phone_num: {
-	        required: true,
-	        maxlength: 15,
-			minlength: 10
-	      },
-	       city: "required",
-	       state: "required",
-	       country: "required",
-	       zipcode: "required",
-	  
-    },
-    errorPlacement: function(error, element) {
-    	if (element.attr("name") == "email") {
-          error.insertAfter("#email_err");
-        }
-        else if (element.attr("name") == "phone_num") {
-          error.insertAfter("#phone_number_err");
-        }else if (element.attr("name") == "country") {
-          error.insertAfter("#country_err");
-        }else{
-          error.insertAfter(element);
-        }
-      },
-    // Specify validation error messages
-    messages: 
-    {
-		name: "Please enter name",
-		email: "Please enter valid email id",
-		phone_num: {
-	        required: "Please enter valid phone number",
-	        maxlength: "Your phone number should not be more than 15 character",
-			minlength: "Your phone number must have at least 10 characters"
-	      },
-	      city: "Please enter city",
-	       state: "Please enter state",
-	       country: "Please select country",
-	      zipcode: "Please enter postcode",
-    },
-    submitHandler: function(form) {
-      form.submit();
-    }
-  });
-});
-</script>
-
-@endsection<h1>hello world</h1>
+@endsection

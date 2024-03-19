@@ -121,6 +121,7 @@
         								<option value="USA">USA</option>
         								<option value="UK">UK</option>
         								<option value="India">India</option>
+                                <option value="UAE">UAE</option>
         							</select>
         					    </div>
         				    </div>

@@ -1,76 +1,36 @@
 @extends('admin.layouts.app1')
-@section('title', 'Orders')
-@section('head')
-
-@endsection
+@section('title', 'View Customer')
 @section('content')
-<link  rel="stylesheet" href="https://cdn.datatables.net/1.12.1/css/jquery.dataTables.min.css" >
-
-   <div class="content container-fluid">
-      <div class="page-header">
-         <div class="row">
+<div class="content container-fluid viewproduct_page">
+    <div class="page-header">
+        <div class="row">
             <div class="col">
-               <h3 class="page-title">Orders</h3>
+                <h3 class="page-title">View Order Details</h3>
             </div>
-            <div class="col-auto text-right">
-               <div class="actionMore">
-                  <span class="nav-item dropdown noti-dropdown mx-3">
-                     <a href="javascript:void(0)" class="dropdown-toggle nav-link ediio" data-toggle="dropdown">
-                        Bulk Action<span class="badge badge-pill"></span>
-                     </a> 
-                     <div class="dropdown-menu dropdown-menu-right notifications">
-                        <div class="noti-content">
-                           <ul class="notification-list">
-                              <!--<li class="notification-message">-->
-                              <!--   <a href="{{route('admin.orderrequests')}}">-->
-                              <!--      Customer Requests-->
-                              <!--   </a>-->
-                              <!--</li>-->
-                              <li class="notification-message">
-                                 <a href="{{route('admin.updateorder')}}">
-                                    Order Updates
-                                 </a>
-                              </li>
-                           </ul>
-                        </div>
-                     </div>
-                  </span>
-               </div>
+            <div class="col text-right">
+                <!-- <a href="{{ route('admin.customers') }}" class="btn btn-primary">Back</a> -->
+                <a href="{{ route('admin.viewcustomer', ['id' => $id]) }}" class="btn btn-primary">Back</a>
+
             </div>
-         </div>
-      </div>
-      <div id="response">
-              @if(Session::has('message'))
-              <div class="alert alert-success alert-dismissable">
-                <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
-                {{ Session::get('message') }}
-              </div>
-              @endif
-              @if(Session::has('error'))
-              <div class="alert alert-danger alert-dismissable">
-                <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
-                {{ Session::get('error') }}
-              </div>
-              @endif
-              @if($errors->has('error_card'))
-              <div class="alert alert-danger alert-dismissable">
-                <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
-                {{ $errors->first('error_card') }}
-              </div>
-              @endif
         </div>
-      <div id="exTab1" class="">
-         <ul  class="nav nav-pills nav-tabs menu-tabs">
-            <li class="nav-item active"><a class="nav-link" href="#1a" data-toggle="tab">All</a> </li>
-         </ul>
-         <div class="tab-content ordersTableTabs  ordertabstableitems clearfix ">
-            <div class="tab-pane active" id="1a">
-                  <div class="card card-table flex-fill">
+        <div class="row">
+            <div class="col">
+                <!-- <a href="" class="btn btn-primary active">Orders</a>
+                <a href="{{ route('admin.viewcustomerrequest')}}" class="btn btn-primary">Requests</a>
+                <a href="{{ route('admin.viewcustomervehicles')}}" class="btn btn-primary">Vehicles</a>
+                <a href="" class="btn btn-primary">Chats</a>
+                <a href="" class="btn btn-primary">Account Info</a> -->
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+                <div class="card card-table flex-fill">
 					   <div class="card-header">
-                            <h4 class="card-title">All Orders</h4>
+                            <h4 class="card-title">All Order</h4>
                         </div>
                         <div class="card-body">
-                           <div class="table-responsive">
+                           <div class="table-responsive px-3">
                               <table class="table table-center datatable" id="ordersTable">
                                  <thead>
                                     <tr>
@@ -80,9 +40,9 @@
 									   <th  style='padding-bottom:13px'>Email </th>
 									   <th  style='padding-bottom:13px'>Vehicle Name</th>
                                        <th  style='padding-bottom:13px'>Price</th>
-                                       <th  style='padding-bottom:13px'>Delivry Address</th>
                                        <th  style='padding-bottom:13px'>Status</th>
                                        <th  style='padding-bottom:13px'>Action</th>
+                                     
                                     </tr>
                                  </thead>
                                  <tbody id="orderTableList">
@@ -92,11 +52,10 @@
                            </div>
                         </div>
                 </div>
-            </div>
-         </div>
-      </div>
-   </div>
-   <div class="modal fade" id="delete-popup" role="dialog" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        </div>
+    </div>
+</div>
+<div class="modal fade" id="delete-popup" role="dialog" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
         		<input type="hidden" name="storeid" id ="storeid"/>
             <div class="modal-dialog modal-dialog-centered">
                 <div class="modal-content">
@@ -112,8 +71,6 @@
                 </div>
             </div>
         </div>
-
-
 @endsection
 
 
@@ -153,10 +110,11 @@ $(document).ready(function() {
         },
             serverSide: true,
             ajax: { 
-                url: '{{Route("admin.get_orderListing")}}', 
+                // url: '{{Route("admin.get_customerorderListing")}}',
+                url: '{{ route("admin.get_customerorderListing", ["id" => $id]) }}',  
                 data : function (d) {
                     d.name = $('input[name=name]').val();
-                    d.status = $('select[name=status]').val();
+                    d.status = $('selec0t[name=status]').val();
                     d.search = $('input[name=searchname]').val();
                 }
             },
@@ -196,18 +154,15 @@ $(document).ready(function() {
                             name: 'Price'
                         },
                         {
-                            data: 'delivery_address_id',
-                            name: 'Delivery Address'
-                        },
-                        {
                             data: 'status',
                             name: 'Status'
                         },
-                          {
+                        {
                             data: 'action',
                             name: 'Action',
                             orderable: false
                         },
+                      
                     ]
         
     }
@@ -219,6 +174,7 @@ $(document).ready(function() {
             // $('#delete-popup').modal('show');
             console.log('del pres');
         });
+
          $(document).on('click', '#confirm', function(e){  
         var deleted_id = $('#storeid').val();
         $.ajax({

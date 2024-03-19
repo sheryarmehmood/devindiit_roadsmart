@@ -1,115 +1,54 @@
-@extends('admin.layouts.app1')
-@section('title', 'Vehicles')
-
-@section('content')
-    <link rel="stylesheet" href="https://cdn.datatables.net/1.12.1/css/jquery.dataTables.min.css">
+@extends('serviceprovider.layouts.app')
+@section('title', 'View Order')
+@section('head')
     <style>
-        #customerList_wrapper #cat_filter {
-            position: absolute;
-            top: -45px;
-            right: 20px;
-        }
-
-        #customerList_wrapper #customerList_filter input {
-            height: 30px;
-            background: transparent;
-            border-radius: 5px;
-            border: 1px solid #ddd;
-        }
-
-
-        div.dt-buttons {
-            position: absolute;
-            top: -50px;
-            left: 182px;
-        }
-
-        .dt-button-collection {
-            padding: 0 !important;
-        }
-
-        button.dt-button {
-            background: transparent;
-            border-radius: 5px;
-            border: 1px solid #ddd;
-        }
-
-        .dt-button-collection .dt-button {
-            border-radius: 0;
-            background: #f8f9fa !important;
-            color: #000;
-            margin: 0 !important;
-            box-shadow: none !important;
-            border: 0;
-            border-bottom: 0.1px solid #eaeaea;
-            text-align: left;
-        }
-
-        .dt-button-collection .dt-button:hover {
-            box-shadow: none !important;
-            border: transparent !important;
-            border-bottom: 0.1px solid #eaeaea !important;
-            background: #ffffff !important;
-            color: #000;
-            background-color: #ffffff !important;
-        }
-
-
-        /*.dataTables_wrapper.no-footer #cat_paginate,
-    .dataTables_wrapper.no-footer #cat_info
-    {
-    display: none;
-    }*/
-
-        #customerList_wrapper .row:nth-child(2) #cat_paginate,
-        #customerList_wrapper .row:nth-child(2) #cat_info {
-            display: none;
-        }
-
-        button.dt-button.buttons-columnVisibility.active {
-            color: #c9343a !important;
+        .card-table .table td,
+        .card-table .table th {
+            padding: 12px 0.75rem;
         }
     </style>
-
-
-    <div class="content container-fluid customer-list-page">
+@endsection
+@section('content')
+    <div class="content container-fluid addorder view-customer-page estimate_table  customer-list-page">
         <div class="page-header">
             <div class="row">
-                <div class="col">
-                    <h3 class="page-title">
-                        <div class="d-flex titleSelect align-items-center">
-                            Vehicles
-                        </div>
-                    </h3>
+                <div class="col d-flex position-relative pl-5">
+                    <span class="back-arrow"><a href="{{ route('seller.customers') }}"><i style="font-size: 26px;"
+                                class="far fa-arrow-alt-circle-left"></i></a></span>
+                    <div>
+                        <h3 class="page-title d-flex align-items-center">Mary Chirwa </h3>
+                        <p>Zambia <span class="dot-circle"></span> Customer for 10 days</p>
+                    </div>
                 </div>
-                <div class="col-auto text-right all-product-right">
-                    <div class="actionMore d-flex align-items-center">
-                        <a class="btn btn-primary addorder" href="{{ route('admin.addvehicle') }}">
-                            Add Vehicle
-                        </a>
+                <div class="col text-right">
+                    <div class="actionMore d-flex align-items-center justify-content-end">
+
+                        <nav aria-label="Page navigation example">
+                            <ul class="pagination mb-0">
+                                <li class="page-item">
+                                    <a class="page-link" href="#">
+                                        <i class="fa fa-chevron-left" aria-hidden="true"></i>
+                                    </a>
+                                </li>
+                                <li class="page-item">
+                                    <a class="page-link" href="#">
+                                        <i class="fa fa-chevron-right" aria-hidden="true"></i>
+                                    </a>
+                                </li>
+                            </ul>
+                        </nav>
                     </div>
                 </div>
             </div>
-        </div>
-        <div id="response">
-            @if (Session::has('message'))
-                <div class="alert alert-success alert-dismissable">
-                    <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
-                    {{ Session::get('message') }}
+            <div class="row mt-3">
+                <div class="col">
+                    <a href="{{ route('seller.view-customer') }}" class="btn btn-primary ">Orders</a>
+                    <a href="{{ route('seller.view-customer-request') }}" class="btn btn-primary ">Requests</a>
+                    <a href="{{ route('seller.view-customer-vehicles') }}" class="btn btn-primary active">Vehicles</a>
+                    <a href="{{ route('seller.view-customer-chats') }}" class="btn btn-primary">Chats</a>
+                    <a href="{{ route('seller.view-customer-profile') }}" class="btn btn-primary">Account Info</a>
                 </div>
-            @endif
-            @if (Session::has('error'))
-                <div class="alert alert-danger alert-dismissable">
-                    <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
-                    {{ Session::get('error') }}
-                </div>
-            @endif
-            @if ($errors->has('error_card'))
-                <div class="alert alert-danger alert-dismissable">
-                    <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
-                    {{ $errors->first('error_card') }}
-                </div>
-            @endif
+            </div>
         </div>
         <div class="card card-table flex-fill ordertabstableitems">
             <div class="card-header">
@@ -270,7 +209,6 @@
                 </div>
             </div>
         </div>
-    </div>
     </div>
     <div class="modal fade" id="delete-popup" role="dialog" tabindex="-1" aria-labelledby="exampleModalLabel"
         aria-hidden="true">
