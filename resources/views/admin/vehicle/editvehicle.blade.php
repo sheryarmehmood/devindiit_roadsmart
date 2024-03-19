@@ -30,13 +30,13 @@
         					<div class="col-xl-6">
                                 <div class="form-group">
                                   <label class="col-form-label">Vehicle Name</label>
-                                   <input type="text" id="" class="form-control" name="" value="Honda">
+                                   <input type="text" id="" class="form-control" name="" value="{{$vehicleDetails->title}}">
                                </div>
                             </div>
         					<div class="col-xl-6">
                                 <div class="form-group">
                                   <label class="col-form-label">Vehicle Model Year</label>
-                                  <input type="text" id="" class="form-control" name="" value="2016" >
+                                  <input type="text" id="" class="form-control" name="" value="{{$vehicleDetails->model_year}}" >
                                </div>
                             </div>
                             <div class="col-xl-6">
