@@ -348,8 +348,28 @@ class SellerController extends Controller
               8=> 'action'
           );
 
-            $data = Services::select('id', 'category', 'subcategory', 'price', 'compatible_vehicle', 'status', 'seller_id','updated_at')
-            ->where('seller_id', $id);
+            // $data = Services::select('id', 'category', 'subcategory', 'price', 'compatible_vehicle', 'status', 'seller_id','updated_at')
+            // ->join('sellers', 'services.seller_id', '=', 'sellers.id')
+            // ->where('seller_id', $id);
+
+            // $data = Services::select('services.id', 'services.category', 'services.subcategory', 'services.price', 'services.compatible_vehicle', 'services.status', 'services.seller_id', 'services.updated_at', 'sellers.first_name')
+            // ->join('sellers', 'services.seller_id', '=', 'sellers.id')
+            // ->where('services.seller_id', $id);
+
+            $data = Services::select(
+              'services.id', 
+              'services.category', 
+              'service_categories.category_name', 
+              'service_sub_categories.sub_category_name', 
+              'services.price',
+              'services.status', 
+              'sellers.first_name', 
+              'services.updated_at'
+          )
+          ->join('sellers', 'services.seller_id', '=', 'sellers.id')
+          ->join('service_categories', 'services.category', '=', 'service_categories.id')
+          ->join('service_sub_categories', 'services.subcategory', '=', 'service_sub_categories.id')
+          ->where('services.seller_id', $id);
 
             $totalData = $data->count();
 
@@ -407,11 +427,13 @@ class SellerController extends Controller
 
             $nestedData['id'] = !empty(@$post->id) ? $post->id : "N/A";
             // $nestedData['updated_at'] =  !empty(@$post->updated_at) ? date('d M,Y', strtotime(@$post->updated_at)) : "N/A";
-            $nestedData['category'] = !empty(@$post->category) ? $post->category : "N/A";
-            $nestedData['subcategory'] = !empty(@$post->subcategory) ? $post->subcategory : "N/A";
+            $nestedData['category_name'] = !empty(@$post->category_name) ? $post->category_name : "N/A";
+            $nestedData['sub_category_name'] = !empty(@$post->sub_category_name) ? $post->sub_category_name : "N/A";
             $nestedData['compatible_vehicle'] =  !empty(@$post->compatible_vehicle) ? $post->compatible_vehicle : "N/A";
             $nestedData['price'] = !empty(@$post->price) ? $post->price : "N/A";
-            $nestedData['seller_id'] = !empty(@$post->seller_id) ? $post->seller_id : "N/A";  
+            
+            $nestedData['first_name '] = !empty(@$post->first_name ) ? $post->first_name  : "N/A"; 
+            
             $nestedData['action'] = $button;
             $nestedData['status'] = !empty(@$Status) ? $Status : "N/A";
 

@@ -31,9 +31,8 @@
                                     <th style='padding-bottom:13px'>Service ID</th>
                                     <th style='padding-bottom:13px'>Service Category</th>
                                     <th style='padding-bottom:13px'>Service Subcategory</th>
-                                    <!-- <th style='padding-bottom:13px'>Service Compatible Vehicle</th> -->
-                                    <th style='padding-bottom:13px'>Price</th>
-                                    <th style='padding-bottom:13px'>Seller</th>            
+                                    <th style='padding-bottom:13px'>Seller</th>
+                                    <th style='padding-bottom:13px'>Price</th>                 
                                     <th style='padding-bottom:13px'>Status</th>
                                     <th style='padding-bottom:13px'>Action</th>
                                 </tr>
@@ -117,25 +116,22 @@
                     name: 'Service ID'
                 },
                 {
-                    data: 'category',
+                    data: 'category_name',
                     name: 'Service Category'
                 },
                 {
-                    data: 'subcategory',
+                    data: 'sub_category_name',
                     name: 'Service Subcategory'
                 },
-                // {
-                //     data: 'compatible_vehicle',
-                //     name: 'Service Compatible Vehicle'
-                // },
+                {
+                    data: 'first_name ',
+                    name: 'Seller'
+                },
                 {
                     data: 'price',
                     name: 'Price'
                 },
-                {
-                    data: 'seller_id',
-                    name: 'Seller'
-                },
+              
                 {
                     data: 'status',
                     name: 'Status'
