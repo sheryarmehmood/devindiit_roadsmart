@@ -4,6 +4,8 @@
 
  
 <div class="content container-fluid add-product-page">
+<form method="POST" id="edit_seller" name="edit_seller"  enctype="multipart/form-data" action="{{route('admin.post_editSeller')}}">
+@csrf
   <div class="page-header">
      <div class="row">
         <div class="col">
@@ -13,14 +15,22 @@
 		    <a class="btn btn-secondary mr-3" href="{{route('admin.sellers')}}">
               Discard
            </a>
-		   <a class="btn btn-primary" href="{{route('admin.sellers')}}">
-              Save
+           <button type="submit" class="btn btn-primary ">Save</button>
+		   <!-- <a class="btn btn-primary" href="{{route('admin.post_editSeller')}}"> -->
+              <!-- Save -->
            </a>
         </div>
      </div>
   </div> 
-  <form method="POST" id="product_form" name="product_form"  enctype="multipart/form-data" action="{{route('seller.save_product')}}">
-    <div class="row">
+
+  @if(Session::has('message'))
+                                    <div class="alert alert-success alert-dismissable">
+                                       <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                                       {{ Session::get('message') }}
+                                    </div>
+                                    @endif
+  <!-- <form method="POST" id="product_form" name="product_form"  enctype="multipart/form-data" action="{{route('seller.save_product')}}"> -->
+   <!-- <div class="row">
             <div class="card mb-12"> 
                 <div class="card-header">
                     <h4 class="card-title">Edit store detail</h4>
@@ -114,79 +124,90 @@
                         </div>
                     </div>
             </div>
-        </div>
+   </div> -->
     <div class="row">
-            <div class="card mb-12"> 
-            <div class="card-header">
-                    <h4 class="card-title">Edit personal detail</h4>
-                    </div>
+            <div class="card mb-12">
+
+            <!-- <div class="card-header"> -->
+                    <!-- <h4 class="card-title">Edit personal detail</h4> -->
+                    <!-- </div> -->
                     <div class="card-body">
                         <div class="row">
+                        
+                        <input type="hidden" class="form-control" name="id" value="{{ $sellerDetails->id }}" id="id">
+
         					<div class="col-xl-6">
                                 <div class="form-group">
                                   <label class="col-form-label">First name</label>
-                                   <input type="text" id="" class="form-control" name="" value="Jem " >
+                                   <input type="text" name="first_name" id="first_name" class="form-control" name="" value="{{$sellerDetails->first_name}}" >
                                </div>
                             </div>
         					<div class="col-xl-6">
                                 <div class="form-group">
                                   <label class="col-form-label">Last name   </label>
-                                  <input type="text" id="" class="form-control" name="" value="Rusty">
+                                  <input type="text" name="last_name" id="last_name" class="form-control" name="" value="{{$sellerDetails->last_name}}">
                                </div>
                             </div>
                             <div class="col-xl-12">
                                 <div class="form-group">
                                   <label class="col-form-label">Email Address</label>
-                                  <input type="text" id="" class="form-control" name="" value="JemRusty@yopmail.com" >
+                                  <input type="text" name="email" id="email" class="form-control" name="" value="{{$sellerDetails->email}}" >
                                </div>
                             </div>
                             <div class="col-xl-12">
                                 <div class="form-group">
                                   <label class="col-form-label">Phone number   </label>
-                                  <input type="phone" id="" class="form-control" name="" value="+123456789">
+                                  <input type="phone" name="phone_number" id="phone_number" class="form-control" name="" value="{{$sellerDetails->phone_number}}">
                                </div>
                             </div>
         					<div class="col-xl-12">
                                 <div class="form-group">
                                   <label class="col-form-label">Address   </label>
-                                  <input type="text" id="" class="form-control" name="" value="30 Avenew Road" >
+                                  <input type="text" name="address1" id="address1" class="form-control" name="" value="{{$sellerDetails->address1}}" >
                                </div>
                             </div>
-        					<div class="col-xl-12">
+        					<!-- <div class="col-xl-12">
                                 <div class="form-group">
                                   <label class="col-form-label">Apartment, suite, etc. </label>
-                                  <input type="text" id="" class="form-control" name="" value="East Apartment,Mexico">
+                                  <input type="text" id="" class="form-control" name="" value="">
                                </div>
-                            </div>
+                            </div> -->
         					<div class="col-xl-6">
                                 <div class="form-group">
                                   <label class="col-form-label">City</label>
-                                   <input type="text" id="" class="form-control" name="" value="Mexico">
+                                   <input type="text" name="city" id="city" class="form-control" name="" value="{{$sellerDetails->city}}">
                                </div>
                             </div>
         					<div class="col-xl-6">
                                 <div class="form-group">
                                   <label class="col-form-label">Zip code   </label>
-                                  <input type="text" id="" class="form-control" name="" value="236636" >
+                                  <input type="text" name="zipcode" id="zipcode" class="form-control" name="" value="{{$sellerDetails->zipcode}}" >
                                </div>
                             </div>
                             <div class="col-lg-12">
         					    <div class="form-group">
-        						  <label class="col-form-label">Country/region  </label>
-        						   <select name="status" id="status" class="my-select form-control">
+        						  <label class="col-form-label">Country/region  </label>{{$sellerDetails->country}}
+                            <select name="country" id="country" class="my-select form-control">
+                                 <option value="Country/region" {{ $sellerDetails->country == "Country/region" ? 'selected' : '' }}>Country/region</option>
+                                 <option value="USA" {{ $sellerDetails->country == "USA" ? 'selected' : '' }}>USA</option>
+                                 <option value="UK" {{ $sellerDetails->country == "UK" ? 'selected' : '' }}>UK</option>
+                                 <option value="India" {{ $sellerDetails->country == "India" ? 'selected' : '' }}>India</option>
+                                 <option value="UAE" {{ $sellerDetails->country == "UAE" ? 'selected' : '' }}>UAE</option>
+                           </select>
+        						   <!-- <select name="status" id="status" class="my-select form-control">
         								<option value="Country/region">Country/region</option>
         								<option value="USA">USA</option>
         								<option value="UK">UK</option>
         								<option value="India">India</option>
-        							</select>
+        							</select> -->
         					    </div>
         				    </div>
-        				    <div class="col-xl-12">
-                                <div class="form-group">
+        				         <!-- <div class="col-xl-12"> -->
+                                <!-- <div class="form-group">
                                   <label class="col-form-label">Personal Image</label>
                                   <input type="file" id="" class="form-control" name="" value="">
-                               </div>
-                            </div>
+                               </div> -->
+                            <!-- </div> -->
                         </div>
                     </div>
             </div>

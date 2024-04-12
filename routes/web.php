@@ -396,6 +396,9 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
         Route::get('sellers', 'SellerController@sellers')->name('sellers');
         Route::get('addseller', 'SellerController@addseller')->name('addseller');
         Route::get('editseller/{id?}', 'SellerController@editseller')->name('editseller');
+        
+        Route::post('post_editSeller', 'SellerController@post_editSeller')->name('post_editSeller');
+
         Route::get('viewseller/{id?}', 'SellerController@viewseller')->name('viewseller');
          Route::get('get_sellerListing', 'SellerController@get_sellerListing')->name('get_sellerListing');
          Route::post('/delete_seller', 'SellerController@delete_seller')->name('delete_seller');

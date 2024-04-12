@@ -180,8 +180,24 @@ class SellerController extends Controller
     
        // view button starts
        
-    public function editseller()
+    public function editseller($id='')
     {
-        return view('admin.seller.editseller');
+        // dd($id);
+        $sellerDetails = $data['sellerDetails']= Seller::where('id',$id)->first();
+        // dd($sellerDetails);
+        // dd($seller);
+
+        return view('admin.seller.editseller')->with($data);
+    }
+
+    public function post_editSeller (Request $request)
+    {
+      // dd($request->all());
+      $seller =Seller::find($request->id);
+      $input = $request->all();
+                     
+      $seller->update($input);
+      
+      return redirect()->back()->with('message','Seller update Successfully');
     }
 }
