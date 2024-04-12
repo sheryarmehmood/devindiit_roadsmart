@@ -218,6 +218,13 @@ class SellerController extends Controller
       return view('admin.seller.sellerorders', ['id' => $id]);
     }
 
+    public function sellerservices($id='')
+    {
+      // dd($id);
+      return view('admin.seller.sellerservices', ['id' => $id]);
+    }
+    
+
 
     public function get_sellerorderListing(Request $request, $id = '')
     {          
@@ -321,6 +328,14 @@ class SellerController extends Controller
             );
 
             return json_encode($json_data);
+      }
+
+
+
+      public function get_sellerservicesListing () 
+      {
+        dd('helo');
+
       }
 
 

@@ -401,6 +401,12 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
         Route::get('get_sellerorderListing/{id?}', 'SellerController@get_sellerorderListing')->name('get_sellerorderListing');
         Route::get('viewseller/{id?}', 'SellerController@viewseller')->name('viewseller');
         Route::get('sellerorders/{id?}', 'SellerController@sellerorders')->name('sellerorders');
+        Route::get('sellerservices/{id?}', 'SellerController@sellerservices')->name('sellerservices');
+        Route::get('get_sellerservicesListing/{id?}', 'SellerController@get_sellerservicesListing')->name('get_sellerservicesListing');
+        Route::post('/delete_service', 'SellerController@delete_service')->name('delete_service');
+                
+
+
         Route::get('get_sellerListing', 'SellerController@get_sellerListing')->name('get_sellerListing');
         Route::post('/delete_seller', 'SellerController@delete_seller')->name('delete_seller');
         //Admin Sellers routes end here

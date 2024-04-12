@@ -106,7 +106,7 @@
                                         <tr>
 
                                             <td colspan="5" class="text-right pr-0"><a
-                                                    href="{{ route('admin.customerorders', ['id' => $sellerDetails->id]) }}" class="mr-4">View all Services</a> 
+                                                    href="{{ route('admin.sellerservices', ['id' => $sellerDetails->id]) }}" class="mr-4">View all Services</a> 
                                                     <!-- <td colspan="5" class="text-right pr-0">
                                             <a href="{{ route('admin.customerorders', ['customerId' => $sellerDetails->id]) }}" class="mr-4">View all orders</a>
                                         </td> -->
