@@ -398,10 +398,11 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
         Route::get('editseller/{id?}', 'SellerController@editseller')->name('editseller');
         
         Route::post('post_editSeller', 'SellerController@post_editSeller')->name('post_editSeller');
-
+        Route::get('get_sellerorderListing/{id?}', 'SellerController@get_sellerorderListing')->name('get_sellerorderListing');
         Route::get('viewseller/{id?}', 'SellerController@viewseller')->name('viewseller');
-         Route::get('get_sellerListing', 'SellerController@get_sellerListing')->name('get_sellerListing');
-         Route::post('/delete_seller', 'SellerController@delete_seller')->name('delete_seller');
+        Route::get('sellerorders/{id?}', 'SellerController@sellerorders')->name('sellerorders');
+        Route::get('get_sellerListing', 'SellerController@get_sellerListing')->name('get_sellerListing');
+        Route::post('/delete_seller', 'SellerController@delete_seller')->name('delete_seller');
         //Admin Sellers routes end here
         
         

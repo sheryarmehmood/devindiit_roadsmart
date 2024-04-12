@@ -24,7 +24,7 @@
                         <hr />
                         <div class="viewBox table-responsive px-4">
                             <div class="d-flex justify-content-between align-items-center">
-                                <h3 class="mb-0">Order # 1234 <span class="badge badge-success fontpen mx-2">Delivered
+                                <h3 class="mb-0">Order # 1234 <span class="badge badge-success fontpen mx-2">c
                                     </span></h3>
                                 <p class="text-muted">12 Jul at 9:14 pm</p>
                             </div>

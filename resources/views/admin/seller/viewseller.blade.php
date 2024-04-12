@@ -14,7 +14,12 @@
         </div>
         <div class="row">
             <div class="col-md-8">
-                <div class="card card-table mb-3">
+
+
+
+
+            
+            <div class="card card-table mb-3">
                     <div class="card-body p-0">
                         <div class="px-4 pt-3">
                             <div class="d-flex justify-content-between align-items-center">
@@ -47,10 +52,8 @@
                                         <tr>
 
                                             <td colspan="5" class="text-right pr-0"><a
-                                                    href="{{ route('admin.customerorders', ['id' => $sellerDetails->id]) }}" class="mr-4">View all orders</a> 
-                                                    <!-- <td colspan="5" class="text-right pr-0">
-                                            <a href="{{ route('admin.customerorders', ['customerId' => $sellerDetails->id]) }}" class="mr-4">View all orders</a>
-                                        </td> -->
+                                                    href="{{ route('admin.sellerorders', ['id' => $sellerDetails->id]) }}" class="mr-4">View all orders</a> 
+                                                   
 
                                                 <a href="{{ route('admin.viewcustomeraddorder') }}"
                                                     class="btn btn-success text-white">Create Order</a> </td>
@@ -62,22 +65,29 @@
                     </div>
                 </div>
 
-                
-                 
+
+
+
+
+
+
+
+
                 <div class="card card-table mb-3">
                     <div class="card-body p-0">
                         <div class="px-4 pt-3">
                             <div class="d-flex justify-content-between align-items-center">
-                                <h3 class="mb-0">Last Vehicle Registered</h3>
+                                <h3 class="mb-0">Last Service Provided</h3>
                             </div>
                         </div>
                         <hr />
                         <div class="viewBox table-responsive px-4">
                             <div class="d-flex justify-content-between align-items-center">
-                                <h3 class="mb-0">Vehicle # 711-2457-9 </h3>
-                                <p class="text-muted">01 Jul at 01:14 pm</p>
+                                <h3 class="mb-0">Service # 4 <span class="badge badge-success fontpen mx-2">Delivered
+                                    </span></h3>
+                                <p class="text-muted">12 Jul at 9:14 pm</p>
                             </div>
-                            <!-- <p class="text-muted mt-2 mb-0">K 1000 from Draft Vehicle</p> -->
+                            <p class="text-muted mt-2 mb-0">K 1000 from Draft Services</p>
                             <div class="viewBox table-responsive pt-3 unfulfilledTblBx">
                                 <table class="table">
                                     <tbody>
@@ -89,16 +99,20 @@
                                                 </div>
                                             </td>
                                             <td class="text-left pl-0 text-wrap"> 
-                                                <!-- <a href="{{ route('seller.products') }}">Front Brakes</a>  -->
-                                            </td>
+                                                <!-- <a
+                                                    href="{{ route('seller.products') }}">Front Brakes</a> </td> -->
 
                                         </tr>
                                         <tr>
-                                        
+
                                             <td colspan="5" class="text-right pr-0"><a
-                                                    href="{{ route('admin.viewcustomervehicles', ['id' => $sellerDetails->id]) }}" class="mr-4">View all Vehicles</a>
-                                                <a href="{{ route('admin.addvehicle') }}"
-                                                    class="btn btn-success text-white">Register Vehicle</a> </td>
+                                                    href="{{ route('admin.customerorders', ['id' => $sellerDetails->id]) }}" class="mr-4">View all Services</a> 
+                                                    <!-- <td colspan="5" class="text-right pr-0">
+                                            <a href="{{ route('admin.customerorders', ['customerId' => $sellerDetails->id]) }}" class="mr-4">View all orders</a>
+                                        </td> -->
+
+                                                <a href="{{ route('admin.viewcustomeraddorder') }}"
+                                                    class="btn btn-success text-white">Create Service</a> </td>
                                         </tr>
                                     </tbody>
                                 </table>
@@ -106,6 +120,9 @@
                         </div>
                     </div>
                 </div>
+
+                
+            
 
 
                 <div class="card card-table mb-3">
@@ -152,6 +169,10 @@
                         </div>
                     </div>
                 </div>
+
+
+
+
 
 
                 <div class="card card-table mb-3">
@@ -236,7 +257,7 @@
                 <div class="card card-table mb-3">
                     <div class="card-body p-2 py-3 px-4">
                         <div class="d-flex justify-content-between align-items-center">
-                            <h3 class="mb-0">Customer</h3>
+                            <h3 class="mb-0">Seller</h3>
                             <a data-toggle="modal" data-target="#customers-popup" href="javascript: void(0);">Edit</a>
                         </div>
 
