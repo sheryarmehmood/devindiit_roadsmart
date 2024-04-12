@@ -348,14 +348,6 @@ class SellerController extends Controller
               8=> 'action'
           );
 
-            // $data = Services::select('id', 'category', 'subcategory', 'price', 'compatible_vehicle', 'status', 'seller_id','updated_at')
-            // ->join('sellers', 'services.seller_id', '=', 'sellers.id')
-            // ->where('seller_id', $id);
-
-            // $data = Services::select('services.id', 'services.category', 'services.subcategory', 'services.price', 'services.compatible_vehicle', 'services.status', 'services.seller_id', 'services.updated_at', 'sellers.first_name')
-            // ->join('sellers', 'services.seller_id', '=', 'sellers.id')
-            // ->where('services.seller_id', $id);
-
             $data = Services::select(
               'services.id', 
               'services.category', 

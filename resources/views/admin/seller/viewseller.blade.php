@@ -129,13 +129,13 @@
                     <div class="card-body p-0">
                         <div class="px-4 pt-3">
                             <div class="d-flex justify-content-between align-items-center">
-                                <h3 class="mb-0">Last Request placed</h3>
+                                <h3 class="mb-0">Last Product Ordered</h3>
                             </div>
                         </div>
                         <hr />
                         <div class="viewBox table-responsive px-4">
                             <div class="d-flex justify-content-between align-items-center">
-                                <h3 class="mb-0">Request # 2092 <span class="badge badge-warning fontpen mx-2">Unfulfilled
+                                <h3 class="mb-0">Product # 138 <span class="badge badge-warning fontpen mx-2">Unfulfilled
                                     </span></h3>
                                 <p class="text-muted">26 Jul at 03:19 pm</p>
                             </div>
@@ -159,9 +159,9 @@
                                         <tr>
 
                                             <td colspan="5" class="text-right pr-0"><a
-                                                    href="{{ route('admin.viewcustomerrequest') }}" class="mr-4">View all Requests</a>
+                                                    href="{{ route('admin.viewcustomerrequest') }}" class="mr-4">View all Products</a>
                                                 <a href="{{ route('admin.viewcustomeraddrequest') }}"
-                                                    class="btn btn-success text-white">Create Request</a> </td>
+                                                    class="btn btn-success text-white">Create Product</a> </td>
                                         </tr>
                                     </tbody>
                                 </table>
