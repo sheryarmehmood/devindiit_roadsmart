@@ -29,9 +29,11 @@
                             <thead>
                                 <tr>
                                     <th style='padding-bottom:13px'>Service ID</th>
-                                    <th style='padding-bottom:13px'>Service Name</th>
-                                    <th style='padding-bottom:13px'>Description</th>
+                                    <th style='padding-bottom:13px'>Service Category</th>
+                                    <th style='padding-bottom:13px'>Service Subcategory</th>
+                                    <!-- <th style='padding-bottom:13px'>Service Compatible Vehicle</th> -->
                                     <th style='padding-bottom:13px'>Price</th>
+                                    <th style='padding-bottom:13px'>Seller</th>            
                                     <th style='padding-bottom:13px'>Status</th>
                                     <th style='padding-bottom:13px'>Action</th>
                                 </tr>
@@ -109,21 +111,30 @@
             oLanguage: {
                 sEmptyTable: 'No records found!!',
             },
+
             columns: [{
                     data: 'id',
                     name: 'Service ID'
                 },
                 {
-                    data: 'name',
-                    name: 'Service Name'
+                    data: 'category',
+                    name: 'Service Category'
                 },
                 {
-                    data: 'description',
-                    name: 'Description'
+                    data: 'subcategory',
+                    name: 'Service Subcategory'
                 },
+                // {
+                //     data: 'compatible_vehicle',
+                //     name: 'Service Compatible Vehicle'
+                // },
                 {
                     data: 'price',
                     name: 'Price'
+                },
+                {
+                    data: 'seller_id',
+                    name: 'Seller'
                 },
                 {
                     data: 'status',
