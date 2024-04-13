@@ -109,8 +109,10 @@ $(document).ready(function() {
         columns: [
             { data: 'id', name: 'Request ID' },
             { data: 'request_type', name: 'Request type' },
-            { data: 'user_id', name: 'User' },
-            { data: 'service_subcat_id', name: 'Service Subcategory' },
+            { data: 'name', name: 'User' },
+            
+            { data: 'sub_category_name', name: 'Service Subcategory' },
+            // { data: 'service_subcat_id', name: 'Service Subcategory' },
             { data: 'quote_status', name: 'Quote Status' },
             { data: 'status', name: 'Status' },
             { data: 'action', name: 'Action', orderable: false },

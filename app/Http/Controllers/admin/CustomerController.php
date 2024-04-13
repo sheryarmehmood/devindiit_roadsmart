@@ -658,13 +658,15 @@ return json_encode($json_data);
           'requests.id',
           'requests.request_type',
           'requests.status',
-          'requests.user_id',
+          'users.name',
           'repair_services_requests.request_id',
-          'repair_services_requests.service_subcat_id',
+          'repair_services_requests.service_subcat_id',   
           'repair_services_requests.quote_status',
+          'service_sub_categories.sub_category_name',
         )
         ->join('users', 'requests.user_id', '=', 'users.id')
         ->join('repair_services_requests', 'requests.id', '=', 'repair_services_requests.request_id')
+        ->join('service_sub_categories', 'repair_services_requests.service_subcat_id', '=', 'service_sub_categories.id')
         ->where('requests.user_id', $id);
 
         
@@ -721,10 +723,11 @@ return json_encode($json_data);
            
             $nestedData['request_type'] = !empty(@$post->request_type) ? $post->request_type : "N/A";
             // $nestedData['status'] = !empty(@$post->status) ? $post->status : "N/A";
-            $nestedData['user_id'] =  !empty(@$post->user_id) ? $post->user_id : "N/A";
+            $nestedData['name'] =  !empty(@$post->name) ? $post->name : "N/A";
             // $nestedData['request_id'] = !empty(@$post->request_id) ? $post->request_id : "N/A";
             
-            $nestedData['service_subcat_id'] = !empty(@$post->service_subcat_id ) ? $post->service_subcat_id  : "N/A"; 
+            // $nestedData['service_subcat_id'] = !empty(@$post->service_subcat_id ) ? $post->service_subcat_id  : "N/A"; 
+            $nestedData['sub_category_name'] = !empty(@$post->sub_category_name ) ? $post->sub_category_name  : "N/A";
             $nestedData['quote_status'] = !empty(@$post->quote_status ) ? $post->quote_status : "N/A"; 
             
             $nestedData['action'] = $button;
