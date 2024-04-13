@@ -24,8 +24,8 @@
                             <thead>
                                 <tr>
                                     <th>Request ID</th>
-                                    <th>Customer Name</th>
-                                    <th>User</th>
+                                    <th>Service</th>
+                                    <th>Customer</th>
                                     <th>Service Subcategory</th>
                                     <th>quote_status</th>
                                     
