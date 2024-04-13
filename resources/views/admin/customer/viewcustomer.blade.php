@@ -141,10 +141,12 @@
                                         </tr>
                                         <tr>
 
+                                            <!-- <td colspan="5" class="text-right pr-0"><a
+                                                    href="{{ route('admin.viewcustomerrequest') }}" class="mr-4">View all Requests</a> -->
                                             <td colspan="5" class="text-right pr-0"><a
-                                                    href="{{ route('admin.viewcustomerrequest') }}" class="mr-4">View all Requests</a>
-                                                <a href="{{ route('admin.viewcustomeraddrequest') }}"
-                                                    class="btn btn-success text-white">Create Request</a> </td>
+                                            href="{{ route('admin.viewcustomerrequest', ['id' => $customerDetails->id]) }}" class="mr-4">View all Requests</a> 
+                                            <a href="{{ route('admin.viewcustomeraddrequest') }}"
+                                            class="btn btn-success text-white">Create Request</a> </td>
                                         </tr>
                                     </tbody>
                                 </table>
