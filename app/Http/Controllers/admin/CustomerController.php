@@ -12,6 +12,9 @@ use App\Models\User;
 use App\Models\Orders;
 use App\Models\Vehicles;
 use App\Models\UserAddresses;
+use App\Models\Requests;
+use App\Models\Services;
+
 use DB;
 
 
@@ -306,7 +309,7 @@ class CustomerController extends Controller
     }
     public function viewcustomerrequest($id='')
     {
-      return view('admin.customer.viewcustomerrequest');
+      return view('admin.customer.viewcustomerrequest', ['id' => $id]);
     }
     public function viewcustomeraddrequest($id='')
     {
@@ -322,7 +325,25 @@ class CustomerController extends Controller
     }
     public function viewcustomeraddorder($id='')
     {
-      return view('admin.customer.viewcustomeraddorder');
+      // $services =  Services::all();
+      $services = Services::select(
+        'services.id', 
+        'services.category', 
+        'service_categories.category_name', 
+        'service_sub_categories.sub_category_name', 
+        'services.price',
+        'services.status', 
+        'sellers.first_name', 
+        'services.updated_at'
+    )
+    ->join('sellers', 'services.seller_id', '=', 'sellers.id')
+    ->join('service_categories', 'services.category', '=', 'service_categories.id')
+    ->join('service_sub_categories', 'services.subcategory', '=', 'service_sub_categories.id')
+    ->get();  // Fetch all records
+
+      return view('admin.customer.viewcustomeraddorder')->with('services', $services)->with('id', $id);
+      // dd($services);
+      // return view('admin.customer.viewcustomeraddorder');
     }
 
     
@@ -636,6 +657,124 @@ return json_encode($json_data);
                     );
             
         return json_encode($json_data);
+    }
+
+
+    public function get_customer_requests(Request $request, $id = '')
+    {
+      // dd($id);
+        $columns = array(  
+          0 =>'id',
+          1=> 'updated_at',
+          2=> 'request_type',
+          3=> 'status',
+          6=> 'user_id',
+          7=> 'status',
+          8=> 'action'
+        );
+
+        $data = Requests::select(
+          'requests.id',
+          'requests.request_type',
+          'requests.status',
+          'users.name',
+          'repair_services_requests.request_id',
+          'repair_services_requests.service_subcat_id',   
+          'repair_services_requests.quote_status',
+          'service_sub_categories.sub_category_name',
+        )
+        ->join('users', 'requests.user_id', '=', 'users.id')
+        ->join('repair_services_requests', 'requests.id', '=', 'repair_services_requests.request_id')
+        ->join('service_sub_categories', 'repair_services_requests.service_subcat_id', '=', 'service_sub_categories.id')
+        ->where('requests.user_id', $id);
+
+        
+        $totalData = $data->count();
+
+        $totalFiltered = $totalData; 
+
+        $limit = $request->input('length');
+        $start = $request->input('start');
+        $order = $columns[$request->input('order.0.column')];
+        $dir = $request->input('order.0.dir');
+
+        $posts = $data->offset($start)
+            ->limit($limit)
+            ->orderBy($order,$dir)
+            ->get();
+
+
+        $data = array();
+            $status = '';
+
+            if(!empty($posts))
+            {
+            foreach ($posts as $key => $post)
+            {
+
+            if($post->status == '0'){
+            $current_status = 'Pending Delivery';
+            $Status = '<label class="badge badge-info">'.$current_status.'</label>';
+            }
+            elseif ($post->status == '1'){
+            $current_status = 'In-progress';
+            $Status = '<label class="badge badge-primary">'.$current_status.'</label>';
+            }
+            elseif ($post->status == '2'){
+            $current_status = 'On-Hold';
+            $Status = '<label class="badge badge-danger">'.$current_status.'</label>';
+            }
+            elseif ($post->status == '3'){
+            $current_status = 'Dispactched';
+            $Status = '<label class="badge badge-warning">'.$current_status.'</label>';
+            }
+            else{
+            $current_status = 'Delivered';
+            $Status = '<label class="badge badge-success">'.$current_status.'</label>';
+            }
+
+            $button = '<a href="'.route('admin.ordersdetails').'/'.$post->id.'" class="btn btn-sm bg-info-light"><i class="far fa-eye mr-1"></i> View</a>
+
+            <a href="#" class="btn btn-sm bg-danger-light delete_order" data-toggle="modal"  data-orderid="'.$post->id.'" data-target="#delete-popup"><i class="fas fa-trash-alt"></i> Delete
+            </a>';
+
+            $nestedData['id'] = !empty(@$post->id) ? $post->id : "N/A";
+           
+            $nestedData['request_type'] = !empty(@$post->request_type) ? $post->request_type : "N/A";
+            // $nestedData['status'] = !empty(@$post->status) ? $post->status : "N/A";
+            $nestedData['name'] =  !empty(@$post->name) ? $post->name : "N/A";
+            // $nestedData['request_id'] = !empty(@$post->request_id) ? $post->request_id : "N/A";
+            
+            // $nestedData['service_subcat_id'] = !empty(@$post->service_subcat_id ) ? $post->service_subcat_id  : "N/A"; 
+            $nestedData['sub_category_name'] = !empty(@$post->sub_category_name ) ? $post->sub_category_name  : "N/A";
+            $nestedData['quote_status'] = !empty(@$post->quote_status ) ? $post->quote_status : "N/A"; 
+            
+            $nestedData['action'] = $button;
+            $nestedData['status'] = !empty(@$Status) ? $Status : "N/A";
+
+            $data[] = $nestedData;
+
+            }
+            }
+
+            $json_data = array(
+            "draw"            => intval($request->input('draw')),  
+            "recordsTotal"    => intval($totalData),  
+            "recordsFiltered" => intval($totalFiltered), 
+            "data"            => $data   
+            );
+
+            return json_encode($json_data);
+
+
+    }
+
+
+
+
+    public function delete_customer_request()
+    {
+
     }
 
 

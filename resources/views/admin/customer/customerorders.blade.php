@@ -8,18 +8,13 @@
                 <h3 class="page-title">View Order Details</h3>
             </div>
             <div class="col text-right">
-                <!-- <a href="{{ route('admin.customers') }}" class="btn btn-primary">Back</a> -->
                 <a href="{{ route('admin.viewcustomer', ['id' => $id]) }}" class="btn btn-primary">Back</a>
 
             </div>
         </div>
         <div class="row">
             <div class="col">
-                <!-- <a href="" class="btn btn-primary active">Orders</a>
-                <a href="{{ route('admin.viewcustomerrequest')}}" class="btn btn-primary">Requests</a>
-                <a href="{{ route('admin.viewcustomervehicles')}}" class="btn btn-primary">Vehicles</a>
-                <a href="" class="btn btn-primary">Chats</a>
-                <a href="" class="btn btn-primary">Account Info</a> -->
+               
             </div>
         </div>
     </div>
@@ -110,7 +105,6 @@ $(document).ready(function() {
         },
             serverSide: true,
             ajax: { 
-                // url: '{{Route("admin.get_customerorderListing")}}',
                 url: '{{ route("admin.get_customerorderListing", ["id" => $id]) }}',  
                 data : function (d) {
                     d.name = $('input[name=name]').val();

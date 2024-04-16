@@ -24,7 +24,7 @@
                         <hr />
                         <div class="viewBox table-responsive px-4">
                             <div class="d-flex justify-content-between align-items-center">
-                                <h3 class="mb-0">Order # 1234 <span class="badge badge-success fontpen mx-2">Delivered
+                                <h3 class="mb-0">Order # 1234 <span class="badge badge-success fontpen mx-2">c
                                     </span></h3>
                                 <p class="text-muted">12 Jul at 9:14 pm</p>
                             </div>
@@ -52,7 +52,7 @@
                                             <a href="{{ route('admin.customerorders', ['customerId' => $customerDetails->id]) }}" class="mr-4">View all orders</a>
                                         </td> -->
 
-                                                <a href="{{ route('admin.viewcustomeraddorder') }}"
+                                                <a href="{{ route('admin.viewcustomeraddorder', ['id' => $customerDetails->id]) }}"
                                                     class="btn btn-success text-white">Create Order</a> </td>
                                         </tr>
                                     </tbody>
@@ -141,10 +141,12 @@
                                         </tr>
                                         <tr>
 
+                                            <!-- <td colspan="5" class="text-right pr-0"><a
+                                                    href="{{ route('admin.viewcustomerrequest') }}" class="mr-4">View all Requests</a> -->
                                             <td colspan="5" class="text-right pr-0"><a
-                                                    href="{{ route('admin.viewcustomerrequest') }}" class="mr-4">View all Requests</a>
-                                                <a href="{{ route('admin.viewcustomeraddrequest') }}"
-                                                    class="btn btn-success text-white">Create Request</a> </td>
+                                            href="{{ route('admin.viewcustomerrequest', ['id' => $customerDetails->id]) }}" class="mr-4">View all Requests</a> 
+                                            <a href="{{ route('admin.viewcustomeraddrequest', ['id' => $customerDetails->id]) }}"
+                                            class="btn btn-success text-white">Create Request</a> </td>
                                         </tr>
                                     </tbody>
                                 </table>

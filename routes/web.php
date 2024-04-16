@@ -387,7 +387,9 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
          Route::get('customerorders/{id?}', 'CustomerController@customerorders')->name('customerorders');
          Route::get('get_customerorderListing/{id?}', 'CustomerController@get_customerorderListing')->name('get_customerorderListing');
          Route::get('get_customervehicleListing/{id?}', 'CustomerController@get_customervehicleListing')->name('get_customervehicleListing');
-    
+         Route::get('get_customer_requests/{id?}', 'CustomerController@get_customer_requests')->name('get_customer_requests');
+         Route::post('/delete_customer_request', 'CustomerController@delete_customer_request')->name('delete_customer_request');
+         
          
         //Admin Customers  routes end here
         
@@ -396,9 +398,19 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
         Route::get('sellers', 'SellerController@sellers')->name('sellers');
         Route::get('addseller', 'SellerController@addseller')->name('addseller');
         Route::get('editseller/{id?}', 'SellerController@editseller')->name('editseller');
+        
+        Route::post('post_editSeller', 'SellerController@post_editSeller')->name('post_editSeller');
+        Route::get('get_sellerorderListing/{id?}', 'SellerController@get_sellerorderListing')->name('get_sellerorderListing');
         Route::get('viewseller/{id?}', 'SellerController@viewseller')->name('viewseller');
-         Route::get('get_sellerListing', 'SellerController@get_sellerListing')->name('get_sellerListing');
-         Route::post('/delete_seller', 'SellerController@delete_seller')->name('delete_seller');
+        Route::get('sellerorders/{id?}', 'SellerController@sellerorders')->name('sellerorders');
+        Route::get('sellerservices/{id?}', 'SellerController@sellerservices')->name('sellerservices');
+        Route::get('get_sellerservicesListing/{id?}', 'SellerController@get_sellerservicesListing')->name('get_sellerservicesListing');
+        Route::post('/delete_service', 'SellerController@delete_service')->name('delete_service');
+                
+
+
+        Route::get('get_sellerListing', 'SellerController@get_sellerListing')->name('get_sellerListing');
+        Route::post('/delete_seller', 'SellerController@delete_seller')->name('delete_seller');
         //Admin Sellers routes end here
         
         
