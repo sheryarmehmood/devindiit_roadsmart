@@ -753,6 +753,10 @@
    </div>
 </div>
 
+<div id="selectedProducts">
+    <!-- Selected products will be displayed here -->
+</div>
+
 
 
 
@@ -773,6 +777,42 @@
          $(".payemntboxhide").toggle();
          $(".payemntboxhide1").toggle();
       });
+
+
+     // Event listener for the "Add Product" button in the modal
+     $(".btn-success[data-dismiss='modal']").on("click", function() {
+        // Clear previous selections
+        $("#selectedProducts").empty();
+
+        // Loop through each selected checkbox
+        $(".viewBox table tbody tr").each(function() {
+            var checkbox = $(this).find("input[type='checkbox']");
+            
+            if (checkbox.is(":checked")) {
+                var productName = $(this).find("td:eq(1) span.fs-4").text().trim();
+                var productStatus = $(this).find("td:eq(2)").text().trim();
+                var productPrice = $(this).find("td:eq(3)").text().trim();
+
+                // Append the selected product details to the result area
+                $("#selectedProducts").append(
+                    `<div>
+                        <strong>Product Name:</strong> ${productName}<br>
+                        <strong>Status:</strong> ${productStatus}<br>
+                        <strong>Price:</strong> ${productPrice}
+                    </div><br>`
+                );
+            }
+        });
+    });
+
+    $(".table tbody tr").on("click", function() {
+    // Remove the .selected class from all rows
+    $(".table tbody tr").removeClass("selected");
+
+    // Add the .selected class to the clicked row
+    $(this).addClass("selected");
+});
+
    });
 </script>
 @endsection
