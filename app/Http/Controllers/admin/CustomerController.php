@@ -340,6 +340,7 @@ class CustomerController extends Controller
     ->join('service_categories', 'services.category', '=', 'service_categories.id')
     ->join('service_sub_categories', 'services.subcategory', '=', 'service_sub_categories.id')
     ->get();  // Fetch all records
+
       return view('admin.customer.viewcustomeraddorder')->with('services', $services)->with('id', $id);
       // dd($services);
       // return view('admin.customer.viewcustomeraddorder');
