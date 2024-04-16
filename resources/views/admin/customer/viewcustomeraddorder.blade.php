@@ -35,8 +35,8 @@
              <div class="card card-table mb-3">
                 <div class="card-body p-2 py-3 px-4">
                    <div class="d-flex justify-content-between align-items-center">
-                   <!-- <ul>
-            @foreach($services as $service)
+                   <ul>
+            <!-- @foreach($services as $service)
                 <li>
                     <strong>ID:</strong> {{ $service->id }}<br>
                     <strong>Category:</strong> {{ $service->category_name }}<br>
@@ -47,8 +47,8 @@
                     
                 </li>
                 <br>
-            @endforeach
-        </ul> -->
+            @endforeach -->
+        </ul>
                       <h3 class="mb-0">Items</h3>
                        <div class="d-flex justify-content-between align-items-center">
                          <!-- <a data-toggle="modal" data-target="#addcustom-popup" href="javascript: void(0);">Add custom items</a> -->
