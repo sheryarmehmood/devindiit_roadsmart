@@ -19,8 +19,8 @@
         </div>
      </div>
   </div> 
-  <form method="POST" id="product_form" name="product_form"  enctype="multipart/form-data" action="{{route('seller.save_product')}}">
-    <div class="row">
+  <form method="POST" id="product_form" name="product_form"  enctype="multipart/form-data" action="{{route('seller.save_product')}}"> 
+    <!-- <div class="row">
             <div class="card mb-12"> 
                 <div class="card-header">
                     <h4 class="card-title">Store Detail</h4>
@@ -114,12 +114,12 @@
                         </div>
                     </div>
             </div>
-        </div>
+    </div> -->
     <div class="row">
         <div class="card mb-12"> 
-            <div class="card-header">
+            <!-- <div class="card-header">
                 <h4 class="card-title">Personal Detail</h4>
-            </div>
+            </div> -->
                 <div class="card-body">
                     <div class="row">
     					<div class="col-xl-6">
@@ -187,12 +187,12 @@
     							</select>
     					    </div>
     				    </div>
-    				    <div class="col-xl-12">
+    				         <!-- <div class="col-xl-12">
                             <div class="form-group">
                               <label class="col-form-label"> Image</label>
                               <input type="file" id="" class="form-control" name="" value="">
                            </div>
-                        </div>
+                        </div> -->
                     </div>
                 </div>
             </div>
