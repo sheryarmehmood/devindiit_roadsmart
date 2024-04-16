@@ -68,14 +68,17 @@
                </div>
                <div class="viewBox table-responsive pt-3 product-add-table">
                   <table class="table">
-                     <tbody id="selectedProducts">
+                     <thead>
                         <tr>
                            <th style="width:50px"><input name="select_all" value="1" type="checkbox"></th>
-                           <th class="text-left pl-0"> Items </th>
+                           <th class="text-left pl-0"> Items</th>
                            <th style="width:170px"></th>
-                           <th class="text-center "> Quantity </th>
-                           <th class="text-right pr-0"> Total </th>
+                           <th class="text-center "> Status</th>
+                           <th class="text-right pr-0"> Price</th>
                         </tr>
+                     </thead>
+                     <tbody id="selectedProducts">
+
                      </tbody>
                   </table>
                </div>
@@ -139,7 +142,7 @@
                         <tr>
                            <th class="text-left pl-0"> Total </th>
                            <td class="text-center "> --- </td>
-                           <td class="text-right pr-0"> K 0.00 </td>
+                           <td class="text-right pr-0"> K <span id="totalprice">0.00</span> </td>
                         </tr>
                      </tbody>
                   </table>
@@ -557,7 +560,11 @@
                               </td>
 
                               <td class="text-left pl-0"> <span class="fs-4">{{ $service->sub_category_name }} </span><br> <span class="fs-6">{{ $service->category_name }}</span> </td>
-                              <td class="text-center "> {{ $service->status }} </td>
+                              @if($service->status) 
+                              <td class="text-center "> Available</td>
+                              @else
+                              <td class="text-center "> Unavailble</td>
+                              @endif
                               <td class="text-right pr-0"> {{ $service->price }}</td>
                            </tr>
                            @endforeach
@@ -748,40 +755,41 @@
       });
 
 
-      // Event listener for the "Add Product" button in the modal
-      $(".btn-success[data-dismiss='modal']").on("click", function() {
-         // Clear previous selections
-         $("#selectedProducts").empty();
+// Event listener for the "Add Product" button in the modal
+$(".btn-success[data-dismiss='modal']").on("click", function() {
+    // Clear previous selections
+    $("#selectedProducts").empty();
+    var totalprice = 0;
+    // Loop through each selected checkbox
+    $(".viewBox table tbody tr").each(function() {
+        var checkbox = $(this).find("input[type='checkbox']");
+        if (checkbox.is(":checked")) {
+            var productName = $(this).find("td:eq(1) span.fs-4").text().trim();
+            var productStatus = $(this).find("td:eq(2)").text().trim();
+            var productPrice = parseFloat($(this).find("td:eq(3)").text().trim()); // Convert to number
+            totalprice += productPrice; // Add to totalprice
+            // Append the selected product details to the result area
+            $("#selectedProducts").append(
+                `<tr>
+                    <td style="width:50px"><input type="checkbox" name="type" value=""></td>
+                    <td class="text-left  pl-0"> ${productName} <br /> ${productPrice} </td>
+                    <td class="text-left  pl-0">
+                        <a href="javascript:void(0)" data-toggle="modal" data-target="#addvehicle-popup">
+                            Toyota Hilux
+                        </a>
+                    </td>
+                    <td class="text-center" style="width:120px">
+                        ${productStatus}
+                    </td>
+                    <td class="text-right pr-0"> ${productPrice} <a href="#" class="crosdel ml-3">X</a> </td>
+                </tr>`
+            );
+        }
+    });
 
-         // Loop through each selected checkbox
-         $(".viewBox table tbody tr").each(function() {
-            var checkbox = $(this).find("input[type='checkbox']");
+    $('#totalprice').text(totalprice);
+});
 
-            if (checkbox.is(":checked")) {
-               var productName = $(this).find("td:eq(1) span.fs-4").text().trim();
-               var productStatus = $(this).find("td:eq(2)").text().trim();
-               var productPrice = $(this).find("td:eq(3)").text().trim();
-
-               // Append the selected product details to the result area
-               $("#selectedProducts").append(
-                  `<tr>
-                           <td style="width:50px"><input type="checkbox" name="type" value=""></td>
-                           <td class="text-left  pl-0"> ${productName} <br /> ${productPrice} </td>
-                           <td class="text-left  pl-0">
-                              <a href="javascript:void(0)" data-toggle="modal" data-target="#addvehicle-popup">
-                                 Toyota Hilux
-                              </a>
-                           </td>
-                           <td class="text-center" style="width:120px">
-                              <input type="number" value="${productStatus}" class="form-control m-auto" style="min-width: 65px;" name="">
-                           </td>
-
-                           <td class="text-right pr-0"> ${productPrice * productStatus} <a href="#" class="crosdel ml-3">X</a> </td>
-                        </tr>`
-               );
-            }
-         });
-      });
 
       $(".table tbody tr").on("click", function() {
          // Remove the .selected class from all rows
