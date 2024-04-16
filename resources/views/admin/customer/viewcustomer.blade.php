@@ -52,7 +52,7 @@
                                             <a href="{{ route('admin.customerorders', ['customerId' => $customerDetails->id]) }}" class="mr-4">View all orders</a>
                                         </td> -->
 
-                                                <a href="{{ route('admin.viewcustomeraddorder') }}"
+                                                <a href="{{ route('admin.viewcustomeraddorder', ['id' => $customerDetails->id]) }}"
                                                     class="btn btn-success text-white">Create Order</a> </td>
                                         </tr>
                                     </tbody>
@@ -145,7 +145,7 @@
                                                     href="{{ route('admin.viewcustomerrequest') }}" class="mr-4">View all Requests</a> -->
                                             <td colspan="5" class="text-right pr-0"><a
                                             href="{{ route('admin.viewcustomerrequest', ['id' => $customerDetails->id]) }}" class="mr-4">View all Requests</a> 
-                                            <a href="{{ route('admin.viewcustomeraddrequest') }}"
+                                            <a href="{{ route('admin.viewcustomeraddrequest', ['id' => $customerDetails->id]) }}"
                                             class="btn btn-success text-white">Create Request</a> </td>
                                         </tr>
                                     </tbody>

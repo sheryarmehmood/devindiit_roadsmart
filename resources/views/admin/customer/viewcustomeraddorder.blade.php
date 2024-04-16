@@ -35,9 +35,23 @@
              <div class="card card-table mb-3">
                 <div class="card-body p-2 py-3 px-4">
                    <div class="d-flex justify-content-between align-items-center">
+                   <!-- <ul>
+            @foreach($services as $service)
+                <li>
+                    <strong>ID:</strong> {{ $service->id }}<br>
+                    <strong>Category:</strong> {{ $service->category_name }}<br>
+                    <strong>Sub Category:</strong> {{ $service->sub_category_name }}<br>
+                    <strong>Price:</strong> {{ $service->price }}<br>
+                    <strong>Status:</strong> {{ $service->status }}<br>
+                    <strong>Seller Name:</strong> {{ $service->first_name }}<br>
+                    
+                </li>
+                <br>
+            @endforeach
+        </ul> -->
                       <h3 class="mb-0">Items</h3>
                        <div class="d-flex justify-content-between align-items-center">
-                         <a data-toggle="modal" data-target="#addcustom-popup" href="javascript: void(0);">Add custom items</a>
+                         <!-- <a data-toggle="modal" data-target="#addcustom-popup" href="javascript: void(0);">Add custom items</a> -->
                          <!---div class="ml-3">
                             <span class="nav-item dropdown noti-dropdown actionMore addorbef">
                                <a href="javascript:void(0)" class="dropdown-toggle nav-link ediio" data-toggle="dropdown">

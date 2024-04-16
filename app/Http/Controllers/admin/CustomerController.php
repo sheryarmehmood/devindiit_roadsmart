@@ -13,6 +13,7 @@ use App\Models\Orders;
 use App\Models\Vehicles;
 use App\Models\UserAddresses;
 use App\Models\Requests;
+use App\Models\Services;
 
 use DB;
 
@@ -324,7 +325,24 @@ class CustomerController extends Controller
     }
     public function viewcustomeraddorder($id='')
     {
-      return view('admin.customer.viewcustomeraddorder');
+      // $services =  Services::all();
+      $services = Services::select(
+        'services.id', 
+        'services.category', 
+        'service_categories.category_name', 
+        'service_sub_categories.sub_category_name', 
+        'services.price',
+        'services.status', 
+        'sellers.first_name', 
+        'services.updated_at'
+    )
+    ->join('sellers', 'services.seller_id', '=', 'sellers.id')
+    ->join('service_categories', 'services.category', '=', 'service_categories.id')
+    ->join('service_sub_categories', 'services.subcategory', '=', 'service_sub_categories.id')
+    ->get();  // Fetch all records
+      return view('admin.customer.viewcustomeraddorder')->with('services', $services)->with('id', $id);
+      // dd($services);
+      // return view('admin.customer.viewcustomeraddorder');
     }
 
     
