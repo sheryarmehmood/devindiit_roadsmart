@@ -172,6 +172,9 @@ class OrderController extends Controller
       }
     }
     
+    public function saveOrder(Request $request){
+      dd($request->all());
+    }
     
     public function ordersview($id='')
     {

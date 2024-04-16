@@ -24,7 +24,9 @@
          </div>
          <div class="col text-right">
             <a href="javascript:void(0)" class="btn btn-primary">Discard</a>
-            <a href="{{route('seller.drafts')}}" class="btn btn-primary">Save</a>
+            <!-- <a href="{{route('seller.drafts')}}" class="btn btn-primary">Save</a> -->
+            <a href="{{route('seller.drafts')}}" class="btn btn-primary" id="saveProducts">Save</a>
+
             <a href="{{route('seller.orders')}}" class="btn btn-primary">Back</a>
          </div>
       </div>
@@ -754,6 +756,8 @@
          $(".payemntboxhide1").toggle();
       });
 
+       // Get CSRF token value from the meta tag
+    var csrfToken = $('meta[name="csrf-token"]').attr('content');
 
 // Event listener for the "Add Product" button in the modal
 $(".btn-success[data-dismiss='modal']").on("click", function() {
@@ -795,9 +799,60 @@ $(".btn-success[data-dismiss='modal']").on("click", function() {
          // Remove the .selected class from all rows
          $(".table tbody tr").removeClass("selected");
 
-         // Add the .selected class to the clicked row
-         $(this).addClass("selected");
-      });
+    // Add the .selected class to the clicked row
+    $(this).addClass("selected");
+});
+
+
+
+// Event listener for the "Save" button
+$("#saveProducts").on("click", function(e) {
+        e.preventDefault();
+
+        // Create an array to store the selected product details
+        var selectedProducts = [];
+
+        // Loop through each selected checkbox
+        $(".viewBox table tbody tr").each(function() {
+            var checkbox = $(this).find("input[type='checkbox']");
+            
+            if (checkbox.is(":checked")) {
+                var productName = $(this).find("td:eq(1) span.fs-4").text().trim();
+                var productStatus = $(this).find("td:eq(2)").text().trim();
+                var productPrice = $(this).find("td:eq(3)").text().trim();
+
+                // Push the selected product details to the array
+                selectedProducts.push({
+                    name: productName,
+                    status: productStatus,
+                    price: productPrice
+                });
+            }
+        });
+
+        // Send the selected products to the Laravel controller using AJAX
+        $.ajax({
+            url: "{{ route('admin.saveOrder') }}", // Replace with your route URL
+            type: "POST",
+            headers: {
+                'X-CSRF-TOKEN': csrfToken
+            },
+            data: {
+                products: selectedProducts
+            },
+            success: function(response) {
+                // Handle success response
+                console.log(response);
+               //  window.location.href = "{{ route('seller.drafts') }}";
+            },
+            error: function(error) {
+                // Handle error response
+                console.log(error);
+            }
+        });
+    });
+
+
 
    });
 </script>
