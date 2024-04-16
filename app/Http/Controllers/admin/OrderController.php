@@ -9,6 +9,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Models\Dashboard;
 use App\Models\Orders;
+use App\Models\Services;
 use DB;
 
 class OrderController extends Controller
@@ -173,8 +174,21 @@ class OrderController extends Controller
     }
     
     public function saveOrder(Request $request){
-      dd($request->all());
-    }
+
+          $order = new Orders;
+          // $service = Services::find($request->id);
+          $productId = $request->products[0]['id'];
+          $service = Services::where('id', $productId)->first();
+          // dd($service);
+
+          $order->user_id=$request->input('customerId');
+          $order->service_subcategory_id=$service->subcategory;
+          $order->seller_id=$service->seller_id;
+          $order->amount=$service->price;
+          $order->save();
+
+
+        }
     
     public function ordersview($id='')
     {
