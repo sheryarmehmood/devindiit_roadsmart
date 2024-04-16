@@ -68,42 +68,13 @@
                </div>
                <div class="viewBox table-responsive pt-3 product-add-table">
                   <table class="table">
-                     <tbody>
+                     <tbody id="selectedProducts">
                         <tr>
                            <th style="width:50px"><input name="select_all" value="1" type="checkbox"></th>
                            <th class="text-left pl-0"> Items </th>
                            <th style="width:170px"></th>
                            <th class="text-center "> Quantity </th>
-
                            <th class="text-right pr-0"> Total </th>
-                        </tr>
-                        <tr>
-                           <td style="width:50px"><input type="checkbox" name="type" value=""></td>
-                           <td class="text-left  pl-0"> Brake Skimming <br /> K 100.00 </td>
-                           <td class="text-left  pl-0">
-                              <a href="javascript:void(0)" data-toggle="modal" data-target="#addvehicle-popup">
-                                 Toyota Hilux
-                              </a>
-                           </td>
-                           <td class="text-center" style="width:120px">
-                              <input type="number" value="1" class="form-control m-auto" style="min-width: 65px;" name="">
-                           </td>
-
-                           <td class="text-right pr-0"> K 100.00 <a href="#" class="crosdel ml-3">X</a> </td>
-                        </tr>
-                        <tr>
-                           <td style="width:50px"><input type="checkbox" name="type" value=""></td>
-                           <td class="text-left  pl-0"> Brake Skimming <br /> K 100.00 </td>
-                           <td class="text-left  pl-0">
-                              <a href="javascript:void(0)" data-toggle="modal" data-target="#addvehicle-popup">
-                                 BMW 525
-                              </a>
-                           </td>
-                           <td class="text-center" style="width:120px">
-                              <input type="number" value="1" class="form-control m-auto" style="min-width: 65px" name="">
-                           </td>
-
-                           <td class="text-right pr-0"> K 100.00 <a href="#" class="crosdel ml-3">X</a> </td>
                         </tr>
                      </tbody>
                   </table>
@@ -753,9 +724,7 @@
    </div>
 </div>
 
-<div id="selectedProducts">
-    <!-- Selected products will be displayed here -->
-</div>
+
 
 
 
@@ -779,39 +748,48 @@
       });
 
 
-     // Event listener for the "Add Product" button in the modal
-     $(".btn-success[data-dismiss='modal']").on("click", function() {
-        // Clear previous selections
-        $("#selectedProducts").empty();
+      // Event listener for the "Add Product" button in the modal
+      $(".btn-success[data-dismiss='modal']").on("click", function() {
+         // Clear previous selections
+         $("#selectedProducts").empty();
 
-        // Loop through each selected checkbox
-        $(".viewBox table tbody tr").each(function() {
+         // Loop through each selected checkbox
+         $(".viewBox table tbody tr").each(function() {
             var checkbox = $(this).find("input[type='checkbox']");
-            
+
             if (checkbox.is(":checked")) {
-                var productName = $(this).find("td:eq(1) span.fs-4").text().trim();
-                var productStatus = $(this).find("td:eq(2)").text().trim();
-                var productPrice = $(this).find("td:eq(3)").text().trim();
+               var productName = $(this).find("td:eq(1) span.fs-4").text().trim();
+               var productStatus = $(this).find("td:eq(2)").text().trim();
+               var productPrice = $(this).find("td:eq(3)").text().trim();
 
-                // Append the selected product details to the result area
-                $("#selectedProducts").append(
-                    `<div>
-                        <strong>Product Name:</strong> ${productName}<br>
-                        <strong>Status:</strong> ${productStatus}<br>
-                        <strong>Price:</strong> ${productPrice}
-                    </div><br>`
-                );
+               // Append the selected product details to the result area
+               $("#selectedProducts").append(
+                  `<tr>
+                           <td style="width:50px"><input type="checkbox" name="type" value=""></td>
+                           <td class="text-left  pl-0"> ${productName} <br /> ${productPrice} </td>
+                           <td class="text-left  pl-0">
+                              <a href="javascript:void(0)" data-toggle="modal" data-target="#addvehicle-popup">
+                                 Toyota Hilux
+                              </a>
+                           </td>
+                           <td class="text-center" style="width:120px">
+                              <input type="number" value="${productStatus}" class="form-control m-auto" style="min-width: 65px;" name="">
+                           </td>
+
+                           <td class="text-right pr-0"> ${productPrice * productStatus} <a href="#" class="crosdel ml-3">X</a> </td>
+                        </tr>`
+               );
             }
-        });
-    });
+         });
+      });
 
-    $(".table tbody tr").on("click", function() {
-    // Remove the .selected class from all rows
-    $(".table tbody tr").removeClass("selected");
+      $(".table tbody tr").on("click", function() {
+         // Remove the .selected class from all rows
+         $(".table tbody tr").removeClass("selected");
 
-    // Add the .selected class to the clicked row
-    $(this).addClass("selected");
-});
+         // Add the .selected class to the clicked row
+         $(this).addClass("selected");
+      });
 
    });
 </script>
