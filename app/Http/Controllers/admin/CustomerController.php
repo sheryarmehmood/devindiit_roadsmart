@@ -323,6 +323,14 @@ class CustomerController extends Controller
     {
       return view('admin.customer.viewcustomervehicles', ['id' => $id]);
     }
+    public function addservice()
+    {
+      return view('admin.services.addservice');
+    }
+    public function services()
+    {
+      return view('admin.services.services');
+    }
     public function viewcustomeraddorder($id='')
     {
       // $services =  Services::all();
