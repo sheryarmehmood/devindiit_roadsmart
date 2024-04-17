@@ -25,7 +25,7 @@
          <div class="col text-right">
             <a href="javascript:void(0)" class="btn btn-primary">Discard</a>
             <!-- <a href="{{route('seller.drafts')}}" class="btn btn-primary">Save</a> -->
-            <a href="{{route('seller.drafts')}}" class="btn btn-primary" id="saveProducts">Save</a>
+            <a href="{{route('admin.customers')}}" class="btn btn-primary" id="saveProducts">Save</a>
 
             <a href="{{route('seller.orders')}}" class="btn btn-primary">Back</a>
          </div>
@@ -869,7 +869,9 @@ $("#saveProducts").on("click", function(e) {
         success: function(response) {
             // Handle success response
             console.log(response);
-            //  window.location.href = "{{ route('seller.drafts') }}";
+            var id  = customerId;
+            window.location.href = "{{ route('admin.viewcustomer') }}" + "/" + id;
+            //  window.location.href = "{{ route('admin.viewcustomer') }}";
         },
         error: function(error) {
             // Handle error response

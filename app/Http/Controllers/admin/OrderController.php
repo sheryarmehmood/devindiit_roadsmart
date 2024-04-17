@@ -186,6 +186,13 @@ class OrderController extends Controller
           $order->seller_id=$service->seller_id;
           $order->amount=$service->price;
           $order->save();
+          Session::flash('message', 'Order is Placed Successfully!!');
+          // return view('admin.customer.customers');
+          
+          // return view('admin.customers');
+
+          // Redirect back to the viewcustomer route with the customerId
+    // return redirect()->route('viewcustomer', ['id' => $request->input('customerId')]);
 
 
         }

@@ -11,6 +11,12 @@
                     <a href="{{ route('admin.customers') }}" class="btn btn-primary">Back</a>
                 </div>
             </div>
+            @if(Session::has('message'))
+              <div class="alert alert-success alert-dismissable">
+                <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                {{ Session::get('message') }}
+              </div>
+              @endif
         </div>
         <div class="row">
             <div class="col-md-8">
