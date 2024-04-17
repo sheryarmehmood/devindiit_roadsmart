@@ -432,6 +432,8 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
         Route::get('orderrequests', 'OrderController@orderrequests')->name('orderrequests');
         Route::get('get_orderListing', 'OrderController@get_orderListing')->name('get_orderListing');
         Route::post('/delete_order', 'OrderController@delete_order')->name('delete_order');
+        Route::post('saveOrder', 'OrderController@saveOrder')->name('saveOrder');
+        
         //Admin orders routes end here
         
         

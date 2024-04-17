@@ -194,6 +194,7 @@ class SellerController extends Controller
         // dd($sellerDetails);
         // dd($seller);
 
+
         return view('admin.seller.editseller')->with($data);
     }
 
