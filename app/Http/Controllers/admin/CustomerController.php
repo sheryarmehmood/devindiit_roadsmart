@@ -323,35 +323,11 @@ class CustomerController extends Controller
     {
       return view('admin.customer.viewcustomervehicles', ['id' => $id]);
     }
-    public function addservice()
-    {
-      return view('admin.services.addservice');
-    }
-    public function services()
-    {
-      return view('admin.services.services');
-    }
+    
     public function viewcustomeraddorder($id='')
     {
-      // $services =  Services::all();
-      $services = Services::select(
-        'services.id', 
-        'services.category', 
-        'service_categories.category_name', 
-        'service_sub_categories.sub_category_name', 
-        'services.price',
-        'services.status', 
-        'sellers.first_name', 
-        'services.updated_at'
-    )
-    ->join('sellers', 'services.seller_id', '=', 'sellers.id')
-    ->join('service_categories', 'services.category', '=', 'service_categories.id')
-    ->join('service_sub_categories', 'services.subcategory', '=', 'service_sub_categories.id')
-    ->get();  // Fetch all records
-
-      return view('admin.customer.viewcustomeraddorder')->with('services', $services)->with('id', $id);
-      // dd($services);
-      // return view('admin.customer.viewcustomeraddorder');
+      $services =  services::with(['category' , 'serviceCategory', 'serviceSeller'])->get();
+      return view('admin.customer.viewcustomeraddorder', ['services' => $services])->with('id', $id);
     }
 
     
