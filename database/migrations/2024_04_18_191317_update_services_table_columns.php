@@ -13,7 +13,7 @@ class UpdateServicesTableColumns extends Migration
      */
     public function up()
     {
-        Schema::table('your_table_name', function (Blueprint $table) {
+        Schema::table('services', function (Blueprint $table) {
             $table->renameColumn('subcategory', 'service_category');
             $table->string('service_name');
             $table->renameColumn('price', 'service_charges');
@@ -31,7 +31,7 @@ class UpdateServicesTableColumns extends Migration
      */
     public function down()
     {
-        Schema::table('your_table_name', function (Blueprint $table) {
+        Schema::table('services', function (Blueprint $table) {
             $table->renameColumn('service_category', 'subcategory');
             $table->dropColumn('service_name');
             $table->renameColumn('service_charges', 'price');

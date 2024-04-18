@@ -15,6 +15,8 @@ class CreateServicesBundleTable extends Migration
     {
         Schema::create('services_bundle', function (Blueprint $table) {
             $table->id();
+            $table->string('name');
+            $table->decimal('price');
             $table->timestamps();
         });
     }
