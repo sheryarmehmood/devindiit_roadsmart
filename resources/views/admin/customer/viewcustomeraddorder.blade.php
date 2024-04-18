@@ -25,7 +25,7 @@
          <div class="col text-right">
             <a href="javascript:void(0)" class="btn btn-primary">Discard</a>
             <!-- <a href="{{route('seller.drafts')}}" class="btn btn-primary">Save</a> -->
-            <a href="{{route('admin.customers')}}" class="btn btn-primary" id="saveProducts">Save</a>
+            <a href="{{route('seller.drafts')}}" class="btn btn-primary" id="saveProducts">Save</a>
 
             <a href="{{route('seller.orders')}}" class="btn btn-primary">Back</a>
          </div>
@@ -36,7 +36,7 @@
          <div class="card card-table mb-3">
             <div class="card-body p-2 py-3 px-4">
                <div class="d-flex justify-content-between align-items-center">
-                  <h3 class="mb-0">Services</h3>
+                  <h3 class="mb-0">Items</h3>
                   <div class="d-flex justify-content-between align-items-center">
                      <!-- <a data-toggle="modal" data-target="#addcustom-popup" href="javascript: void(0);">Add custom items</a> -->
                      <!---div class="ml-3">
@@ -72,7 +72,9 @@
                   <table class="table">
                      <thead>
                         <tr>
+                           <th style="width:50px"><input name="select_all" value="1" type="checkbox"></th>
                            <th class="text-left pl-0"> Items</th>
+                           <th style="width:170px"></th>
                            <th class="text-center "> Status</th>
                            <th class="text-right pr-0"> Price</th>
                         </tr>
@@ -236,7 +238,7 @@
                    </div>
                 </div>
              </div> -->
-         <!-- <div class="card card-table mb-3 customerCard">
+         <div class="card card-table mb-3 customerCard">
             <div class="card-body p-2 py-3 px-4">
                <div class="d-flex justify-content-between align-items-center">
                   <h3 class="mb-0">Customer</h3>
@@ -272,7 +274,7 @@
                      <h5>Billing Address</h5>
                      <p>1688 St Matthews Ave, Winnipeg, MB R3H 0A2, Canada</p>
                   </div>
-               </div> -->
+               </div>
 
 
                <!---div class="contactInfo mt-3">
@@ -281,9 +283,9 @@
                       </div>
                       <h4><span>John Smith</span></h4>
                    </div--->
-            <!-- </div>
-         </div> -->
-         <!-- <div class="card card-table mb-3">
+            </div>
+         </div>
+         <div class="card card-table mb-3">
             <div class="card-body p-2 py-3 px-4">
                <div class="d-flex justify-content-between align-items-center">
                   <h3 class="mb-0">Notes</h3>
@@ -294,38 +296,7 @@
                   </div>
                </div>
             </div>
-         </div> -->
-
-         <div class="card card-table mb-3">
-                    <div class="card-body p-2 py-3 px-4">
-                        <div class="d-flex justify-content-between align-items-center">
-                            <h3 class="mb-0">Notes</h3>
-                            <a data-toggle="modal" data-target="#notes-popup" href="javascript: void(0);">Edit</a>
-                        </div>
-                        <div class="chat-search mt-32">
-                            <p class="text-muted">Lorem Ipsum is simply dummy text of the printing and typesetting
-                                industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s</p>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="card card-table mb-3">
-                    <div class="card-body p-2 py-3 px-4">
-                        <div class="d-flex justify-content-between align-items-center">
-                            <h3 class="mb-0">Marketing status</h3>
-                            <a class="edit-text-btn" data-toggle="modal" data-target="#editmarking-popup"
-                                href="javascript: void(0);">Edit</a>
-                        </div>
-                        <div class="TagsCardLists customerMarketingStatus">
-                            <span class="tagsitem">Email subscribed</span>
-                            <span class="tagsitem">SMS subscribed</span>
-
-                        </div>
-                        <p class="text-muted mt-3">Last updated yesterday.</p>
-                    </div>
-                </div> 
-
-
+         </div>
          <div class="card card-table mb-3">
             <div class="card-body p-2 py-3 px-4">
                <div class="d-flex justify-content-between align-items-center">
@@ -564,15 +535,15 @@
             <div class="card-table mb-0">
                <div class="body addorder p-0imp">
                   <div class="d-flex justify-content-between align-items-center">
-                     <h3 class="mb-0">Services</h3>
+                     <h3 class="mb-0">Products</h3>
                   </div>
                   <div class="chat-search d-flex justify-content-between align-items-center pt-2">
-                     <!-- <div class="input-group">
+                     <div class="input-group">
                         <div class="input-group-prepend">
                            <i class="fas fa-search"></i>
                         </div>
                         <input type="text" class="form-control" placeholder="Search">
-                     </div> -->
+                     </div>
                      <!--a class="btn btn-primary filter-btn ml-2" href="javascript: void(0);" id="filter_search">
                          <i class="fas fa-filter text-white"></i>
                       </a--->
@@ -613,7 +584,7 @@
             </div>
          </div>
          <div class="modal-footer">
-            <button type="button" class="btn btn-success" data-dismiss="modal">Add Service</button>
+            <button type="button" class="btn btn-success" data-dismiss="modal">Add Product</button>
             <button type="button" class="btn btn-danger" id="dismiss" data-dismiss="modal">Cancel</button>
          </div>
       </div>
@@ -791,48 +762,49 @@
          $(".payemntboxhide1").toggle();
       });
 
-       // Get CSRF token value from the meta tag
-    var csrfToken = $('meta[name="csrf-token"]').attr('content');
+      // Get CSRF token value from the meta tag
+      var csrfToken = $('meta[name="csrf-token"]').attr('content');
 
-// Event listener for the "Add Product" button in the modal
-$(".btn-success[data-dismiss='modal']").on("click", function() {
-    // Clear previous selections
-    $("#selectedProducts").empty();
-    var totalprice = 0;
-    // Loop through each selected checkbox
-    $(".viewBox table tbody tr").each(function() {
-        var checkbox = $(this).find("input[type='checkbox']");
-        if (checkbox.is(":checked")) {
-            var productName = $(this).find("td:eq(1) span.fs-4").text().trim();
-            var productStatus = $(this).find("td:eq(2)").text().trim();
-            var productPrice = parseFloat($(this).find("td:eq(3)").text().trim()); // Convert to number
-            totalprice += productPrice; // Add to totalprice
-            // Append the selected product details to the result area
-            $("#selectedProducts").append(
-                `<tr>
+      // Event listener for the "Add Product" button in the modal
+      $(".btn-success[data-dismiss='modal']").on("click", function() {
+         // Clear previous selections
+         $("#selectedProducts").empty();
+         var totalprice = 0;
+         // Loop through each selected checkbox
+         $(".viewBox table tbody tr").each(function() {
+            var checkbox = $(this).find("input[type='checkbox']");
+            if (checkbox.is(":checked")) {
+               var productName = $(this).find("td:eq(1) span.fs-4").text();
+               var productCat = $(this).find("td:eq(1) span.fs-6").text();
+               var productStatus = $(this).find("td:eq(2)").text().trim();
+               var productPrice = parseFloat($(this).find("td:eq(3)").text().trim()); // Convert to number
+               totalprice += productPrice; // Add to totalprice
+               // Append the selected product details to the result area
+               $("#selectedProducts").append(
+                  `<tr>
                     <td style="width:50px"><input type="checkbox" name="type" value=""></td>
-                    <td class="text-left  pl-0"> ${productName} <br /> ${productPrice} </td>
+                    <td class="text-left  pl-0"> ${productName} </td>
                     <td class="text-left  pl-0">
                         <a href="javascript:void(0)" data-toggle="modal" data-target="#addvehicle-popup">
-                            Toyota Hilux
+                        ${productCat}
                         </a>
                     </td>
                     <td class="text-center" style="width:120px">
                         ${productStatus}
                     </td>
-                    <td class="text-right pr-0"> ${productPrice}</td>
+                    <td class="text-right pr-0"> ${productPrice} <a href="#" class="crosdel ml-3">X</a> </td>
                 </tr>`
                );
             }
          });
 
-    $('#totalprice').text(totalprice);
-});
+         $('#totalprice').text(totalprice);
+      });
 
 
-$(".table tbody tr").on("click", function() {
-    // Remove the .selected class from all rows
-    $(".table tbody tr").removeClass("selected");
+      $(".table tbody tr").on("click", function() {
+         // Remove the .selected class from all rows
+         $(".table tbody tr").removeClass("selected");
 
          // Add the .selected class to the clicked row
          $(this).addClass("selected");
