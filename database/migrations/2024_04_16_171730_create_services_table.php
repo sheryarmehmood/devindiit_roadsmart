@@ -15,19 +15,17 @@ return new class extends Migration
     {
         Schema::create('services', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('category');
-            $table->string('subcategory');
-            $table->string('service_type');
-            $table->decimal('price');
-            $table->string('compatible_vehicle')->nullable();
-            $table->string('vendor');
-            $table->string('seller_id');
-            $table->string('brand_name')->nullable();
-            $table->string('image')->nullable();
-            $table->boolean('status')->default(true)->comment('1 for Active 0 for Inactive ');
+            $table->foreignId('category');
+            $table->foreignId('service_category');
+            $table->string('service_name');
+            $table->decimal('service_charges');
+            $table->longText('service_details');
+            $table->foreignId('sellers');
+            $table->string('service_location');
+            $table->boolean('service_status')->default(true)->comment('1 for Available 0 for Unavailable ');
             $table->timestamps();
 
-            $table->unique(['category', 'subcategory', 'seller_id'], 'category_subcategory_seller_id_unique');
+            $table->unique(['category', 'service_category', 'sellers'], 'category_subcategory_seller_id_unique');
         });
     }
 

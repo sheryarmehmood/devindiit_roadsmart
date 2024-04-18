@@ -550,6 +550,12 @@
                   </div>
                   <div class="viewBox table-responsive pt-0 px-3 hideborder">
                      <table class="table">
+                        <thead >
+                           <th></th>
+                           <th class="text-left">Service</th>
+                           <th class="text-center">Availabilty Status</th>
+                           <th class="text-right">Price</th>
+                        </thead>
                         <tbody>
                            @foreach($services as $service)
                            <tr>
@@ -561,13 +567,13 @@
                                  </div>
                               </td>
 
-                              <td class="text-left pl-0"> <span class="fs-4">{{ $service->sub_category_name }} </span><br> <span class="fs-6">{{ $service->category_name }}</span> </td>
-                              @if($service->status) 
+                              <td class="text-left pl-0"> <span class="fs-4">{{ $service->service_name }} </span><br> <span class="fs-6">{{ $service->serviceCategory->category_name ?? ''}}</span> </td>
+                              @if($service->service_status)
                               <td class="text-center "> Available</td>
                               @else
                               <td class="text-center "> Unavailble</td>
                               @endif
-                              <td class="text-right pr-0"> {{ $service->price }}</td>
+                              <td class="text-right pr-0"> {{ $service->service_charges }}</td>
                            </tr>
                            @endforeach
                         </tbody>
@@ -756,30 +762,31 @@
          $(".payemntboxhide1").toggle();
       });
 
-       // Get CSRF token value from the meta tag
-    var csrfToken = $('meta[name="csrf-token"]').attr('content');
+      // Get CSRF token value from the meta tag
+      var csrfToken = $('meta[name="csrf-token"]').attr('content');
 
-// Event listener for the "Add Product" button in the modal
-$(".btn-success[data-dismiss='modal']").on("click", function() {
-    // Clear previous selections
-    $("#selectedProducts").empty();
-    var totalprice = 0;
-    // Loop through each selected checkbox
-    $(".viewBox table tbody tr").each(function() {
-        var checkbox = $(this).find("input[type='checkbox']");
-        if (checkbox.is(":checked")) {
-            var productName = $(this).find("td:eq(1) span.fs-4").text().trim();
-            var productStatus = $(this).find("td:eq(2)").text().trim();
-            var productPrice = parseFloat($(this).find("td:eq(3)").text().trim()); // Convert to number
-            totalprice += productPrice; // Add to totalprice
-            // Append the selected product details to the result area
-            $("#selectedProducts").append(
-                `<tr>
+      // Event listener for the "Add Product" button in the modal
+      $(".btn-success[data-dismiss='modal']").on("click", function() {
+         // Clear previous selections
+         $("#selectedProducts").empty();
+         var totalprice = 0;
+         // Loop through each selected checkbox
+         $(".viewBox table tbody tr").each(function() {
+            var checkbox = $(this).find("input[type='checkbox']");
+            if (checkbox.is(":checked")) {
+               var productName = $(this).find("td:eq(1) span.fs-4").text();
+               var productCat = $(this).find("td:eq(1) span.fs-6").text();
+               var productStatus = $(this).find("td:eq(2)").text().trim();
+               var productPrice = parseFloat($(this).find("td:eq(3)").text().trim()); // Convert to number
+               totalprice += productPrice; // Add to totalprice
+               // Append the selected product details to the result area
+               $("#selectedProducts").append(
+                  `<tr>
                     <td style="width:50px"><input type="checkbox" name="type" value=""></td>
-                    <td class="text-left  pl-0"> ${productName} <br /> ${productPrice} </td>
+                    <td class="text-left  pl-0"> ${productName} </td>
                     <td class="text-left  pl-0">
                         <a href="javascript:void(0)" data-toggle="modal" data-target="#addvehicle-popup">
-                            Toyota Hilux
+                        ${productCat}
                         </a>
                     </td>
                     <td class="text-center" style="width:120px">
@@ -787,73 +794,21 @@ $(".btn-success[data-dismiss='modal']").on("click", function() {
                     </td>
                     <td class="text-right pr-0"> ${productPrice} <a href="#" class="crosdel ml-3">X</a> </td>
                 </tr>`
-            );
-        }
-    });
+               );
+            }
+         });
 
-    $('#totalprice').text(totalprice);
-});
+         $('#totalprice').text(totalprice);
+      });
 
 
       $(".table tbody tr").on("click", function() {
          // Remove the .selected class from all rows
          $(".table tbody tr").removeClass("selected");
 
-    // Add the .selected class to the clicked row
-    $(this).addClass("selected");
-});
-
-
-
-// Event listener for the "Save" button
-$("#saveProducts").on("click", function(e) {
-        e.preventDefault();
-
-        // Create an array to store the selected product details
-        var selectedProducts = [];
-
-        // Loop through each selected checkbox
-        $(".viewBox table tbody tr").each(function() {
-            var checkbox = $(this).find("input[type='checkbox']");
-            
-            if (checkbox.is(":checked")) {
-                var productName = $(this).find("td:eq(1) span.fs-4").text().trim();
-                var productStatus = $(this).find("td:eq(2)").text().trim();
-                var productPrice = $(this).find("td:eq(3)").text().trim();
-
-                // Push the selected product details to the array
-                selectedProducts.push({
-                    name: productName,
-                    status: productStatus,
-                    price: productPrice
-                });
-            }
-        });
-
-        // Send the selected products to the Laravel controller using AJAX
-        $.ajax({
-            url: "{{ route('admin.saveOrder') }}", // Replace with your route URL
-            type: "POST",
-            headers: {
-                'X-CSRF-TOKEN': csrfToken
-            },
-            data: {
-                products: selectedProducts
-            },
-            success: function(response) {
-                // Handle success response
-                console.log(response);
-               //  window.location.href = "{{ route('seller.drafts') }}";
-            },
-            error: function(error) {
-                // Handle error response
-                console.log(error);
-            }
-        });
-    });
-
-
-
+         // Add the .selected class to the clicked row
+         $(this).addClass("selected");
+      });
    });
 </script>
 @endsection

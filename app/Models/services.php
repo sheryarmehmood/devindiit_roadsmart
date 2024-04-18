@@ -4,21 +4,36 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 class services extends Model
 {
     use HasFactory;
+    protected $table = 'services';
 
     protected $fillable = [
         'category',
-        'subcategory',
-        'service_type',
-        'price',
-        'compatible_vehicle',
-        'vendor',
-        'brand_name',
-        'image',
-        'status',
-        'seller_id'
+        'service_name',
+        'service_category',
+        'service_details',
+        'sellers',
+        'service_charges',
+        'service_location',
+        'service_status'
     ];
+
+    public function category(): BelongsTo
+    {
+        return $this->belongsTo(Category::class, 'category');
+    }
+
+    public function serviceCategory(): BelongsTo
+    {
+        return $this->belongsTo(serviceCategory::class, 'service_category');
+    }
+
+    public function serviceSeller(): BelongsTo
+    {
+        return $this->belongsTo(Seller::class, 'sellers');
+    }
 }

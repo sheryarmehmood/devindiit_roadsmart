@@ -10,14 +10,14 @@
             <div class="col">
                 <h3 class="page-title">
                     <div class="d-flex titleSelect align-items-center">
-                        Services
+                        Sub Services
                     </div>
                 </h3>
             </div>
             <div class="col-auto text-right all-product-right">
                 <div class="actionMore d-flex align-items-center">
                     <a class="btn btn-primary addorder" href="{{route('admin.addservice')}}">
-                        Add Service
+                        Add Sub Service
                     </a>
                 </div>
             </div>
@@ -52,8 +52,8 @@
                 <thead>
                     <tr>
                         <th>Id</th>
-                        <th>Service</th>
-                        <th>Category</th>
+                        <th>Sub Service</th>
+                        <th>Service Category</th>
                         <th>Provider</th>
                         <th>Location</th>
                         <th>Price</th>
@@ -70,7 +70,8 @@
                         <td>{{$service->service_location}}</td>
                         <td>{{$service->service_charges}}</td>
                         <td>
-                            <a href="{{ route('admin.editService', $service->id) }}" class="btn btn-sm bg-success-light"><i class="fas fa-edit"></i> Edit</a>
+                            <a href="{{ route('admin.sellerservices', $service->id) }}" class="btn btn-sm bg-info-light"><i class="far fa-eye mr-1"></i> View</a>
+                            <a href="{{ route('admin.editsubService', $service->id) }}" class="btn btn-sm bg-success-light"><i class="fas fa-edit"></i> Edit</a>
                             <button class="btn btn-sm btn-danger delete_service" data-toggle="modal" data-target="#delete-popup" data-service-id="{{$service->id}}"><i class="fas fa-trash-alt"></i> Delete</button>
                             </a>
                         </td>
@@ -121,4 +122,8 @@
         });
     });
 </script>
+
+
+
+
 @endsection

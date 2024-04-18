@@ -7,7 +7,7 @@
 	<div class="page-header">
 		<div class="row">
 			<div class="col">
-				<h3 class="page-title">Add Service</h3>
+				<h3 class="page-title">Add Sub Service</h3>
 			</div>
 			<div class="col-auto text-right">
 				<a class="btn btn-secondary" href="{{route('admin.product')}}">
@@ -32,13 +32,13 @@
 							</div>
 							<div class="col-lg-12 ">
 								<div class="form-group">
-									<label class="col-form-label">Service Category</label>
+									<label class="col-form-label">Parent Service</label>
 									<select name="service_category" id="service_category" class="my-select form-control">
 
-										<option data-display="Select a category">Select a Category</option>
-										@foreach($categories as $category)
-										<option value="{{$category->id}}">{{$category->category_name}}</option>
-										@endforeach
+										<option data-display="Select a category">Select a Service</option>
+										<!-- @foreach($services as $service)
+										<option value="{{$service->id}}">{{$service->service_name}} - - - {{$service->sellers}}</option>
+										@endforeach -->
 									</select>
 								</div>
 							</div>
@@ -48,9 +48,9 @@
 									<select name="sellers" id="sellers" class="my-select form-control">
 
 										<option data-display="Select a provider">Select a provider</option>
-										@foreach($sellers as $seller)
+										<!-- @foreach($sellers as $seller)
 										<option value="{{$seller->id}}">{{$seller->first_name}} {{$seller->last_name}}</option>
-										@endforeach
+										@endforeach -->
 									</select>
 								</div>
 							</div>
