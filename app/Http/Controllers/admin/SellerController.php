@@ -214,7 +214,7 @@ class SellerController extends Controller
 
   public function sellerservices($id)
   {
-    $services = Services::where('sellers', 'like', '%' . $id . '%')->get();
+    $services = Services::where('sellers', $id)->get();
     return view('admin.seller.sellerservices', compact('services'));
   }
 
