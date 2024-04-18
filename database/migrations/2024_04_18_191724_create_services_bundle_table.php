@@ -13,7 +13,7 @@ class CreateServicesBundleTable extends Migration
      */
     public function up()
     {
-        Schema::create('services_bundle', function (Blueprint $table) {
+        Schema::create('services_bundles', function (Blueprint $table) {
             $table->id();
             $table->string('name');
             $table->decimal('price');
