@@ -1,5 +1,5 @@
 @extends('admin.layouts.app1')
-@section('title', 'Services')
+@section('title', 'viewService')
 
 @section('content')
 <link rel="stylesheet" href="https://cdn.datatables.net/1.12.1/css/jquery.dataTables.min.css">
@@ -10,7 +10,7 @@
             <div class="col">
                 <h3 class="page-title">
                     <div class="d-flex titleSelect align-items-center">
-                        Services
+                   
                     </div>
                 </h3>
             </div>
@@ -70,7 +70,6 @@
                         <td>{{$service->service_location}}</td>
                         <td>{{$service->service_charges}}</td>
                         <td>
-                            <a href="{{ route('admin.viewService', $service->id) }}" class="btn btn-sm bg-info-light"><i class="far fa-eye mr-1"></i> View</a>
                             <a href="{{ route('admin.editService', $service->id) }}" class="btn btn-sm bg-success-light"><i class="fas fa-edit"></i> Edit</a>
                             <button class="btn btn-sm btn-danger delete_service" data-toggle="modal" data-target="#delete-popup" data-service-id="{{$service->id}}"><i class="fas fa-trash-alt"></i> Delete</button>
                             </a>

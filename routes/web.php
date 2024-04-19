@@ -380,14 +380,17 @@ Route::namespace('App\Http\Controllers\admin')->name('admin.')->prefix('admin')-
   Route::get('viewcustomeraddrequest/{id?}', 'CustomerController@viewcustomeraddrequest')->name('viewcustomeraddrequest');
   Route::get('addvehicle/{id?}', 'CustomerController@addvehicle')->name('addvehicle');
   Route::get('services', 'ServiceController@services')->name('services');
+  Route::get('viewService/{id}', 'ServiceController@viewService')->name('viewService');
   Route::get('subservices', 'ServiceController@subservices')->name('subservices');
   Route::get('addservice', 'ServiceController@addservice')->name('addservice');
   Route::post('saveService', 'ServiceController@saveService')->name('saveService');
+  Route::post('saveSubService', 'ServiceController@saveSubService')->name('saveSubService');
   Route::get('editService/{id}', 'ServiceController@editService')->name('editService');
   Route::post('updateService/{id}', 'ServiceController@updateService')->name('updateService');
   Route::get('editsubService/{id}', 'ServiceController@editsubService')->name('editsubService');
   Route::post('updateSubService/{id}', 'ServiceController@updateSubService')->name('updateSubService');
   Route::get('deleteService/{id}', 'ServiceController@deleteService')->name('deleteService');
+  Route::get('deletesubService/{id}', 'ServiceController@deletesubService')->name('deletesubService');
   Route::get('addSubservice', 'ServiceController@addSubservice')->name('addSubservice');
   Route::get('sellerservices/{id?}', 'SellerController@sellerservices')->name('sellerservices');
   Route::get('get_customerListing', 'CustomerController@get_customerListing')->name('get_customerListing');

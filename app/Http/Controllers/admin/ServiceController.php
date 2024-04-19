@@ -33,7 +33,10 @@ class ServiceController extends Controller
     }
     public function addSubservice()
     {
-        return view('admin.services.SubServices.addSubservice');
+        $categories =  ServiceCategory::get();
+        $sellers =  Seller::get();
+        $services = services::get();
+        return view('admin.SubServices.addSubservice', ['categories' => $categories, 'sellers' => $sellers , 'services' => $services]);
     }
 
     public function editService($request)
@@ -47,6 +50,7 @@ class ServiceController extends Controller
             'service' => $service
         ]);
     }
+
     public function editsubService($request)
     {
         $categories =  ServiceCategory::get();
@@ -65,13 +69,39 @@ class ServiceController extends Controller
         $services =  services::with(['category', 'serviceCategory', 'serviceSeller'])->get();
         return view('admin.services.services', ['services' => $services]);
     }
+    public function viewService($id)
+    {
+        $services = services::where('id', $id)->get();
+        return view('admin.services.viewservice', ['services' => $services]);
+    }
+
     public function subservices()
     {
         $services =  services::with(['category', 'serviceCategory', 'serviceSeller'])->get();
-        return view('admin.services.SubServices.subservices', ['services' => $services]);
+        return view('admin.SubServices.subservices', ['services' => $services]);
     }
 
     public function saveService(Request $request)
+    {
+        $category_name =  Category::select('id')->Where('name', 'like', '%' . 'service' . '%')->first();
+        $formFields = $request->validate([
+            'service_name' => 'required',
+            'service_category' => 'required|exists:service_categories,id',
+            'service_details' => 'required',
+            'sellers' => 'required',
+            'service_charges' => 'required',
+            'service_location' => 'required',
+            'service_status' => 'required'
+        ]);
+
+        $formFields['category'] = $category_name->id;
+        services::create($formFields);
+
+
+        return redirect('admin/services')->with('message', 'Service created successfully!');
+    }
+
+    public function saveSubService(Request $request)
     {
         $category_name =  Category::select('id')->Where('name', 'like', '%' . 'service' . '%')->first();
         $formFields = $request->validate([
@@ -122,6 +152,15 @@ class ServiceController extends Controller
     }
 
     public function deleteService($request)
+    {
+        $service = services::findOrFail($request);
+        if (!$service) {
+            return redirect()->back()->with('error', 'Service not found');
+        }
+        $service->delete();
+        return redirect('admin/services')->with('message', 'Service deleted successfully');
+    }
+    public function deletesubService($request)
     {
         $service = services::findOrFail($request);
         if (!$service) {

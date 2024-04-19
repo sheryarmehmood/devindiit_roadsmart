@@ -16,7 +16,7 @@
             </div>
             <div class="col-auto text-right all-product-right">
                 <div class="actionMore d-flex align-items-center">
-                    <a class="btn btn-primary addorder" href="{{route('admin.addservice')}}">
+                    <a class="btn btn-primary addorder" href="{{route('admin.addSubservice')}}">
                         Add Sub Service
                     </a>
                 </div>
@@ -45,7 +45,7 @@
     </div>
     <div class="card card-table flex-fill ordertabstableitems">
         <div class="card-header">
-            <h4 class="card-title">Services</h4>
+            <h4 class="card-title">Sub Services</h4>
         </div>
         <div class="card-body px-4 pt-2">
             <table class="table table-center datatable" id="serviceTableList">
@@ -118,7 +118,7 @@
         $('#confirm-delete').click(function() {
             var serviceId = $(this).data('service-id');
             $('#delete-popup').modal('hide');
-            window.location.href = "{{ url('admin/deleteService') }}/" + serviceId;
+            window.location.href = "{{ url('admin/deletesubService') }}/" + serviceId;
         });
     });
 </script>
