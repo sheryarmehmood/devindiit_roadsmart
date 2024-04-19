@@ -16,7 +16,7 @@ class CreateServiceBundleSubserviceTable extends Migration
         Schema::create('service_bundle_subservice', function (Blueprint $table) {
             $table->foreignId('service_bundle_id')->constrained()->onDelete('cascade');
             $table->foreignId('sub_service_id')->constrained()->onDelete('cascade');
-            $table->primary(['service_bundle_id', 'sub_service_id']);
+            $table->primary(['service_bundle_id', 'sub_service_id'], 'service_bundle_subservice_primary');
             $table->timestamps();
         });
     }
