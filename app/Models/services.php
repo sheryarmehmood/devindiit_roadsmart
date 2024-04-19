@@ -36,4 +36,14 @@ class services extends Model
     {
         return $this->belongsTo(Seller::class, 'sellers');
     }
+
+    public function subservices()
+    {
+        return $this->hasMany(SubServices::class);
+    }
+
+    public function bundles()
+    {
+        return $this->belongsToMany(ServicesBundle::class, 'service_bundle_service');
+    }
 }
