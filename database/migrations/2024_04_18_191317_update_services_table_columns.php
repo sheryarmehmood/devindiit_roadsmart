@@ -18,7 +18,7 @@ class UpdateServicesTableColumns extends Migration
             $table->string('service_name');
             $table->renameColumn('price', 'service_charges');
             $table->string('service_details');
-            $table->string('seller');
+            $table->string('sellers');
             $table->renameColumn('status', 'service_status');
             $table->string('service_location');
         });
@@ -36,7 +36,7 @@ class UpdateServicesTableColumns extends Migration
             $table->dropColumn('service_name');
             $table->renameColumn('service_charges', 'price');
             $table->dropColumn('service_details');
-            $table->dropColumn('seller');
+            $table->dropColumn('sellers');
             $table->renameColumn('service_status', 'status');
             $table->dropColumn('service_location');
         });
