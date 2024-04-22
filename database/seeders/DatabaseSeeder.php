@@ -20,7 +20,9 @@ class DatabaseSeeder extends Seeder
         ServiceTypeSeeder::class,
         UserPermission::class,
         AdminSeeder::class,
-        NotificationSeeder::class
+        NotificationSeeder::class,
+        RoleSeeder::class,
+        AdminSeeder::class
     	]);
     }
 }

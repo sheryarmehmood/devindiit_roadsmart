@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers\admin;
 
-use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Auth;
+
 
 
 class UserController extends Controller
@@ -23,8 +25,20 @@ class UserController extends Controller
      *
      * @return \Illuminate\Contracts\Support\Renderable
      */
-    public function user_management()
+
+    
+     public function adminusers()
+     {
+         // Check if the authenticated user has the 'admin' role
+         if (!Auth::check() || !Auth::user()->hasRole('admin')) {
+             abort(403, 'Unauthorized action.');
+         }
+         
+         return view('admin.users.adminusers');
+     }
+
+    public function adduser()
     {
-        return view('admin.user.user_management');
+        return view('admin.users.adduser');
     }
 }

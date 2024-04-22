@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\admin\UserController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ApiController;
 /*
@@ -370,6 +371,8 @@ Route::namespace('App\Http\Controllers\admin')->name('admin.')->prefix('admin')-
 
 
   //Admin Customers  routes start here
+  Route::get('adminusers' , 'UserController@adminusers')->middleware(['auth' , 'admin'])->name('adminusers');
+  Route::get('edduser' , 'UserController@adduser')->name('adduser');
   Route::get('customers', 'CustomerController@customers')->name('customers');
   Route::get('addcustomer', 'CustomerController@addcustomer')->name('addcustomer');
   Route::get('editcustomer/{id?}', 'CustomerController@editcustomer')->name('editcustomer');

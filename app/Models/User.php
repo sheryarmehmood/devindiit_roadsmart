@@ -9,12 +9,16 @@ use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
 use App\Models\SellerRating;
 use DB;
+use Spatie\Permission\Traits\HasRoles;
 
 class User extends Authenticatable
 {
-    use HasApiTokens, HasFactory, Notifiable;
+    use HasApiTokens, HasFactory, Notifiable , HasRoles;
 
     protected $table = 'users';
+
+    protected $guard_name = 'admin';
+    
     /**
      * The attributes that are mass assignable.
      *

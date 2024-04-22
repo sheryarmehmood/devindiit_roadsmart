@@ -34,6 +34,7 @@ class LoginController extends Controller
 
     public function loginAdmin(Request $request)
     {
+      //dd($request);
       // Validate the form data
       $this->validate($request, [
         'email'   => 'required|email',

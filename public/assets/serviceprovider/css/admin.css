@@ -772,6 +772,12 @@ button.bg-danger:hover {
 	color: #fff;
 }
 
+.btn-secondary{
+	border-radius: 20px;
+	text-transform: capitalize;
+}
+
+
 .btn-secondary.active:focus:not(:disabled):not(.disabled),
 .btn-secondary:active:focus:not(:disabled):not(.disabled),
 .show>.btn-secondary.dropdown-toggle:focus {

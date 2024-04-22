@@ -2,8 +2,11 @@
 
 namespace Database\Seeders;
 
-use Illuminate\Database\Seeder;
+
 use \App\Models\Admin;
+use App\Models\User;
+use Illuminate\Database\Seeder;
+use Spatie\Permission\Models\Role;
 
 class AdminSeeder extends Seeder
 {
@@ -14,13 +17,13 @@ class AdminSeeder extends Seeder
      */
     public function run()
     {
-         \App\Models\Admin::create([
+        User::create([
             "name" => 'Admin',
-            "email" => 'christopherjen@yopmail.com',
-            "password" => bcrypt('christopherjen@123'),
+            "email" => 'christopherjentwo@yopmail.com',
+            "password" => bcrypt('christopherjen@1234'),
             "created_at" =>  date('Y-m-d H:i:s'),
             "updated_at" => date('Y-m-d H:i:s')
-        ]);
+        ])->assignRole('admin');
         // $admin = [
         //     "name" => 'Admin',
         //     "email" => 'christopherjen@yopmail.com',

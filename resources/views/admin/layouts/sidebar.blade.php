@@ -15,6 +15,9 @@
                             <li class="{{ (\Request::route()->getName() =='seller.customers') ?  'menu-item-active ' : '' }}">
                                 <a href="{{route('admin.customers')}}" class=""> <span>Customers </span></a>
                             </li>
+                            <li class="{{ (\Request::route()->getName() =='admin.adminusers') ?  'menu-item-active ' : '' }}">
+                                <a href="{{route('admin.adminusers')}}" class=""> <span>Admin Users</span></a>
+                            </li>
                         </ul>
                     </div>
                 </li>
