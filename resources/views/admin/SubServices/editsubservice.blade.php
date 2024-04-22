@@ -1,5 +1,5 @@
 @extends('admin.layouts.app1')
-@section('title', 'Add Service')
+@section('title', 'Edit SubService')
 @section('content')
 
 <link href="https://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.9/summernote-bs4.css" rel="stylesheet">
@@ -11,7 +11,7 @@
 				<h3 class="page-title">Edit Sub Service</h3>
 			</div>
 			<div class="col-auto text-right">
-				<a class="btn btn-secondary" href="{{route('admin.product')}}">
+				<a class="btn btn-primary addorder" href="{{URL::previous()}}">
 					Back
 				</a>
 			</div>
@@ -19,7 +19,7 @@
 	</div>
 	<form method="POST" id="add_service" name="add_service" action="{{ route('admin.updateSubService', $service->id) }}">
 	@csrf
-		<div class="row">
+	<div class="row">
 			<div class="col-md-12">
 				<div class="card mb-4">
 					<div class="card-body">
@@ -27,28 +27,17 @@
 							<div class="col-xl-12">
 								<div class="form-group">
 									<label class="col-form-label">Service Name</label>
-									<input type="text" id="" class="form-control" name="service_name" value="{{$service->service_name}}">
+									<input type="text" id="" class="form-control" name="name" value="{{$service->name}}">
 								</div>
 							</div>
 							<div class="col-lg-12 ">
 								<div class="form-group">
-									<label class="col-form-label">Service Category</label>
-									<select name="service_category" id="service_category" class="my-select form-control">
-										<option data-display="Select a category">{{$service->service_category}}</option>
-										@foreach($categories as $category)
-										<option value="{{$category->id}}">{{$category->category_name}}</option>
-										@endforeach
-									</select>
-								</div>
-							</div>
-							<div class="col-lg-12 ">
-								<div class="form-group">
-									<label class="col-form-label">Service Seller</label>
-									<select name="sellers" id="sellers" class="my-select form-control">
+									<label class="col-form-label">Parent Service</label>
+									<select name="service_id" id="service_category" class="my-select form-control">
 
-										<option data-display="Select a provider"> @foreach($sellers as $seller) @if($seller->id == $service->sellers) {{$seller->first_name}} {{$seller->last_name}} @endif @endforeach</option>
-										@foreach($sellers as $seller)
-										<option value="{{$seller->id}}">{{$seller->first_name}} {{$seller->last_name}}</option>
+										<option data-display="Select a category">Select a Service</option>
+										@foreach($parent_services as $parent_service)
+										<option value="{{$parent_service->id}}">{{$parent_service->service_name}} , Seller -- {{$parent_service->sellers}}</option>
 										@endforeach
 									</select>
 								</div>
@@ -62,25 +51,25 @@
 							<div class="col-md-12">
 								<div class="form-group">
 									<label class="col-form-label">Price</label>
-									<input type="text" id="service_charges" class="form-control" name="service_charges" value="{{$service->service_charges}}">
+									<input type="text" id="service_charges" class="form-control" name="price" value="{{$service->price}}">
 								</div>
 							</div>
 							<div class="col-md-6">
 								<div class="form-group row">
-									<label class="col-lg-12 col-form-label">Location</label>
+									<label class="col-lg-12 col-form-label">Brand Name</label>
 									<div class="col-lg-12">
-										<input type="text" id="service_location" class="form-control" name="service_location" value="{{$service->service_location}}">
+										<input type="text" id="brand_name" class="form-control" name="brand_name" value="{{$service->brand_name}}">
 									</div>
 								</div>
 							</div>
 							<div class="col-xl-6">
 								<div class="form-group">
 									<label class="col-form-label">Status </label>
-									<select name="service_status" id="service_status" class="my-select form-control">
-										@if($service->service_status)
+									<select name="status" id="service_status" class="my-select form-control">
+										@if($service->status)
 										<option value="1" selected>Available</option>
 										<option value="0">Unavailble</option>
-										@else 
+										@else
 										<option value="1" >Available</option>
 										<option value="0" selected>Unavailble</option>
 										@endif

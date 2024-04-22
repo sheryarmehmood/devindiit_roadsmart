@@ -10,7 +10,7 @@
 				<h3 class="page-title">Add Sub Service</h3>
 			</div>
 			<div class="col-auto text-right">
-				<a class="btn btn-secondary" href="{{route('admin.product')}}">
+				<a class="btn btn-primary addorder" href="{{URL::previous()}}">
 					Back
 				</a>
 			</div>
@@ -27,13 +27,13 @@
 							<div class="col-xl-12">
 								<div class="form-group">
 									<label class="col-form-label">Service Name</label>
-									<input type="text" id="" class="form-control" name="service_name" value="">
+									<input type="text" id="" class="form-control" name="name" value="">
 								</div>
 							</div>
 							<div class="col-lg-12 ">
 								<div class="form-group">
 									<label class="col-form-label">Parent Service</label>
-									<select name="service_category" id="service_category" class="my-select form-control">
+									<select name="service_id" id="service_category" class="my-select form-control">
 
 										<option data-display="Select a category">Select a Service</option>
 										@foreach($services as $service)
@@ -51,21 +51,21 @@
 							<div class="col-md-12">
 								<div class="form-group">
 									<label class="col-form-label">Price</label>
-									<input type="text" id="service_charges" class="form-control" name="service_charges" value="">
+									<input type="text" id="service_charges" class="form-control" name="price" value="">
 								</div>
 							</div>
 							<div class="col-md-6">
 								<div class="form-group row">
-									<label class="col-lg-12 col-form-label">Location</label>
+									<label class="col-lg-12 col-form-label">Brand Name</label>
 									<div class="col-lg-12">
-										<input type="text" id="service_location" class="form-control" name="service_location" value="">
+										<input type="text" id="brand_name" class="form-control" name="brand_name" value="">
 									</div>
 								</div>
 							</div>
 							<div class="col-xl-6">
 								<div class="form-group">
 									<label class="col-form-label">Status </label>
-									<select name="service_status" id="service_status" class="my-select form-control">
+									<select name="status" id="service_status" class="my-select form-control">
 										<option value="1">Available</option>
 										<option value="0">Unavailble</option>
 									</select>

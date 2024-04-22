@@ -8,6 +8,17 @@ use Illuminate\Database\Eloquent\Model;
 class SubServices extends Model
 {
     use HasFactory;
+    protected $table = 'sub_services';
+
+    protected $fillable = [
+        'name',
+        'service_id',
+        'price',
+        'brand_name',
+        'image',
+        'service_details',
+        'status'
+    ];
 
     public function service()
     {

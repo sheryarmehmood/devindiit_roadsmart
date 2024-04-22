@@ -2000,11 +2000,28 @@ html.menu-opened body {
 .sidebar-menu li a:hover {
 	color: #c9343a;
 }
-
 .sidebar-menu>ul>li>a:hover , .sidebar-menu>ul>li.menu-item-active > a , .sidebar-menu .submenu-dropdown ul li a:hover {
 	background-color: #c9343a;
     color: #fff;
+	border-radius: 10px;
 }
+
+.sidebar-menu .submenu-dropdown ul {
+	padding-bottom: 5px;
+	border-bottom: 1px solid #999;
+}
+.sidebar-menu .submenu-dropdown ul li a {
+	border-radius: 10px;
+	margin: 3px 0;
+	transition: all 0.2s ease-in-out;
+}
+
+.sidebar-menu .submenu-dropdown ul li.menu-item-active a {
+	background-color: #c9343a;
+    color: #fff;
+}
+
+
 
 .sidebar-menu>ul>li.active>a:hover {
 	background-color: #000;

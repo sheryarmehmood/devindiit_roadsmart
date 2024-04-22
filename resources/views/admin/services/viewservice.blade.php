@@ -10,7 +10,7 @@
             <div class="col">
                 <h3 class="page-title">
                     <div class="d-flex titleSelect align-items-center">
-                   
+
                     </div>
                 </h3>
             </div>
@@ -18,6 +18,9 @@
                 <div class="actionMore d-flex align-items-center">
                     <a class="btn btn-primary addorder" href="{{route('admin.addservice')}}">
                         Add Service
+                    </a>
+                    <a class="btn btn-primary addorder" href="{{URL::previous()}}">
+                        Back
                     </a>
                 </div>
             </div>
@@ -52,10 +55,11 @@
                 <thead>
                     <tr>
                         <th>Id</th>
-                        <th>Service</th>
-                        <th>Category</th>
-                        <th>Provider</th>
+                        <th>Sub Service</th>
+                        <th>Parent Service</th>
+                        <th>Brand</th>
                         <th>Location</th>
+                        <th>Availabilty</th>
                         <th>Price</th>
                         <th>Actions</th>
                     </tr>
@@ -64,13 +68,15 @@
                     @foreach($services as $service)
                     <tr>
                         <td>{{$service->id}}</td>
-                        <td>{{$service->service_name}}</td>
-                        <td>{{$service->serviceCategory->category_name ?? ''}}</td>
-                        <td>{{$service->serviceSeller->first_name ?? ''}} {{$service->serviceSeller->last_name ?? ''}}</td>
-                        <td>{{$service->service_location}}</td>
-                        <td>{{$service->service_charges}}</td>
+                        <td>{{$service->name}}</td>
+                        <td>{{$service->service->service_name ?? ''}}</td>
+                        <td>{{$service->brand_name}}</td>
+                        <td>{{$service->service_details}}</td>
+                        <td>{{$service->status}}</td>
+                        <td>{{$service->price}}</td>
+
                         <td>
-                            <a href="{{ route('admin.editService', $service->id) }}" class="btn btn-sm bg-success-light"><i class="fas fa-edit"></i> Edit</a>
+                            <a href="{{ route('admin.editsubService', $service->id) }}" class="btn btn-sm bg-success-light"><i class="fas fa-edit"></i> Edit</a>
                             <button class="btn btn-sm btn-danger delete_service" data-toggle="modal" data-target="#delete-popup" data-service-id="{{$service->id}}"><i class="fas fa-trash-alt"></i> Delete</button>
                             </a>
                         </td>

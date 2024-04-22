@@ -10,14 +10,14 @@
             <div class="col">
                 <h3 class="page-title">
                     <div class="d-flex titleSelect align-items-center">
-                        Sub Services
+                        Bundle Services
                     </div>
                 </h3>
             </div>
             <div class="col-auto text-right all-product-right">
                 <div class="actionMore d-flex align-items-center">
-                    <a class="btn btn-primary addorder" href="{{route('admin.addSubservice')}}">
-                        Add Sub Service
+                    <a class="btn btn-primary addorder" href="{{route('admin.addservicebundle')}}">
+                        Add Bundle
                     </a>
                 </div>
             </div>
@@ -45,18 +45,15 @@
     </div>
     <div class="card card-table flex-fill ordertabstableitems">
         <div class="card-header">
-            <h4 class="card-title">Sub Services</h4>
+            <h4 class="card-title">Bundles</h4>
         </div>
         <div class="card-body px-4 pt-2">
             <table class="table table-center datatable" id="serviceTableList">
                 <thead>
                     <tr>
                         <th>Id</th>
-                        <th>Sub Service</th>
-                        <th>Parent Service</th>
-                        <th>Brand</th>
-                        <th>Location</th>
-                        <th>Availabilty</th>
+                        <th>Bundle Name</th>
+                        <th>Status</th>
                         <th>Price</th>
                         <th>Actions</th>
                     </tr>
@@ -66,14 +63,16 @@
                     <tr>
                         <td>{{$service->id}}</td>
                         <td>{{$service->name}}</td>
-                        <td>{{$service->service->service_name ?? ''}}</td>
-                        <td>{{$service->brand_name}}</td>
-                        <td>{{$service->service_details}}</td>
-                        <td>{{$service->status}}</td>
+                        <td>@if($service->status)
+                            Available
+                            @else
+                            Unavailable
+                            @endif
+                        </td>
                         <td>{{$service->price}}</td>
-
                         <td>
-                            <a href="{{ route('admin.editsubService', $service->id) }}" class="btn btn-sm bg-success-light"><i class="fas fa-edit"></i> Edit</a>
+                            <a href="{{ route('admin.viewbundleservice', $service->id) }}" class="btn btn-sm bg-info-light"><i class="far fa-eye mr-1"></i> View</a>
+                            <a href="{{ route('admin.editbundleservice', $service->id) }}" class="btn btn-sm bg-success-light"><i class="fas fa-edit"></i> Edit</a>
                             <button class="btn btn-sm btn-danger delete_service" data-toggle="modal" data-target="#delete-popup" data-service-id="{{$service->id}}"><i class="fas fa-trash-alt"></i> Delete</button>
                             </a>
                         </td>
@@ -120,12 +119,8 @@
         $('#confirm-delete').click(function() {
             var serviceId = $(this).data('service-id');
             $('#delete-popup').modal('hide');
-            window.location.href = "{{ url('admin/deletesubService') }}/" + serviceId;
+            window.location.href = "{{ url('admin/deletebundleService') }}/" + serviceId;
         });
     });
 </script>
-
-
-
-
 @endsection

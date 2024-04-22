@@ -379,19 +379,35 @@ Route::namespace('App\Http\Controllers\admin')->name('admin.')->prefix('admin')-
   Route::get('viewcustomeraddorder/{id?}', 'CustomerController@viewcustomeraddorder')->name('viewcustomeraddorder');
   Route::get('viewcustomeraddrequest/{id?}', 'CustomerController@viewcustomeraddrequest')->name('viewcustomeraddrequest');
   Route::get('addvehicle/{id?}', 'CustomerController@addvehicle')->name('addvehicle');
+
+  //services Routes
   Route::get('services', 'ServiceController@services')->name('services');
   Route::get('viewService/{id}', 'ServiceController@viewService')->name('viewService');
-  Route::get('subservices', 'ServiceController@subservices')->name('subservices');
   Route::get('addservice', 'ServiceController@addservice')->name('addservice');
   Route::post('saveService', 'ServiceController@saveService')->name('saveService');
-  Route::post('saveSubService', 'ServiceController@saveSubService')->name('saveSubService');
   Route::get('editService/{id}', 'ServiceController@editService')->name('editService');
   Route::post('updateService/{id}', 'ServiceController@updateService')->name('updateService');
+  Route::get('deleteService/{id}', 'ServiceController@deleteService')->name('deleteService');
+
+  //SubServices Routes
+  Route::get('subservices', 'ServiceController@subservices')->name('subservices');
+  Route::get('addSubservice', 'ServiceController@addSubservice')->name('addSubservice');
+  Route::post('saveSubService', 'ServiceController@saveSubService')->name('saveSubService');
   Route::get('editsubService/{id}', 'ServiceController@editsubService')->name('editsubService');
   Route::post('updateSubService/{id}', 'ServiceController@updateSubService')->name('updateSubService');
-  Route::get('deleteService/{id}', 'ServiceController@deleteService')->name('deleteService');
   Route::get('deletesubService/{id}', 'ServiceController@deletesubService')->name('deletesubService');
-  Route::get('addSubservice', 'ServiceController@addSubservice')->name('addSubservice');
+
+  //Bundle Services Routes
+  Route::get('bundleServices', 'ServiceController@bundleServices')->name('bundleServices');
+  Route::get('viewbundleservice/{id}', 'ServiceController@viewbundleservice')->name('viewbundleservice');
+  Route::get('addservicebundle', 'ServiceController@addservicebundle')->name('addservicebundle');
+  Route::post('savebundleService', 'ServiceController@savebundleService')->name('savebundleService');
+  Route::get('editbundleservice/{id}', 'ServiceController@editbundleservice')->name('editbundleservice');
+  Route::post('updatebundleservice/{id}', 'ServiceController@updatebundleservice')->name('updatebundleservice');
+  Route::get('deletebundleService/{id}', 'ServiceController@deletebundleService')->name('deletebundleService');
+  //api routes for bundles
+  Route::post('api/fetchsubservices', 'ServiceController@fetchsubservices')->name('fetchsubservices');
+
   Route::get('sellerservices/{id?}', 'SellerController@sellerservices')->name('sellerservices');
   Route::get('get_customerListing', 'CustomerController@get_customerListing')->name('get_customerListing');
   Route::post('/delete_customer', 'CustomerController@delete_customer')->name('delete_customer');

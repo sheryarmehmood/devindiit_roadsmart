@@ -10,7 +10,7 @@
 				<h3 class="page-title">Add Service</h3>
 			</div>
 			<div class="col-auto text-right">
-				<a class="btn btn-secondary" href="{{route('admin.product')}}">
+				<a class="btn btn-primary addorder" href="{{URL::previous()}}">
 					Back
 				</a>
 			</div>

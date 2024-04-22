@@ -20,13 +20,19 @@
                 </li>
                 <li class="child-menu">
                     <a href="javascript:void(0);"><i class="fas fa-user"></i> <span>Service Management</span><span class="toggle-down" data-toggle="collapse" href="#collapseExample23" role="button" aria-expanded="false" aria-controls="collapseExample23"></span></a>
-                    <div class="submenu-dropdown collapse" id="collapseExample23">
-                        <ul class="submenu-dropdown">
-                            <li class="{{ (\Request::route()->getName() =='admin.services') ?  'menu-item-active ' : '' }}">
+                    <?php
+                    $adminRoutes = ['admin.services', 'admin.subservices', 'admin.bundleServices'];
+                    ?>
+                    <div class="submenu-dropdown collapse {{ (in_array(\Request::route()->getName(), $adminRoutes)) ? ' show' : '' }}" id="collapseExample23">
+                        <ul class="submenu-dropdown ">
+                            <li class="{{ (Request::route()->getName() =='admin.services') ?  'menu-item-active ' : '' }}">
                                 <a href="{{route('admin.services')}}" class=""> <span>Services </span></a>
                             </li>
-                            <li class="{{ (\Request::route()->getName() =='admin.addservice') ?  'menu-item-active ' : '' }}">
+                            <li class="{{ (Request::route()->getName() =='admin.subservices') ?  'menu-item-active ' : '' }}">
                                 <a href="{{route('admin.subservices')}}" class=""></i> <span>Sub Services</span></a>
+                            </li>
+                            <li class="{{ (Request::route()->getName() =='admin.bundleServices') ?  'menu-item-active ' : '' }}">
+                                <a href="{{route('admin.bundleServices')}}" class=""></i> <span>Service Bundles</span></a>
                             </li>
                         </ul>
                     </div>
