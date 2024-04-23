@@ -6,24 +6,14 @@ use App\Http\Controllers\Controller;
 use App\Models\Category;
 use App\Models\ServiceCategory;
 use App\Models\Seller;
-use Illuminate\Support\Facades\Validator;
-use Illuminate\Support\Facades\Session;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
 
-use App\Models\User;
-use App\Models\Orders;
-use App\Models\Vehicles;
-use App\Models\UserAddresses;
-use App\Models\Requests;
 use App\Models\ServiceBundleServices;
 use App\Models\ServiceBundleSubServices;
 use App\Models\Services;
 use App\Models\ServicesBundle;
 use App\Models\SubServices;
-use Illuminate\Validation\Rule;
 
-use DB;
 
 class ServiceController extends Controller
 {
@@ -95,7 +85,6 @@ class ServiceController extends Controller
 
     public function saveService(Request $request)
     {
-        dd($request);
         $category_name =  Category::select('id')->Where('name', 'like', '%' . 'service' . '%')->first();
         $formFields = $request->validate([
             'service_name' => 'required',
@@ -129,7 +118,6 @@ class ServiceController extends Controller
 
     public function savebundleService(Request $request)
     {
-        //dd($request);
         // Validate the form fields
         $validatedData = $request->validate([
             'name' => 'required',
@@ -303,7 +291,6 @@ class ServiceController extends Controller
         return redirect('admin/subservices')->with('message', 'Service deleted successfully');
     }
 
-    //api for service Bundles
     public function fetchsubservices(Request $request)
     {
         $serviceId = $request->input('Service_id');

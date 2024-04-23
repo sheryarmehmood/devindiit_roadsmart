@@ -10,14 +10,14 @@
             <div class="col">
                 <h3 class="page-title">
                     <div class="d-flex titleSelect align-items-center">
-
+                    Service Details
                     </div>
                 </h3>
             </div>
             <div class="col-auto text-right all-product-right">
                 <div class="actionMore d-flex align-items-center">
                     <a class="btn btn-primary addorder" href="{{route('admin.addservice')}}">
-                        Add Service
+                        Add Sub Service
                     </a>
                     <a class="btn btn-primary addorder" href="{{URL::previous()}}">
                         Back
@@ -48,7 +48,7 @@
     </div>
     <div class="card card-table flex-fill ordertabstableitems">
         <div class="card-header">
-            <h4 class="card-title">Services</h4>
+            <h4 class="card-title">Sub Services</h4>
         </div>
         <div class="card-body px-4 pt-2">
             <table class="table table-center datatable" id="serviceTableList">

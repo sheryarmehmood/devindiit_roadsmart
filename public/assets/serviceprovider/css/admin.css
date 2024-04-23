@@ -8945,3 +8945,35 @@ div#create-report-popup .ui.multiple.dropdown>.label {
 .back-arrow a:hover i  {
 	color: #333333;
 }
+
+.dataTables_length {
+	display: none !important;
+}
+
+.dataTables_wrapper .dataTables_paginate .paginate_button {
+	border-radius: 50% !important;
+	padding: 0 !important;
+	margin: 0 !important;
+	overflow: hidden !important;
+	width: 30px;
+	height: 30px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+.dataTables_wrapper .dataTables_paginate .paginate_button a {
+	padding: 0 !important;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	width: 30px;
+	height: 30px;
+}
+div.dataTables_wrapper div.dataTables_paginate ul.pagination {
+	gap: 5px;
+}
+
+.dataTables_wrapper .dataTables_paginate .paginate_button.disabled, .dataTables_wrapper .dataTables_paginate .paginate_button.disabled:hover, .dataTables_wrapper .dataTables_paginate .paginate_button.disabled:active {
+	border: 1px solid #c9343a !important;
+}
