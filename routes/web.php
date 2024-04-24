@@ -195,21 +195,21 @@ Route::namespace('App\Http\Controllers\seller')->name('seller.')->prefix('seller
   Route::post('update_password', 'DashboardController@update_password')->name('update_password')->middleware('auth:seller');
 
   //products route starts
-  Route::get('/products', 'ProductsController@products')->name('products')->middleware('auth:seller');
+  Route::get('/products', 'ProductsController@products')->name('products');
   Route::get('get_productListing', 'ProductsController@get_productListing')->name('get_productListing');
   Route::get('tabs_ajax_get/{page?}', 'ProductsController@tabs_ajax_get')->name('tabs_ajax_get');
-  Route::get('/add-product', 'ProductsController@add_product')->name('add_product')->middleware('auth:seller');
+  Route::get('/add_product', 'ProductsController@add_product')->name('add_product');
 
-  Route::get('/search-product', 'ProductsController@search_product')->name('search_product')->middleware('auth:seller');
-  Route::get('/added-on-product', 'ProductsController@addedon_product')->name('addedon_product')->middleware('auth:seller');
-  Route::get('/not-addedon-product', 'ProductsController@not_addedon_product')->name('not_addedon_product')->middleware('auth:seller');
+  Route::get('/search-product', 'ProductsController@search_product')->name('search_product');
+  Route::get('/added-on-product', 'ProductsController@addedon_product')->name('addedon_product');
+  Route::get('/not-addedon-product', 'ProductsController@not_addedon_product')->name('not_addedon_product');
 
   Route::post('save_product', 'ProductsController@save_product')->name('save_product');
   Route::post('/delete_product', 'ProductsController@delete_product')->name('delete_product');
-  Route::get('/view-product/{id?}', 'ProductsController@view_product')->name('view_product')->middleware('auth:seller');
-  Route::get('/edit-product/{id?}', 'ProductsController@edit_product')->name('edit_product')->middleware('auth:seller');
+  Route::get('/view-product/{id?}', 'ProductsController@view_product')->name('view_product');
+  Route::get('/edit-product/{id?}', 'ProductsController@edit_product')->name('edit_product');
   Route::post('update_product', 'ProductsController@update_product')->name('update_product');
-  Route::get('/inventory', 'ProductsController@inventory')->name('inventory')->middleware('auth:seller');
+  Route::get('/inventory', 'ProductsController@inventory')->name('inventory');
   //product route ends
 
   //package routes starts
@@ -487,8 +487,10 @@ Route::namespace('App\Http\Controllers\admin')->name('admin.')->prefix('admin')-
   // Admin Products routes start here
   Route::get('product', 'ProductController@product')->name('product');
   Route::get('addproduct', 'ProductController@addproduct')->name('addproduct');
+  Route::post('saveProduct', 'ProductController@saveProduct')->name('saveProduct');
+  Route::post('api/addFetchCategory', 'ProductController@addFetchCategory')->name('addFetchCategory');
   Route::get('editproduct', 'ProductController@editproduct')->name('editproduct');
-  Route::get('viewproduct', 'ProductController@viewproduct')->name('viewproduct');
+  Route::get('viewproduct/{id}', 'ProductController@viewproduct')->name('viewproduct');
   //Admin Products routes end here
 
 

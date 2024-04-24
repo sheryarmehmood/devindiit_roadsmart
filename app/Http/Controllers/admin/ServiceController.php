@@ -292,7 +292,7 @@ class ServiceController extends Controller
     }
 
     public function fetchsubservices(Request $request)
-    {
+    {   
         $serviceId = $request->input('Service_id');
         $subserviceData['services'] = SubServices::where('service_id', $serviceId)->get(["name", "id"]);
         return response()->json($subserviceData);
