@@ -489,8 +489,10 @@ Route::namespace('App\Http\Controllers\admin')->name('admin.')->prefix('admin')-
   Route::get('addproduct', 'ProductController@addproduct')->name('addproduct');
   Route::post('saveProduct', 'ProductController@saveProduct')->name('saveProduct');
   Route::post('api/addFetchCategory', 'ProductController@addFetchCategory')->name('addFetchCategory');
-  Route::get('editproduct', 'ProductController@editproduct')->name('editproduct');
+  Route::get('editproduct/{id}', 'ProductController@editproduct')->name('editproduct');
+  Route::post('updateProduct/{id}', 'ProductController@updateProduct')->name('updateProduct');
   Route::get('viewproduct/{id}', 'ProductController@viewproduct')->name('viewproduct');
+  Route::get('deleteProduct/{id}', 'ProductController@deleteProduct')->name('deleteProduct');
   //Admin Products routes end here
 
 

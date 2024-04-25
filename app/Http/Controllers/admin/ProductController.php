@@ -31,7 +31,7 @@ class ProductController extends Controller
      */
     public function product()
     {
-        $Products  = Product::select('product_category_id', 'id', 'product_name', 'description', 'sale_price', 'purchase_price', 'SKU', 'location', 'seller_id', 'stock_status', 'quantity', 'image', 'compatible_vehicle', 'discount', 'brand_name')->with(['category', 'BrandName','CompatibleVehicle' ])->get();
+        $Products  = Product::select('product_category_id', 'id', 'product_name', 'description', 'sale_price', 'purchase_price', 'SKU', 'location', 'stock_status', 'quantity', 'image', 'compatible_vehicle', 'discount', 'brand_name')->with(['category', 'BrandName', 'CompatibleVehicle'])->get();
         return view('admin.products.product', ['Products' => $Products]);
     }
     public function addproduct()
@@ -67,9 +67,8 @@ class ProductController extends Controller
             $image->move(public_path('images'), $imageName);
             $validatedData['image'] = $imageName;
         }
-        
+
         $saved = Product::create($validatedData);
-        dd($saved);
         return redirect('admin/product')->with('message', 'Service deleted successfully');
     }
 
@@ -101,13 +100,69 @@ class ProductController extends Controller
 
 
 
-    public function editproduct()
+    public function editproduct($id)
     {
-        return view('admin.products.editproduct');
+        $product_Categories = ProductCategory::get();
+        $brands = BrandName::get();
+        $vehicles = Vehicles::get();
+        $product  = Product::select('product_category_id', 'id', 'product_name', 'description', 'sale_price', 'purchase_price', 'SKU', 'location', 'seller_id', 'stock_status', 'quantity', 'image', 'compatible_vehicle', 'discount', 'brand_name')->where('id', $id)->with(['category', 'BrandName', 'CompatibleVehicle'])->first();
+        return view('admin.products.editproduct', ['prodcut_categories' => $product_Categories, 'vehicles' => $vehicles, 'brands' => $brands, 'product' => $product]);
     }
+
+    public function updateProduct(Request $request, $id)
+    {
+        $validatedData = $request->validate([
+            'product_name' => 'required|string|max:255',
+            'product_category_id' => 'required|exists:product_categories,id',
+            'brand_name' => 'required|exists:brands,id',
+            'compatible_vehicle' => 'required|exists:vehicles,id',
+            'description' => 'nullable|string',
+            'purchase_price' => 'required|numeric',
+            'sale_price' => 'required|numeric',
+            'discount' => 'nullable|numeric',
+            'SKU' => 'required|string|max:255|unique:products,SKU,' . $id,
+            'quantity' => 'required|numeric',
+            'location' => 'nullable|string|max:255',
+            'stock_status' => 'required|in:InStock,OutOfStock',
+            'image' => 'nullable|image|mimes:jpeg,png,jpg|max:2048',
+        ]);
+        $product = Product::findOrFail($id);
+        $product->product_name = $validatedData['product_name'];
+        $product->product_category_id = $validatedData['product_category_id'];
+        $product->brand_name = $validatedData['brand_name'];
+        $product->compatible_vehicle = $validatedData['compatible_vehicle'];
+        $product->description = $validatedData['description'];
+        $product->purchase_price = $validatedData['purchase_price'];
+        $product->sale_price = $validatedData['sale_price'];
+        $product->discount = $validatedData['discount'];
+        $product->SKU = $validatedData['SKU'];
+        $product->quantity = $validatedData['quantity'];
+        $product->location = $validatedData['location'];
+        $product->stock_status = $validatedData['stock_status'];
+        if ($request->hasFile('image')) {
+            $image = $request->file('image');
+            $imageName = time() . '.' . $image->getClientOriginalExtension();
+            $image->move(public_path('images'), $imageName);
+            $product->image = $imageName;
+        }
+        $product->save();
+        return redirect()->route('admin.product')->with('message', 'Product updated successfully');
+    }
+
+
     public function viewproduct($id)
     {
         $product  = Product::select('product_category_id', 'product_name', 'description', 'sale_price', 'purchase_price', 'SKU', 'location', 'seller_id', 'stock_status', 'quantity', 'image', 'compatible_vehicle', 'discount', 'brand_name')->where('id', $id)->with(['category'])->first();
         return view('admin.products.viewproduct', ['product' => $product]);
+    }
+
+    public function deleteProduct($id)
+    {
+        $product = Product::findOrFail($id);
+        if (!$product) {
+            return redirect()->back()->with('error', 'Product not found');
+        }
+        $product->delete();
+        return redirect('admin/product')->with('message', 'Product deleted successfully');
     }
 }

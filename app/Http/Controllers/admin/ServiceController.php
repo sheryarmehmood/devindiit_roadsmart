@@ -3,16 +3,18 @@
 namespace App\Http\Controllers\admin;
 
 use App\Http\Controllers\Controller;
-use App\Models\Category;
-use App\Models\ServiceCategory;
-use App\Models\Seller;
 use Illuminate\Http\Request;
+use App\Models\{
+    Category,
+    ServiceCategory,
+    Seller,
+    ServiceBundleServices,
+    ServiceBundleSubServices,
+    Services,
+    ServicesBundle,
+    SubServices
+};
 
-use App\Models\ServiceBundleServices;
-use App\Models\ServiceBundleSubServices;
-use App\Models\Services;
-use App\Models\ServicesBundle;
-use App\Models\SubServices;
 
 
 class ServiceController extends Controller
@@ -22,18 +24,18 @@ class ServiceController extends Controller
 
         $categories =  ServiceCategory::get();
         $sellers =  Seller::get();
-        return view('admin.services.addservice', ['categories' => $categories, 'sellers' => $sellers]);
+        return view('admin.services.addservice', compact('categories','sellers'));
     }
 
     public function addSubservice()
     {
-        $services = services::get();
+        $services = Services::get();
         return view('admin.SubServices.addSubservice', ['services' => $services]);
     }
 
     public function addservicebundle()
     {
-        $services = services::get();
+        $services = Services::get();
         return view('admin.servicebundles.addservicebundle', ['services' => $services]);
     }
 
@@ -53,7 +55,7 @@ class ServiceController extends Controller
     {
         $categories =  ServiceCategory::get();
         $sellers =  Seller::get();
-        $service = services::select()->Where('id', $id)->first();
+        $service = Services::where('id', $id)->first();
         return view('admin.services.editservice', [
             'categories' => $categories,
             'sellers' => $sellers,
@@ -85,7 +87,7 @@ class ServiceController extends Controller
 
     public function saveService(Request $request)
     {
-        $category_name =  Category::select('id')->Where('name', 'like', '%' . 'service' . '%')->first();
+        $category_name =  Category::where('name', 'like', '%' . 'service' . '%')->pluck('id')->first();
         $formFields = $request->validate([
             'service_name' => 'required',
             'service_category' => 'required|exists:service_categories,id',
@@ -97,7 +99,7 @@ class ServiceController extends Controller
         ]);
 
         $formFields['category'] = $category_name->id;
-        services::create($formFields);
+        Services::create($formFields);
         return redirect('admin/services')->with('message', 'Service created successfully!');
     }
 
@@ -164,7 +166,7 @@ class ServiceController extends Controller
 
     public function editbundleservice($id)
     {
-        $services = services::get();
+        $services = Services::get();
         $bundle = ServicesBundle::where('id', $id)->first();
         return view('admin.servicebundles.editbundleservice', [
             'services' => $services,
@@ -242,7 +244,7 @@ class ServiceController extends Controller
 
     public function updateService(Request $request, $id)
     {
-        $service = services::findOrFail($id);
+        $service = Services::findOrFail($id);
         $service->update([
             'service_name' => $request->input('service_name'),
             'service_category' => $request->input('service_category'),
@@ -273,7 +275,7 @@ class ServiceController extends Controller
 
     public function deleteService($id)
     {
-        $service = services::findOrFail($id);
+        $service = Services::findOrFail($id);
         if (!$service) {
             return redirect()->back()->with('error', 'Service not found');
         }

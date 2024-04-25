@@ -10,14 +10,14 @@
             <div class="col">
                 <h3 class="page-title">
                     <div class="d-flex titleSelect align-items-center">
-                        Products
+                        Product
                     </div>
                 </h3>
             </div>
             <div class="col-auto text-right all-product-right">
                 <div class="actionMore d-flex align-items-center">
                     <a class="btn btn-primary addorder" href="{{route('admin.addproduct')}}">
-                        Add product
+                        Add products
                     </a>
                 </div>
             </div>
@@ -133,7 +133,7 @@
         $('#confirm-delete').click(function() {
             var productId = $(this).data('product-id');
             $('#delete-popup').modal('hide');
-            window.location.href = "{{ url('admin/delete_product') }}/" + productId;
+            window.location.href = "{{ url('admin/deleteProduct') }}/" + productId;
         });
     });
 </script>

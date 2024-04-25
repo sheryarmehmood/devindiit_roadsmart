@@ -29,7 +29,6 @@ class Product extends Model
         'image',
         'location',
         'compatible_vehicle',
-        'seller_id',
         'discount'
     ];
     
@@ -45,10 +44,8 @@ class Product extends Model
     {
         return $this->belongsTo(Vehicles::class, 'compatible_vehicle' , 'id');
     }
-    public function SellerPrice()
+    public function Sellers()
     {
-        return $this->hasMany(SellerProductPrice::class, 'seller_id' , 'seller_id');
+        return $this->hasMany(ProductSellers::class);
     }
-
-
 }

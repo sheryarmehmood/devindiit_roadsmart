@@ -83,6 +83,116 @@
                             </tbody>
                         </table>
                     </div>
+                    <div class="card  flex-fill mt-4">
+                        <div class="search-products-form">
+                            <h5>To begin adding products</h5>
+                            <h1>Find your products in <br> RoadSmart’s catalogue</h1>
+                            <form>
+                                <div class="form-group">
+                                    <div class="input-group">
+                                        <input type="text" class="form-control" id="" placeholder="Product name, UPC, EAN, ISBN or ASIN">
+                                        <a href="javascript:void();" class="search-product-list-btn"> <i class="fa fa-search"></i></a>
+                                    </div>
+                                </div>
+                                <p class="additional-links">
+                                    <a class="add-new-product" href="http://127.0.0.1:8000/seller/not-addedon-product"> Add a product not sold on Roadsmart</a>
+                                    <!---a class="add-new-product" href="http://127.0.0.1:8000/seller/added-on-product"> Add a product sold on Roadsmart</a--->
+                                </p>
+                            </form>
+
+                        </div>
+
+                        <div class="serched-product-lists" style="display:none;width:100%;">
+                            <div class="card-body">
+                                <div class="table-responsive">
+                                    <table class="table table-center">
+                                        <tbody>
+                                            <tr>
+                                                <td class="productTitle">Break Pad and Rotor </td>
+                                                <td>Product Code: XX123</td>
+                                                <td class="productOffer">Offers : <a href="javascript:void(0);" class="sidebar-toggler"> 23 used and new </a> </td>
+                                                <td>
+                                                    <div class="search-product-actions">
+                                                        <div class="product-condition">
+                                                            <select name="status" class="form-control">
+                                                                <option value="" disabled="" selected="">Select a condition</option>
+                                                                <option value="Used">Used</option>
+                                                                <option value="New">New</option>
+                                                                <option value="Pre-owned">Pre-owned</option>
+                                                            </select>
+                                                        </div>
+                                                        <a href="http://127.0.0.1:8000/seller/added-on-product" class="btn btn-primary">Sell this product</a>
+                                                    </div>
+                                                </td>
+
+                                            </tr>
+
+                                            <tr>
+                                                <td class="productTitle">Break Pad and Rotor </td>
+                                                <td>Product Code: XX123</td>
+                                                <td class="productOffer">Offers : <a href="javascript:void(0);" class="sidebar-toggler"> 23 used and new </a> </td>
+                                                <td>
+                                                    <div class="search-product-actions">
+                                                        <div class="product-condition">
+                                                            <select name="status" class="form-control">
+                                                                <option value="" disabled="" selected="">Select a condition</option>
+                                                                <option value="Used">Used</option>
+                                                                <option value="New">New</option>
+                                                                <option value="Pre-owned">Pre-owned</option>
+                                                            </select>
+                                                        </div>
+                                                        <a href="http://127.0.0.1:8000/seller/added-on-product" class="btn btn-primary">Sell this product</a>
+                                                    </div>
+                                                </td>
+
+                                            </tr>
+
+                                            <tr>
+                                                <td class="productTitle">Break Pad and Rotor</td>
+                                                <td>Product Code: XX123</td>
+                                                <td class="productOffer">Offers : <a href="javascript:void(0);" class="sidebar-toggler"> 23 used and new </a> </td>
+                                                <td>
+                                                    <div class="search-product-actions">
+                                                        <div class="product-condition">
+                                                            <select name="status" class="form-control">
+                                                                <option value="" disabled="" selected="">Select a condition</option>
+                                                                <option value="Used">Used</option>
+                                                                <option value="New">New</option>
+                                                                <option value="Pre-owned">Pre-owned</option>
+                                                            </select>
+                                                        </div>
+                                                        <a href="http://127.0.0.1:8000/seller/added-on-product" class="btn btn-primary">Sell this product</a>
+                                                    </div>
+                                                </td>
+
+                                            </tr>
+
+                                            <tr>
+                                                <td class="productTitle">Break Pad and Rotor </td>
+                                                <td>Product Code: XX123</td>
+                                                <td class="productOffer">Offers : <a href="javascript:void(0);" class="sidebar-toggler"> 23 used and new </a> </td>
+                                                <td>
+                                                    <div class="search-product-actions">
+                                                        <div class="product-condition">
+                                                            <select name="status" class="form-control">
+                                                                <option value="" disabled="" selected="">Select a condition</option>
+                                                                <option value="Used">Used</option>
+                                                                <option value="New">New</option>
+                                                                <option value="Pre-owned">Pre-owned</option>
+                                                            </select>
+                                                        </div>
+                                                        <a href="http://127.0.0.1:8000/seller/added-on-product" class="btn btn-primary">Sell this product</a>
+                                                    </div>
+                                                </td>
+
+                                            </tr>
+
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
